@@ -17,8 +17,9 @@
   @if(!generatingExercise()) {
     @for (exerciseItem of currentExercise().exercises; track exerciseItem) {
       <lib-ui-quiz-answer-item
+        *ngIf="timeForExercise$ | async as timeForExercise"
         [answer]="exerciseItem"
-        (click)="onExerciseAnswered(exerciseItem.isCorrect)"
+        (click)="onExerciseAnswered(exerciseItem.isCorrect, timeForExercise)"
       ></lib-ui-quiz-answer-item>
     }
   }

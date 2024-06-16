@@ -1,0 +1,19 @@
+<div class="summary__score">
+  @if (score() !== null) {
+    <h2>Twój wynik</h2>
+    <p>{{ score() }} / {{ total() }}</p>
+  }
+</div>
+<div class="summary__actions">
+  @if (currentMultiplicand()) {
+    <button
+      routerLink="/quiz/{{ currentMultiplicand() }}"
+      class="secondary"
+    >Powtórz</button>
+  }
+
+  <button
+    routerLink="/"
+    class="primary"
+  >Wybierz liczbę</button>
+</div>
