@@ -1,0 +1,21 @@
+:host {
+    display: block;
+}
+.answer-item {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: max(min(7vw, 7rem), 2rem);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: #f5f5f5;
+}
+
+.answer-item--is-correct {
+    background-color: #4caf50;
+}
+
+.answer-item--is-incorrect {
+    background-color: #f44336;
+}

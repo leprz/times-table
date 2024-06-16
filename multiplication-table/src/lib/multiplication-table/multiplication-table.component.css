@@ -1,0 +1,44 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+.multiplication-table__question {
+    margin-top: 2rem;
+    font-size: max(min(7vw, 7rem), 2rem);
+    margin-bottom: 1rem;
+    display: flex;
+    gap: .5rem;
+}
+
+.multiplication-table__question--is-correct {
+    color: #4caf50;
+}
+
+.multiplication-table__question--is-incorrect {
+    color: #f44336;
+}
+
+.multiplication-table__answers {
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: 100%;
+    max-width: 30rem;
+}
+
+lib-ui-quiz-answer-item {
+    flex: 1;
+}
+
+time {
+    font-size: max(min(7vw, 7rem), 2rem);
+    font-weight: 500;
+    color: #4caf50;
+}

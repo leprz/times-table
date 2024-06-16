@@ -1,0 +1,25 @@
+<section class="multiplication-table__question" [ngClass]="{
+  'multiplication-table__question--is-correct': isAnswered() && isCorrect(),
+  'multiplication-table__question--is-incorrect': isAnswered() && !isCorrect()
+}">
+  <span>{{ currentExercise().multiplicand }}</span>
+  <span>⋅</span>
+  <span>{{ currentExercise().multiplier }}</span>
+  <span>=</span>
+  <span>{{ result() }}</span>
+</section>
+@if(generatingExercise()) {
+  <lib-ui-spinner></lib-ui-spinner>
+} @else {
+  <time>{{ timeForExercise$ | async }}s</time>
+}
+<main class="multiplication-table__answers">
+  @if(!generatingExercise()) {
+    @for (exerciseItem of currentExercise().exercises; track exerciseItem) {
+      <lib-ui-quiz-answer-item
+        [answer]="exerciseItem"
+        (click)="onExerciseAnswered(exerciseItem.isCorrect)"
+      ></lib-ui-quiz-answer-item>
+    }
+  }
+</main>
