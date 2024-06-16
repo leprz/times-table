@@ -10,7 +10,7 @@
 }
 .multiplication-table__question {
     margin-top: 2rem;
-    font-size: max(min(7vw, 7rem), 2rem);
+    font-size: max(min(15vw, 7rem), 2rem);
     margin-bottom: 1rem;
     display: flex;
     gap: .5rem;
