@@ -90,6 +90,9 @@
       "options": {
         "jestConfig": "jest.config.app.ts"
       }
+    },
+    "deploy": {
+      "executor": "angular-cli-ghpages:deploy"
     }
   }
 }
