@@ -1,0 +1,23 @@
+:host {
+  resize: horizontal;
+  container-type: normal;
+}
+
+.page-times-table-guesser {
+  display: flex;
+  font-size: clamp(0.1rem, 10cqh, 3rem);
+  height: 100%;
+  overflow: auto;
+}
+
+.page-times-table-guesser__exercise {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.page-times-table-guesser__score-bar--high-score {
+  color: orange;
+}

@@ -1,0 +1,43 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.page-lesson-summary__actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.page-lesson-summary__score {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    h2 {
+        font-size: min(8vw, 3rem);
+    }
+    p {
+        font-size: min(10vw, 5rem);
+        font-weight: 600;
+        color: #d9b11e;
+    }
+}
+
+.page-lesson-summary__wrong-answer-item {
+    color: red;
+}
+
+.page-lesson-summary__correct-result {
+    color: green;
+}
+
+.page-lesson-summary__wrong-answers {
+    li {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        align-items: center;
+    }
+}

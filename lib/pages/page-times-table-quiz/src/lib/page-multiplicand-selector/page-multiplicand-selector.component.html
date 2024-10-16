@@ -1,0 +1,5 @@
+@for(multiplicand of multiplicands; track multiplicand) {
+<span [routerLink]="multiplicand | pageCreateLinkQuizQuestionPipe">{{
+  multiplicand
+}}</span>
+}

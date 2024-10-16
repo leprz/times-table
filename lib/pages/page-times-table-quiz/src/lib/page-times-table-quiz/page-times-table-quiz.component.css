@@ -1,0 +1,32 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+.page-times-table-quiz__question {
+    margin-top: 2rem;
+    font-size: max(min(15vw, 7rem), 2rem);
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.page-times-table-quiz__answers {
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 30rem;
+}
+
+time {
+    font-size: max(min(7vw, 7rem), 2rem);
+    font-weight: 500;
+    color: #4caf50;
+}

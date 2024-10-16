@@ -1,0 +1,12 @@
+.ui-keyboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+button {
+  border-radius: 1rem;
+  font-size: 1em;
+}

@@ -1,0 +1,29 @@
+<feature-timer
+  #timer
+  [timer]="5"
+  [delay]="1"
+  (timesUp)="exercise.answer(null, timer.elapsedTime())"
+/>
+<feature-exercise
+  #exercise
+  [minMultiplicand]="multiplicand()"
+  [maxMultiplicand]="multiplicand()"
+  [numberOfExercises]="9"
+  [outputDelay]="1"
+  (answered)="timer.stop()"
+  (answeredDelayed)="timer.reset()"
+  (exerciseCompletedDelayed)="navigateToSummary()"
+/>
+
+<section class="page-times-table-quiz__question">
+  {{ exercise.currentExercise() | formatEquation : '?' }}
+</section>
+<time>{{ timer.remainingTime() }}s</time>
+<main class="page-times-table-quiz__answers">
+  <feature-random-quiz-answer-list
+    [isAnswered]="exercise.isAnswered()"
+    [answersNumber]="3"
+    [correctValue]="exercise.currentExercise()?.product"
+    (answered)="exercise.answer($event)"
+  ></feature-random-quiz-answer-list>
+</main>

@@ -1,0 +1,50 @@
+<div class="page-lesson-summary__score">
+  @if (score() !== null) {
+    <h2>Twój wynik</h2>
+    <p>
+      @if(isNewBestScore()) {
+        {{ score() | formatHighScore }}
+      } @else {
+        {{ score() }}
+      } @if (total()) { / {{ total() }}
+    }
+    </p>
+  } @if (bestScore() !== 0) {
+  <h3>Twój poprzedni najlepszy wynik</h3>
+  <p>{{ bestScore() }}</p>
+}
+</div>
+<div class="page-lesson-summary__wrong-answers">
+  @if (wrongAnswers().length) {
+    <h3>Błędne odpowiedzi</h3>
+    <ul>
+      @for (answer of wrongAnswers(); track $index) {
+        <li>
+      <span class="page-lesson-summary__wrong-answer-item">
+        <span>{{ answer.operandA }}</span>
+        <span>⋅</span>
+        <span>{{ answer.operandB }}</span>
+        <span>=</span>
+        <span class="page-lesson-summary__wrong-answer-result">
+          @if(answer.answer !== null) {
+            {{ answer.answer }}
+          } @else { ? }
+        </span>
+      </span>
+          <span class="page-lesson-summary__correct-result">{{
+              answer.operandA * answer.operandB
+            }}</span>
+        </li>
+      }
+    </ul>
+  }
+</div>
+<div class="page-lesson-summary__actions">
+  @if (currentMultiplicand()) {
+    <button routerLink="/quiz/{{ currentMultiplicand() }}" class="secondary">
+      Powtórz
+    </button>
+  }
+
+  <button routerLink="/" class="primary">Wybierz liczbę</button>
+</div>

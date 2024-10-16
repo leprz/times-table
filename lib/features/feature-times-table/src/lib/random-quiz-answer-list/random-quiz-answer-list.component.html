@@ -1,0 +1,9 @@
+@for (answer of answers(); track answer.id) {
+  @if (correctValue(); as correctValue) {
+    <ui-quiz-answer-item
+      [isDisabled]="isAnswered()"
+      [answer]="answer | mapQuizAnswerToAnswerUi : correctValue"
+      (click)="onAnswerClick(answer.value)"
+    ></ui-quiz-answer-item>
+  }
+}

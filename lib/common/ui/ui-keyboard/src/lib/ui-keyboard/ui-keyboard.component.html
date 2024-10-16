@@ -1,0 +1,8 @@
+<div class="ui-keyboard">
+  @for (number of [1,2,3,4,5,6,7,8,9]; track number) {
+  <button (click)="onNumberClick(number)">{{ number }}</button>
+  }
+  <button (click)="onBackspaceClick()">C</button>
+  <button (click)="onNumberClick(0)">0</button>
+  <button (click)="onSubmitClick()">=</button>
+</div>

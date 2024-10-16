@@ -1,6 +1,0 @@
-<article class="answer-item" (click)="onAnswerClick()" [ngClass]="{
-  'answer-item--is-correct': isAnswered() && answer().isCorrect,
-  'answer-item--is-incorrect': isAnswered() && !answer().isCorrect
- }">
-  <span class="answer-item__label">{{ answer().label }}</span>
-</article>
