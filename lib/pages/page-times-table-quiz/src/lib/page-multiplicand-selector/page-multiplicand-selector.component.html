@@ -1,5 +1,7 @@
-@for(multiplicand of multiplicands; track multiplicand) {
-<span [routerLink]="multiplicand | pageCreateLinkQuizQuestionPipe">{{
-  multiplicand
-}}</span>
-}
+<div class="page-multiplicand-selector surface body-large">
+  @for(multiplicand of multiplicands; track multiplicand) {
+    <button class="secondary" [routerLink]="multiplicand | pageCreateLinkQuizQuestionPipe">{{
+      multiplicand
+    }}</button>
+  }
+</div>

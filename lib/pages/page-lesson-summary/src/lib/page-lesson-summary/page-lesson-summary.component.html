@@ -1,7 +1,7 @@
-<div class="page-lesson-summary__score">
+<div class="page-lesson-summary__score body-small">
   @if (score() !== null) {
     <h2>Twój wynik</h2>
-    <p>
+    <p class="body-large">
       @if(isNewBestScore()) {
         {{ score() | formatHighScore }}
       } @else {
@@ -11,20 +11,20 @@
     </p>
   } @if (bestScore() !== 0) {
   <h3>Twój poprzedni najlepszy wynik</h3>
-  <p>{{ bestScore() }}</p>
+  <p class="body-large">{{ bestScore() }}</p>
 }
 </div>
-<div class="page-lesson-summary__wrong-answers">
+<div class="page-lesson-summary__wrong-answers body-small">
   @if (wrongAnswers().length) {
-    <h3>Błędne odpowiedzi</h3>
-    <ul>
+    <h3>Niepoprawne odpowiedzi</h3>
+    <ul class="body-extra-small">
       @for (answer of wrongAnswers(); track $index) {
         <li>
       <span class="page-lesson-summary__wrong-answer-item">
         <span>{{ answer.operandA }}</span>
-        <span>⋅</span>
+        <span>&nbsp;x&nbsp;</span>
         <span>{{ answer.operandB }}</span>
-        <span>=</span>
+        <span>&nbsp;=</span>
         <span class="page-lesson-summary__wrong-answer-result">
           @if(answer.answer !== null) {
             {{ answer.answer }}
@@ -46,5 +46,5 @@
     </button>
   }
 
-  <button routerLink="/" class="primary">Wybierz liczbę</button>
+  <button routerLink="/" class="primary">Wróć</button>
 </div>

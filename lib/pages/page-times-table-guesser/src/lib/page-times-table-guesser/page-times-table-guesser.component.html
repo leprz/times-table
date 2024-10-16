@@ -5,7 +5,7 @@
   (answered)="score.recalculateCurrentScore()"
   (exerciseCompleted)="navigateToSummary()"
 />
-<div class="page-times-table-guesser">
+<div class="page-times-table-guesser body-medium">
   <div class="page-times-table-guesser__exercise">
     <feature-score
       class="page-times-table-guesser__high-score"
@@ -30,6 +30,6 @@
       #keyboard
       (submittedNonEmpty)="exercise.answer(keyboard.inputValue())"
     ></ui-keyboard>
-    <div class="page-times-table-guesser__remaining-time">{{ timer.remainingTime() }}s</div>
+    <time class="page-times-table-guesser__remaining-time timer">{{ timer.remainingTime() }}s</time>
   </div>
 </div>

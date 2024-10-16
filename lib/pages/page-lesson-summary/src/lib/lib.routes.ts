@@ -9,7 +9,10 @@ export const pageLessonSummaryRoutes: Route[] = [
     component: PageLessonSummaryComponent,
     canActivate: [() => {
       const summaryService = inject(SummaryService);
-      return summaryService.isInitialized();
+      if (!summaryService.isInitialized()) {
+        return ['/'];
+      }
+      return true;
     }]
   }
 ];

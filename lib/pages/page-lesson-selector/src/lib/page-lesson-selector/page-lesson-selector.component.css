@@ -1,8 +1,8 @@
-:host {
-    display: grid;
+.page-lesson-selector {
+    display: flex;
+    flex-wrap: wrap;
     height: 100%;
-    grid-template-columns: 1fr 1fr;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: min(4rem, 0.5em);
 }

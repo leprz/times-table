@@ -1,6 +1,7 @@
 @for (answer of answers(); track answer.id) {
   @if (correctValue(); as correctValue) {
     <ui-quiz-answer-item
+      class="random-quiz-answer-list__answer"
       [isDisabled]="isAnswered()"
       [answer]="answer | mapQuizAnswerToAnswerUi : correctValue"
       (click)="onAnswerClick(answer.value)"

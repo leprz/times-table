@@ -1,33 +1,108 @@
 /* You can add global styles to this file, and also import other style files */
-html, body {
-  height: 100%;
-  box-sizing: border-box;
+
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
+:root {
+  --color-primary: #2e8ea1;
+  --color-secondary: #fc8c97;
+  --color-tertiary: #dfeef1;
+
+  --color-green: #4caf50;
 }
+
+.body-extra-small {
+  &,h1,h2,h3 {
+    font-size: clamp(1rem, 1cqw + 1rem, 1.5rem);
+  }
+}
+
+.body-small {
+  &,h1,h2,h3 {
+    font-size: clamp(1rem, 2cqw + 1rem, 3rem);
+  }
+}
+
+.body-medium {
+  &,h1,h2,h3 {
+    font-size: clamp(1rem, 5cqw + 1rem, 5rem);
+  }
+}
+
+.body-large {
+  &,h1,h2,h3 {
+    font-size: min(8rem, clamp(1rem, 8cqw + 2rem, 10rem));
+  }
+}
+
+html, body {
+  color: var(--color-primary);
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  background-image: url("/assets/decor-right.png"), url("/assets/decor-left.png"), url("/assets/bg.svg");
+  background-size: auto, auto, auto, cover;
+  background-position: bottom right, bottom left, bottom center;
+  background-repeat: no-repeat;
+  @media(max-width: 768px) {
+    background-image: url("/assets/bg.svg");
+    background-position: bottom center;
+    background-size: cover;
+  }
+}
+
 body {
-  padding: 1rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Comic Neue", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem 1rem 5rem;
 }
 
 button {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-family: "Comic Neue", cursive;
+  font-size: 1em;
+  font-weight: 500;
   padding: 0.5rem 1rem;
   border: none;
-  border-radius: 0.25rem;
-  background: #007bff;
+  background: var(--color-primary);
   color: white;
   cursor: pointer;
+  border-radius: 100px 250px 100px 200px / 200px 100px 200px 100px;
+
+  &:nth-child(2n) {
+    border-radius: 200px 100px 200px 100px / 100px 200px 100px 200px;
+  }
+
+  &:nth-child(3n) {
+    border-radius: 100px 200px 100px 200px / 200px 100px 200px 100px;
+  }
 }
 
 button.primary {
-    background: #007bff;
+  background: var(--color-primary);
+  border-radius: 100px 200px 100px 200px / 200px 100px 200px 100px;
 }
 
 button.secondary {
-  background: #6c757d;
+  background: var(--color-secondary);
   color: white;
+}
+
+button.tertiary {
+  background: var(--color-tertiary);
+  color: var(--color-primary);
+}
+
+.surface {
+  padding: max(.5rem, .2em);
+  border-radius: 3rem;
+  background-color: var(--color-tertiary);
+}
+
+.timer {
+  color: var(--color-green);
+  font-weight: 500;
 }

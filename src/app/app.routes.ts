@@ -35,4 +35,8 @@ export const appRoutes: Route[] = [
     loadChildren: () =>
       import('@org/page-times-table-guesser').then((m) => m.pageTimesTableGuesserRoutes),
   },
+  {
+    path: '**',
+    redirectTo: '',
+  }
 ];

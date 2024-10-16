@@ -80,4 +80,8 @@ export class SummaryService {
 
     return Math.round(score);
   }
+
+  reset(): void {
+    this.exercise = null;
+  }
 }

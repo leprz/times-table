@@ -1,4 +1,12 @@
 :host {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.random-quiz-answer-list__answer {
+  flex-grow: 1;
+  flex-basis: 0;
 }

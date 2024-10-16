@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExerciseTry, FormatHighScorePipe, HighScoreService, SummaryService } from '@org/feature-times-table';
 import { Router, RouterLink } from '@angular/router';
@@ -9,7 +9,7 @@ import { Router, RouterLink } from '@angular/router';
   templateUrl: './page-lesson-summary.component.html',
   styleUrl: './page-lesson-summary.component.css',
 })
-export class PageLessonSummaryComponent {
+export class PageLessonSummaryComponent implements OnDestroy {
   readonly bestScoreService = inject(HighScoreService);
   readonly routerLink = inject(Router);
 
@@ -22,6 +22,10 @@ export class PageLessonSummaryComponent {
   });
 
   wrongAnswers = signal<ExerciseTry[]>([]);
+
+  ngOnDestroy(): void {
+    this.summaryService.reset();
+  }
 
   constructor(private readonly summaryService: SummaryService) {
     if (this.summaryService.isInitialized()) {

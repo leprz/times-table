@@ -2,9 +2,9 @@ import {
   Component,
   computed,
   inject,
-  input,
+  input, OnDestroy,
   output,
-  signal,
+  signal
 } from '@angular/core';
 import {
   Equation,
@@ -18,7 +18,7 @@ import { SummaryService } from '../common/summary.service';
   standalone: true,
   template: '<ng-content></ng-content>',
 })
-export class FeatureExerciseComponent {
+export class FeatureExerciseComponent implements OnDestroy{
   numberOfExercises = input<number | null>(null);
   minMultiplicand = input<number>(1);
   maxMultiplicand = input<number>(9);
@@ -57,8 +57,16 @@ export class FeatureExerciseComponent {
 
   summaryService = inject(SummaryService);
 
+  interval: ReturnType<typeof setInterval>[] = [];
+
   constructor() {
     this.summaryService.init();
+  }
+
+  ngOnDestroy(): void {
+    if (this.interval.length > 0) {
+      this.interval.forEach((i) => clearInterval(i));
+    }
   }
 
   private delayedAction(action: () => void): void {
@@ -66,12 +74,11 @@ export class FeatureExerciseComponent {
       action();
       clearTimeout(interval);
     }, this.outputDelay() * 1000);
+    this.interval.push(interval);
   }
 
   answer(answer: string | null, time?: number): void {
     const exercise = this.currentExercise();
-    this.answered.emit();
-    this.isAnswered.set(true);
 
     if (exercise && answer === null) {
       // record no answer
@@ -125,6 +132,9 @@ export class FeatureExerciseComponent {
         ),
       ]);
     }
+
+    this.answered.emit();
+    this.isAnswered.set(true);
 
     this.delayedAction(() => {
       this.answeredDelayed.emit();
