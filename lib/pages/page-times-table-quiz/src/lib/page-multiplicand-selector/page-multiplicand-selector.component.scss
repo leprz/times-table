@@ -1,3 +1,5 @@
+@use 'src/_grid-mixins.scss';
+
 :host {
   display: flex;
   height: 100%;
@@ -15,4 +17,11 @@
   grid-template-rows: repeat(3, 1fr);
   grid-template-columns: repeat(3, 1fr);
   gap: min(4rem, 0.5em);
+}
+
+@include grid-mixins.media-sm {
+  .page-multiplicand-selector {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

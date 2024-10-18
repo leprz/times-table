@@ -7,25 +7,27 @@
 />
 <div class="page-times-table-guesser body-medium">
   <div class="page-times-table-guesser__exercise">
-    <feature-score
-      class="page-times-table-guesser__high-score"
-      #score
-      (currentScoreRecalculated)="keyboard.reset()"
-    >
+    <div class="page-times-table-guesser__score">
+      <feature-score
+        class="page-times-table-guesser__high-score"
+        #score
+        (currentScoreRecalculated)="keyboard.reset()"
+      >
       <span class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--current-score">
         {{ score.currentScore() }}
       </span>
-      @if (score.currentHighScore()) { /
-        <span class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--high-score">{{
-            score.currentHighScore() | formatHighScore
+        @if (score.currentHighScore()) { /
+          <span class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--high-score">{{
+              score.currentHighScore() | formatHighScore
+            }}</span>
+        }
+      </feature-score>
+      @if (exercise.currentExercise()) {
+        <span>{{
+            exercise.currentExercise() | formatEquation : keyboard.inputValue()
           }}</span>
       }
-    </feature-score>
-    @if (exercise.currentExercise()) {
-      <span>{{
-          exercise.currentExercise() | formatEquation : keyboard.inputValue()
-        }}</span>
-    }
+    </div>
     <ui-keyboard
       #keyboard
       (submittedNonEmpty)="exercise.answer(keyboard.inputValue())"

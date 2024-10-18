@@ -1,10 +1,10 @@
 import { Component, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  RandomQuizAnswerListComponent,
   FeatureExerciseComponent,
   FeatureTimerComponent,
-  FormatEquationPipe
+  FormatEquationPipe,
+  RandomQuizAnswerListComponent
 } from '@org/feature-times-table';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -14,7 +14,7 @@ import { links } from '@org/page-common';
   standalone: true,
   imports: [CommonModule, RandomQuizAnswerListComponent, FeatureExerciseComponent, FeatureTimerComponent, FormatEquationPipe],
   templateUrl: './page-times-table-quiz.component.html',
-  styleUrl: './page-times-table-quiz.component.css',
+  styleUrl: './page-times-table-quiz.component.scss',
 })
 export class PageTimesTableQuizComponent {
   private readonly paramMap = toSignal(this.activatedRoute.paramMap);

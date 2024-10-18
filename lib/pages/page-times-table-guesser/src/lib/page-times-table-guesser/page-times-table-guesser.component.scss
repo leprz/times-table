@@ -1,12 +1,11 @@
+@use 'src/_grid-mixins.scss';
+
 :host {
-  resize: horizontal;
-  container-type: normal;
+  display: block;
 }
 
 .page-times-table-guesser {
-  display: flex;
-  height: 100%;
-  overflow: auto;
+  container-type: inline-size;
 }
 
 .page-times-table-guesser__exercise {
@@ -17,6 +16,47 @@
   justify-content: flex-end;
 }
 
+.page-times-table-guesser__score {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
 .page-times-table-guesser__score-bar--high-score {
   color: orange;
+}
+
+@media (height < 300px), (orientation: landscape) {
+  .page-times-table-guesser__score {
+    flex-direction: column;
+    align-items: center;
+  }
+  .page-times-table-guesser__remaining-time {
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 1rem;
+    padding: .5rem;
+    background-color: var(--color-green);
+    color: white;
+    border-radius: 2rem;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    order: -1;
+  }
+  ui-keyboard {
+    padding-right: 2rem;
+  }
+  .page-times-table-guesser__exercise{
+    flex-direction: row;
+    width: 100%;
+    max-width: 42rem;
+    justify-content: space-between;
+  }
 }

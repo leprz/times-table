@@ -12,35 +12,48 @@
 
 .body-extra-small {
   &,h1,h2,h3 {
-    font-size: clamp(1rem, 1cqw + 1rem, 1.5rem);
+    font-size: clamp(1rem, min(1cqw, 1cqh) + 1rem, 1.5rem);
   }
 }
 
 .body-small {
   &,h1,h2,h3 {
-    font-size: clamp(1rem, 2cqw + 1rem, 3rem);
+    font-size: clamp(1rem, min(2cqw, 2cqh) + 1rem, 3rem);
   }
 }
 
 .body-medium {
   &,h1,h2,h3 {
-    font-size: clamp(1rem, 5cqw + 1rem, 5rem);
+    font-size: clamp(1rem, min(5cqw, 5cqh) + 1rem, 5rem);
   }
 }
 
 .body-large {
   &,h1,h2,h3 {
-    font-size: min(8rem, clamp(1rem, 8cqw + 2rem, 10rem));
+    font-size: clamp(1rem, min(5cqw, 5cqh) + 3rem, 5rem);
   }
 }
 
 html, body {
   color: var(--color-primary);
-  height: 100%;
+  height: auto;
+  min-height: 100%;
   margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: "Comic Neue", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem 5rem;
   background-image: url("/assets/decor-right.png"), url("/assets/decor-left.png"), url("/assets/bg.svg");
-  background-size: auto, auto, auto, cover;
+  background-size: auto, auto, cover;
   background-position: bottom right, bottom left, bottom center;
   background-repeat: no-repeat;
   @media(max-width: 768px) {
@@ -50,15 +63,10 @@ html, body {
   }
 }
 
-body {
-  font-family: "Comic Neue", cursive;
-  font-optical-sizing: auto;
-  font-style: normal;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 1rem 5rem;
+@media (max-width: 42rem) and (orientation: landscape) {
+  body {
+    padding-bottom: 1rem;
+  }
 }
 
 button {

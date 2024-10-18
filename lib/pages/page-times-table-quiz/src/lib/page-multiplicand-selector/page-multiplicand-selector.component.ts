@@ -8,7 +8,7 @@ import { links } from '@org/page-common';
   standalone: true,
   imports: [CommonModule, RouterLink, PageCreateLinkQuizQuestionPipePipe],
   templateUrl: './page-multiplicand-selector.component.html',
-  styleUrl: './page-multiplicand-selector.component.css',
+  styleUrl: './page-multiplicand-selector.component.scss',
 })
 export class PageMultiplicandSelectorComponent {
   multiplicands = Array.from({ length: 9 }, (_, i) => i + 1);
