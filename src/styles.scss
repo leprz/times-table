@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
+@use "grid-mixins";
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 
 :root {
@@ -60,6 +59,9 @@ body {
     background-image: url("/assets/bg.svg");
     background-position: bottom center;
     background-size: cover;
+  }
+  @include grid-mixins.media-mobile-landscape {
+    padding-bottom: 1rem;
   }
 }
 

@@ -1,17 +1,28 @@
+$extra-small: 31rem;
+$small: 48rem;
+$medium: 77.5rem;
+$large: 100rem;
+
 @mixin media-sm {
-  @media only screen and (max-width: 48rem) {
+  @media only screen and (max-width: $small) {
     @content;
   }
 }
 
 @mixin media-md {
-  @media only screen and (max-width: 77.5rem) {
+  @media only screen and (max-width: $medium) {
     @content;
   }
 }
 
 @mixin media-lg {
-  @media only screen and (max-width: 100rem) {
+  @media only screen and (max-width: $large) {
+    @content;
+  }
+}
+
+@mixin media-mobile-landscape {
+  @media (width < $medium) and (height <= $extra-small), (width < $medium) and (orientation: landscape) {
     @content;
   }
 }

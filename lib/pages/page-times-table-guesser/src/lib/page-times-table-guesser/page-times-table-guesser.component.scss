@@ -6,6 +6,8 @@
 
 .page-times-table-guesser {
   container-type: inline-size;
+  display: flex;
+  justify-content: center;
 }
 
 .page-times-table-guesser__exercise {
@@ -28,7 +30,7 @@
   color: orange;
 }
 
-@media (height < 300px), (orientation: landscape) {
+@include grid-mixins.media-mobile-landscape {
   .page-times-table-guesser__score {
     flex-direction: column;
     align-items: center;
