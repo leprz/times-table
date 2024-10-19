@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ExerciseScorePolicy } from './exercise-score.policy';
 
 export interface ExerciseTry {
   operandA: number;
@@ -8,17 +9,44 @@ export interface ExerciseTry {
   isCorrect: boolean;
 }
 
+export class ExerciseTryUtil {
+  static countCorrect(tries: ExerciseTry[]): number {
+    return tries.reduce((count, try_) => count + (try_.isCorrect ? 1 : 0), 0);
+  }
+
+  static filterIncorrect(tries: ExerciseTry[]): ExerciseTry[] {
+    return tries.filter((try_) => !try_.isCorrect);
+  }
+
+  static countTotalAnswerTime(tries: ExerciseTry[]): number {
+    return tries.reduce((sum, try_) => sum + try_.answerTime, 0);
+  }
+
+  static countIncorrect(tries: ExerciseTry[]): number {
+    return tries.reduce((count, try_) => count + (!try_.isCorrect ? 1 : 0), 0);
+  }
+
+  static countTotal(tries: ExerciseTry[]): number {
+    return tries.length;
+  }
+}
+
 export interface Exercise {
   multiplicand?: number;
   tries: ExerciseTry[];
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class SummaryService {
   static readonly TOTAL_SCORE = 1000;
   private exercise: Exercise | null = null;
+
+  constructor(
+    private readonly exerciseScorePolicy: ExerciseScorePolicy,
+  ) {
+  }
 
   recordTry(try_: ExerciseTry): void {
     if (!this.exercise) {
@@ -31,7 +59,7 @@ export class SummaryService {
   init(multiplicand?: number): void {
     this.exercise = {
       multiplicand,
-      tries: [],
+      tries: []
     };
   }
 
@@ -48,9 +76,7 @@ export class SummaryService {
   }
 
   getWrongAnswers(): ExerciseTry[] {
-    return this.exercise
-      ? this.exercise.tries.filter((try_) => !try_.isCorrect)
-      : [];
+    return ExerciseTryUtil.filterIncorrect(this.exercise?.tries ?? []);
   }
 
   calculateScore(): number {
@@ -59,26 +85,19 @@ export class SummaryService {
       throw new Error('Exercise is not initialized');
     }
 
-    if (exercise?.multiplicand === undefined) {
-      // means we use time based calculation
-      const score = exercise.tries.reduce(
-        (score, try_) => score + (try_.isCorrect ? 1 : 0) * 100,
-        0
-      );
 
-      return Math.round(score);
+    if (exercise.multiplicand !== undefined) {
+      return this.exerciseScorePolicy.calculateScore({
+        totalPoints: SummaryService.TOTAL_SCORE,
+        totalTries: ExerciseTryUtil.countTotal(exercise.tries),
+        correctTries: ExerciseTryUtil.countCorrect(exercise.tries)
+      });
     }
 
-    const score = exercise.tries.reduce(
-      (score, try_) =>
-        score +
-        ((try_.isCorrect ? 1 : 0) *
-          (SummaryService.TOTAL_SCORE / exercise.tries.length)) /
-          (try_.answerTime + 1),
-      0
-    );
-
-    return Math.round(score);
+    return this.exerciseScorePolicy.calculateScore({
+      totalTries: ExerciseTryUtil.countTotal(exercise.tries),
+      correctTries: ExerciseTryUtil.countCorrect(exercise.tries)
+    });
   }
 
   reset(): void {

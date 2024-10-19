@@ -1,0 +1,67 @@
+@use 'src/_grid-mixins.scss';
+
+dialog {
+  padding: 0;
+  border-radius: 1rem;
+
+  main, footer, header {
+    padding: 1rem;
+  }
+
+  header {
+    font-size: 1em;
+    font-weight: 600;
+    padding-bottom: 0;
+  }
+
+  footer {
+    padding-top: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: .5rem;
+  }
+
+  &[open],
+  &::backdrop {
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  &[closing] {
+    animation: fadeOut 0.3s forwards;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@include grid-mixins.media-sm {
+  dialog {
+    width: 100%;
+    height: 100%;
+    section {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      main {
+        height: 100%;
+        overflow: auto;
+      }
+    }
+  }
+}

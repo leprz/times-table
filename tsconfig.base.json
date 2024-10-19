@@ -15,9 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@org/common-events": ["lib/common/common-events/src/index.ts"],
       "@org/feature-times-table": [
         "lib/features/feature-times-table/src/index.ts"
       ],
+      "@org/local-storage": ["lib/common/utils/local-storage/src/index.ts"],
+      "@org/message-bus": ["lib/common/utils/message-bus/src/index.ts"],
       "@org/page-common": ["lib/pages/page-common/src/index.ts"],
       "@org/page-lesson-selector": [
         "lib/pages/page-lesson-selector/src/index.ts"
@@ -31,6 +34,7 @@
       "@org/page-times-table-quiz": [
         "lib/pages/page-times-table-quiz/src/index.ts"
       ],
+      "@org/ui-dialog": ["lib/common/ui/ui-dialog/src/index.ts"],
       "@org/ui-keyboard": ["lib/common/ui/ui-keyboard/src/index.ts"],
       "@org/ui-quiz-answer-item": [
         "lib/common/ui/ui-quiz-answer-item/src/index.ts"

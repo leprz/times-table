@@ -23,7 +23,7 @@
         }
       </feature-score>
       @if (exercise.currentExercise()) {
-        <span>{{
+        <span class="page-times-table-guesser__current-exercise">{{
             exercise.currentExercise() | formatEquation : keyboard.inputValue()
           }}</span>
       }

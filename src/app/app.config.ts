@@ -2,6 +2,7 @@ import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angul
 import { provideRouter, withViewTransitions } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideServiceWorker } from '@angular/service-worker';
+import { provideFastSVG } from '@push-based/ngx-fast-svg';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,5 +12,9 @@ export const appConfig: ApplicationConfig = {
       enabled: !isDevMode(),
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    provideFastSVG({
+      url: (name: string) => `assets/icons-svg/${name}.svg`,
+      defaultSize: '1.5em'
+    })
   ]
 };

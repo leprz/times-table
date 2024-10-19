@@ -5,7 +5,7 @@
   --color-primary: #2e8ea1;
   --color-secondary: #fc8c97;
   --color-tertiary: #dfeef1;
-
+  --color-orange: #ff9800;
   --color-green: #4caf50;
 }
 
@@ -46,16 +46,11 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 1rem 5rem;
   background-image: url("/assets/decor-right.png"), url("/assets/decor-left.png"), url("/assets/bg.svg");
   background-size: auto, auto, cover;
   background-position: bottom right, bottom left, bottom center;
   background-repeat: no-repeat;
-  @media(max-width: 768px) {
+  @include grid-mixins.media-sm{
     background-image: url("/assets/bg.svg");
     background-position: bottom center;
     background-size: cover;
@@ -79,6 +74,7 @@ button {
   border: none;
   background: var(--color-primary);
   color: white;
+  fill: white;
   cursor: pointer;
   border-radius: 100px 250px 100px 200px / 200px 100px 200px 100px;
 
@@ -91,19 +87,38 @@ button {
   }
 }
 
-button.primary {
+button[disabled] {
+  cursor: auto;
+}
+
+button.btn-primary,
+a.btn-primary {
   background: var(--color-primary);
   border-radius: 100px 200px 100px 200px / 200px 100px 200px 100px;
 }
 
-button.secondary {
+button.btn-secondary,
+a.btn-secondary {
   background: var(--color-secondary);
   color: white;
 }
 
-button.tertiary {
+button.btn-tertiary,
+a.btn-tertiary {
   background: var(--color-tertiary);
   color: var(--color-primary);
+}
+
+button.btn-icon,
+a.btn-icon {
+  padding: .2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  span {
+    padding-right: .5rem;
+  }
 }
 
 .surface {

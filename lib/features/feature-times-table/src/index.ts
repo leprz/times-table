@@ -1,6 +1,7 @@
 export * from './lib/common/high-score/high-score.pipe';
 export * from './lib/common/high-score/high-score.service'
 export * from './lib/common/summary.service';
+export * from './lib/common/prizes/coin-collector.service';
 
 export * from './lib/functional/feature-exercise.component';
 export * from './lib/functional/feature-score.component';

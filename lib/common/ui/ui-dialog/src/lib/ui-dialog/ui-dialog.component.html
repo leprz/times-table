@@ -1,0 +1,17 @@
+<dialog #dialogElement>
+  <section>
+    <header>
+      <ng-content select="[appUiDialogHeader]"></ng-content>
+    </header>
+
+    <main>
+      <ng-content></ng-content>
+      <ng-content select="[appUiDialogContent]"></ng-content>
+    </main>
+
+    <footer>
+      <button (click)="dialogElement.close()">Zamknij</button>
+      <ng-content select="[appUiDialogFooter]"></ng-content>
+    </footer>
+  </section>
+</dialog>
