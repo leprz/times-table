@@ -1,16 +1,5 @@
-import {
-  Component,
-  computed,
-  inject,
-  input, OnDestroy,
-  output,
-  signal
-} from '@angular/core';
-import {
-  Equation,
-  MultiplicationGenerator,
-  Randomizer,
-} from '../exercise-generator/multiplication-generator';
+import { Component, computed, inject, input, OnDestroy, output, signal } from '@angular/core';
+import { Equation, MultiplicationGenerator, Randomizer } from '../exercise-generator/multiplication-generator';
 import { SummaryService } from '../common/summary.service';
 
 @Component({
@@ -54,6 +43,10 @@ export class FeatureExerciseComponent implements OnDestroy{
   answeredDelayed = output();
   exerciseCompleted = output();
   exerciseCompletedDelayed = output();
+  wrongAnswerAdded = output<{
+    correctAnswer: number;
+  }>();
+  correctAnswerAdded = output<void>();
 
   summaryService = inject(SummaryService);
 
@@ -90,6 +83,8 @@ export class FeatureExerciseComponent implements OnDestroy{
         isCorrect: false,
       });
       this.isCorrect.set(false);
+      this.incorrectAnswers.set(this.incorrectAnswers() + 1);
+      this.wrongAnswerAdded.emit({ correctAnswer: exercise.product });
     }
 
     if (exercise && answer) {
@@ -103,8 +98,8 @@ export class FeatureExerciseComponent implements OnDestroy{
           isCorrect: true,
         });
         this.isCorrect.set(true);
-
         this.correctAnswers.set(this.correctAnswers() + 1);
+        this.correctAnswerAdded.emit();
       } else {
         // record incorrect answer
         this.summaryService.recordTry({
@@ -115,11 +110,21 @@ export class FeatureExerciseComponent implements OnDestroy{
           isCorrect: false,
         });
         this.isCorrect.set(false);
-
         this.incorrectAnswers.set(this.incorrectAnswers() + 1);
+        this.wrongAnswerAdded.emit({ correctAnswer: exercise.product });
       }
     }
 
+    this.answered.emit();
+    this.isAnswered.set(true);
+
+    this.delayedAction(() => {
+      this.answeredDelayed.emit();
+    });
+  }
+
+  nextExercise(): void {
+    this.isCorrect.set(null);
     if (this.numberOfExercises() === null) {
       this.generatedExercises.set([
         ...this.generatedExercises(),
@@ -133,23 +138,12 @@ export class FeatureExerciseComponent implements OnDestroy{
       ]);
     }
 
-    this.answered.emit();
-    this.isAnswered.set(true);
-
-    this.delayedAction(() => {
-      this.answeredDelayed.emit();
-    });
-
     if (this.currentExerciseIndex() < this.exercises().length - 1) {
-      this.delayedAction(() => {
-        this.currentExerciseIndex.set(this.currentExerciseIndex() + 1);
-        this.isAnswered.set(false);
-      });
+      this.currentExerciseIndex.set(this.currentExerciseIndex() + 1);
+      this.isAnswered.set(false);
     } else {
       this.exerciseCompleted.emit();
-      this.delayedAction(() => {
-        this.exerciseCompletedDelayed.emit();
-      });
+      this.exerciseCompletedDelayed.emit();
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Component, HostListener, output, signal } from '@angular/core';
+import { Component, HostListener, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './ui-keyboard.component.css',
 })
 export class UiKeyboardComponent {
+  isDisabled = input(false);
   inputValue = signal('');
   submitted = output<void>();
   submittedNonEmpty = output<void>();
@@ -30,14 +31,26 @@ export class UiKeyboardComponent {
   }
 
   onNumberClick(number: number): void {
+    if (this.isDisabled()) {
+      return;
+    }
+
     this.inputValue.set(this.inputValue() + number);
   }
 
   onBackspaceClick() {
+    if (this.isDisabled()) {
+      return;
+    }
+
     this.inputValue.set(this.inputValue().slice(0, -1));
   }
 
   onSubmitClick() {
+    if (this.isDisabled()) {
+      return;
+    }
+
     this.submitted.emit();
 
     if (this.inputValue() !== '') {

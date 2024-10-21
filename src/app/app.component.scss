@@ -1,3 +1,5 @@
+@use "src/_grid-mixins.scss";
+
 :host {
   display: block;
   width: 100%;
@@ -8,11 +10,20 @@
   grid-template-columns: 1fr;
   grid-template-rows: min-content 1fr;
   min-height: 100vh;
+  background-image: url("/assets/decor-right.png"), url("/assets/decor-left.png"), url("/assets/bg.svg");
+  background-size: auto, auto, cover;
+  background-position: bottom right, bottom left, bottom center;
+  background-repeat: no-repeat;
+  @include grid-mixins.media-sm{
+    background-image: url("/assets/bg.svg");
+    background-position: bottom center;
+    background-size: cover;
+  }
 
   main {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem 1rem 5rem;
+    padding: 1rem 1rem 2rem;
   }
 }

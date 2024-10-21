@@ -5,9 +5,12 @@
 }
 
 .page-times-table-guesser {
-  container-type: inline-size;
   display: flex;
   justify-content: center;
+}
+
+.page-times-table-guesser__exercise-heading {
+  width: 100%;
 }
 
 .page-times-table-guesser__exercise {
@@ -31,21 +34,36 @@
 }
 
 .page-times-table-guesser__current-exercise {
+  position: relative;
   white-space: nowrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1rem max-content;
+  justify-content: center;
+  width: 100%;
+}
+
+.page-times-table-guesser__answer {
+  text-overflow: ellipsis;
 }
 
 .page-times-table-guesser__score-bar--high-score {
   color: orange;
 }
 
+.page-times-table-guesser__wrong-answer-indicator {
+  font-size: 1rem;
+  color: var(--color-red);
+}
+
 @include grid-mixins.media-mobile-landscape {
   .page-times-table-guesser__score {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
   .page-times-table-guesser__remaining-time {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     margin: 1rem;
     padding: .5rem;
@@ -63,9 +81,14 @@
   ui-keyboard {
     padding-right: 2rem;
   }
+  .page-times-table-guesser__exercise-heading {
+    text-align: left;
+    width: fit-content;
+    padding-left: 5rem;
+  }
   .page-times-table-guesser__exercise{
     flex-direction: row;
-    width: 100%;
+    width: 100vw;
     max-width: 42rem;
     justify-content: space-between;
   }

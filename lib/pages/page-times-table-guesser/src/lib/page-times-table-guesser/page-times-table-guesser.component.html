@@ -1,35 +1,61 @@
 <feature-timer #timer [timer]="120" (timesUp)="navigateToSummary()" />
 
+<feature-timer
+  #penaltyTimer
+  [startOnLoad]="false"
+  [timer]="3"
+  (timesUp)="penaltyTimer.reset()"
+  (timerReset)="exercise.nextExercise()"
+/>
+
 <feature-exercise
   #exercise
   (answered)="score.recalculateCurrentScore()"
   (exerciseCompleted)="navigateToSummary()"
+  (wrongAnswerAdded)="penaltyTimer.start()"
+  (correctAnswerAdded)="exercise.nextExercise()"
 />
+
 <div class="page-times-table-guesser body-medium">
   <div class="page-times-table-guesser__exercise">
-    <div class="page-times-table-guesser__score">
-      <feature-score
-        class="page-times-table-guesser__high-score"
-        #score
-        (currentScoreRecalculated)="keyboard.reset()"
-      >
+    <div class="page-times-table-guesser__exercise-heading">
+      <div class="page-times-table-guesser__score">
+        <feature-score
+          class="page-times-table-guesser__high-score"
+          #score
+          (currentScoreRecalculated)="keyboard.reset()"
+        >
       <span class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--current-score">
         {{ score.currentScore() }}
       </span>
-        @if (score.currentHighScore()) { /
-          <span class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--high-score">{{
-              score.currentHighScore() | formatHighScore
-            }}</span>
-        }
-      </feature-score>
+          @if (score.currentHighScore()) {
+            /
+            <span class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--high-score">{{
+                score.currentHighScore() | formatHighScore
+              }}</span>
+          }
+        </feature-score>
+      </div>
       @if (exercise.currentExercise()) {
-        <span class="page-times-table-guesser__current-exercise">{{
-            exercise.currentExercise() | formatEquation : keyboard.inputValue()
-          }}</span>
+        <span class="page-times-table-guesser__current-exercise">
+        <span class="page-times-table-guesser__wrong-answer-indicator">
+          @if (exercise.isCorrect() === false) {
+            <span>Poprawna odpowiedź to:</span>
+          }
+        </span>
+        <span class="page-times-table-guesser__answer">
+          @if (exercise.isCorrect() === false) {
+            {{ exercise.currentExercise() | formatEquation : (exercise.currentExercise()?.product + '') }}
+          } @else {
+            {{ exercise.currentExercise() | formatEquation : keyboard.inputValue() }}
+          }
+        </span>
+      </span>
       }
     </div>
     <ui-keyboard
       #keyboard
+      [isDisabled]="penaltyTimer.isRunning()"
       (submittedNonEmpty)="exercise.answer(keyboard.inputValue())"
     ></ui-keyboard>
     <time class="page-times-table-guesser__remaining-time timer">{{ timer.remainingTime() }}s</time>

@@ -5,6 +5,11 @@
   width: 100%;
   margin: 0 auto;
 }
+.ui-keyboard--disabled {
+  button {
+    opacity: .8;
+  }
+}
 
 button {
   border-radius: 1rem;

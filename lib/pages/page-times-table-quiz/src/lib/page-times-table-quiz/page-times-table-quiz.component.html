@@ -3,6 +3,7 @@
   [timer]="5"
   [delay]="1"
   (timesUp)="exercise.answer(null, timer.elapsedTime())"
+  (timerRestarted)="exercise.nextExercise()"
 />
 <feature-exercise
   #exercise
@@ -11,7 +12,7 @@
   [numberOfExercises]="9"
   [outputDelay]="1"
   (answered)="timer.stop()"
-  (answeredDelayed)="timer.reset()"
+  (answeredDelayed)="timer.restart()"
   (exerciseCompletedDelayed)="navigateToSummary()"
 />
 <div class="page-times-table-quiz body-medium">
