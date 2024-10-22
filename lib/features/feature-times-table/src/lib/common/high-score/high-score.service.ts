@@ -11,7 +11,9 @@ export class HighScoreService {
   messageBusService = inject(MessageBus);
 
   constructor() {
-    this.messageBusService.on(ScoreCalculatedEvent).subscribe((event) => {
+    this.messageBusService
+      .on(ScoreCalculatedEvent, 'update high score in local storage')
+      .subscribe((event) => {
       if (event && event.payload.exerciseTotalScore > this.getHighScore()) {
         this.setHighScore(event.payload.exerciseTotalScore);
         this.messageBusService.emit(new HighScoreCalculatedEvent({ highScore: this.getHighScore() }));

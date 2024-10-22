@@ -17,16 +17,22 @@ export class FeatureTimerComponent implements AfterViewInit, OnDestroy {
   timerReset = output<void>();
   timerRestarted = output<void>();
   interval: ReturnType<typeof setInterval> | null = null;
+  delayInterval: ReturnType<typeof setTimeout> | null = null;
 
   ngOnDestroy(): void {
     this.stop();
+    if (this.delayInterval) {
+      clearTimeout(this.delayInterval);
+    }
   }
 
   ngAfterViewInit(): void {
     if (this.startOnLoad()) {
-      setTimeout(() => {
+      const interval= setTimeout(() => {
+        clearInterval(interval);
         this.start();
       }, this.delay() * 1000);
+      this.delayInterval = interval;
     }
   }
 
@@ -44,15 +50,16 @@ export class FeatureTimerComponent implements AfterViewInit, OnDestroy {
   }
 
   restart(): void {
-    this.elapsedTime.set(0);
-    if (this.interval) {
-      clearInterval(this.interval);
-    }
+    this.reset();
     this.start();
     this.timerRestarted.emit();
   }
 
   start(): void {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+
     this.isRunning.set(true);
     const interval = setInterval(() => {
       this.elapsedTime.set(this.elapsedTime() + 1);

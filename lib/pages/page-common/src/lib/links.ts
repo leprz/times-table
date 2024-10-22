@@ -2,7 +2,8 @@ export const links = {
   quiz: '/quiz',
   quiz__$multiplicand: '/quiz/:multiplicand',
   summary: '/summary',
-  count: '/count'
+  count: '/count',
+  rewards: '/rewards'
 } as const;
 
 export function linkDefinition(link: keyof typeof links): string {

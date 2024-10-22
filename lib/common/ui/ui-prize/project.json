@@ -2,7 +2,7 @@
   "name": "ui-prize",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "lib/common/ui/ui-prize/src",
-  "prefix": "lib",
+  "prefix": "ui",
   "projectType": "library",
   "tags": [],
   "targets": {

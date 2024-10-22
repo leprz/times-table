@@ -39,3 +39,17 @@
         align-items: center;
     }
 }
+
+.page-lesson-summary__prize {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.page-lesson-summary__prize-points {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: var(--color-primary);
+    fill: var(--color-primary);
+}

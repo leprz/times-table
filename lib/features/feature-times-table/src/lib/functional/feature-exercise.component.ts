@@ -1,6 +1,6 @@
 import { Component, computed, inject, input, OnDestroy, output, signal } from '@angular/core';
 import { Equation, MultiplicationGenerator, Randomizer } from '../exercise-generator/multiplication-generator';
-import { SummaryService } from '../common/summary.service';
+import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
 
 @Component({
   selector: 'feature-exercise',
@@ -48,7 +48,7 @@ export class FeatureExerciseComponent implements OnDestroy{
   }>();
   correctAnswerAdded = output<void>();
 
-  summaryService = inject(SummaryService);
+  summaryService = inject(ExerciseSummaryService);
 
   interval: ReturnType<typeof setInterval>[] = [];
 

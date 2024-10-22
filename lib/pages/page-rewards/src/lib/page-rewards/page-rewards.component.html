@@ -1,0 +1,48 @@
+<feature-rewards-list #featureRewardsList />
+<page-common-on-init (onInit)="featureRewardsList.loadAll()" />
+<page-rewards-next-achievement />
+<h3 class="body-extra-small">Zdobyte nagrody</h3>
+<div class="page-rewards__list">
+  @if ((featureRewardsList.rewards$ | async); as rewards) {
+    @if(rewards.content.length === 0) {
+      <div class="page-rewards__list-item--is-empty">
+        <span class="body-medium">Brak nagród</span>
+      </div>
+    }
+    @for (reward of rewards.content; track reward.id) {
+      <div>
+        @if (reward.collectedAt === null) {
+          <feature-rewards-update
+            #featureRewardsUpdate
+            [params]="reward"
+          />
+          <ui-dialog-clear
+            #prizeDialog
+            (modalShowed)="prize.animate()"
+            (modalClosed)="featureRewardsUpdate.collectReward()"
+          >
+            <ui-prize [prize]="{
+              requiredPoints: reward.requiredPoints,
+              prizeName: reward.name,
+            }"
+            #prize
+            ></ui-prize>
+          </ui-dialog-clear>
+          <div class="page-rewards__list-item-wrapper">
+            <div class="ribbon">Nowa</div>
+            <ui-reward-item
+              class="page-rewards__list-item page-rewards__list-item--is-not-collected"
+              [data]="reward | mapRewardItemToUi"
+              (click)="prizeDialog.showModal()"
+            ></ui-reward-item>
+          </div>
+        } @else {
+          <ui-reward-item
+            class="page-rewards__list-item"
+            [data]="reward | mapRewardItemToUi"
+          ></ui-reward-item>
+        }
+      </div>
+    }
+  }
+</div>

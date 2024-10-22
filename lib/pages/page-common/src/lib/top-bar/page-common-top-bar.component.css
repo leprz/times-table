@@ -1,0 +1,27 @@
+.top-bar {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: .5rem;
+    gap: 1rem;
+}
+
+.top-bar__action {
+    span {
+        font-weight: 600;
+    }
+}
+
+.top-bar__action-settings {
+    justify-self: flex-end;
+}
+
+.top-bar__actions-primary {
+    display: flex;
+    gap: 1rem;
+}
+
+.app__action-high-score {
+    button {
+        background: var(--color-orange);
+    }
+}

@@ -2,17 +2,17 @@
   @if (score() !== null) {
     <h2>Twój wynik</h2>
     <p class="body-large">
-      @if(isNewBestScore()) {
+      @if (isNewBestScore()) {
         {{ score() | formatHighScore }}
       } @else {
         {{ score() }}
-      } @if (total()) { / {{ total() }}
-    }
+      }
     </p>
-  } @if (bestScore() !== 0) {
-  <h3>Twój poprzedni najlepszy wynik</h3>
-  <p class="body-large">{{ bestScore() }}</p>
-}
+  }
+  @if (bestScore() !== 0) {
+    <h3>Twój poprzedni najlepszy wynik</h3>
+    <p class="body-large">{{ bestScore() }}</p>
+  }
 </div>
 <div class="page-lesson-summary__wrong-answers body-small">
   @if (wrongAnswers().length) {
@@ -26,9 +26,11 @@
         <span>{{ answer.operandB }}</span>
         <span>&nbsp;=</span>
         <span class="page-lesson-summary__wrong-answer-result">
-          @if(answer.answer !== null) {
+          @if (answer.answer !== null) {
             {{ answer.answer }}
-          } @else { ? }
+          } @else {
+            ?
+          }
         </span>
       </span>
           <span class="page-lesson-summary__correct-result">{{
@@ -40,11 +42,5 @@
   }
 </div>
 <div class="page-lesson-summary__actions">
-  @if (currentMultiplicand()) {
-    <button routerLink="/quiz/{{ currentMultiplicand() }}" class="btn-secondary">
-      Powtórz
-    </button>
-  }
-
   <button routerLink="/" class="btn-primary">Wróć</button>
 </div>

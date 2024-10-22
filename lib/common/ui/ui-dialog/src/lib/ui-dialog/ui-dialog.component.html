@@ -1,13 +1,16 @@
-<dialog #dialogElement>
+<dialog
+  [class]="{'dialog--has-sticky-header': hasStickyHeader()}"
+  #dialogElement
+>
   <section>
     <header>
       <ng-content select="[appUiDialogHeader]"></ng-content>
     </header>
 
-    <main>
+    <div class="ui-dialog__content">
       <ng-content></ng-content>
       <ng-content select="[appUiDialogContent]"></ng-content>
-    </main>
+    </div>
 
     <footer>
       <button (click)="dialogElement.close()">Zamknij</button>

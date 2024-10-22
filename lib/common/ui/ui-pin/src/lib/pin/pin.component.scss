@@ -1,0 +1,14 @@
+:host {
+  font-size: 3rem;
+}
+input[type=password] {
+  font-size: 3rem;
+  background-color: var(--color-tertiary);
+  width: 2em;
+  border-radius: 2rem;
+  text-align: center;
+}
+
+input.ng-invalid {
+  border: solid 2px var(--color-red);
+}

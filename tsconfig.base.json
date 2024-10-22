@@ -16,6 +16,12 @@
     "baseUrl": ".",
     "paths": {
       "@org/common-events": ["lib/common/common-events/src/index.ts"],
+      "@org/contract-prize": ["lib/contracts/contract-prize/src/index.ts"],
+      "@org/contract-rewards": ["lib/contracts/contract-rewards/src/index.ts"],
+      "@org/feature-coins": ["lib/features/feature-coins/src/index.ts"],
+      "@org/feature-common": ["lib/features/feature-common/src/index.ts"],
+      "@org/feature-prize": ["lib/features/feature-prize/src/index.ts"],
+      "@org/feature-rewards": ["lib/features/feature-rewards/src/index.ts"],
       "@org/feature-times-table": [
         "lib/features/feature-times-table/src/index.ts"
       ],
@@ -28,19 +34,31 @@
       "@org/page-lesson-summary": [
         "lib/pages/page-lesson-summary/src/index.ts"
       ],
+      "@org/page-rewards": ["lib/pages/page-rewards/src/index.ts"],
       "@org/page-times-table-guesser": [
         "lib/pages/page-times-table-guesser/src/index.ts"
       ],
       "@org/page-times-table-quiz": [
         "lib/pages/page-times-table-quiz/src/index.ts"
       ],
+      "@org/ui-common": ["lib/common/ui/ui-common/src/index.ts"],
       "@org/ui-dialog": ["lib/common/ui/ui-dialog/src/index.ts"],
+      "@org/ui-form-errors": ["lib/common/ui/ui-form-errors/src/index.ts"],
+      "@org/ui-form-input": ["lib/common/ui/ui-form-input/src/index.ts"],
       "@org/ui-keyboard": ["lib/common/ui/ui-keyboard/src/index.ts"],
+      "@org/ui-pin": ["lib/common/ui/ui-pin/src/index.ts"],
       "@org/ui-prize": ["lib/common/ui/ui-prize/src/index.ts"],
+      "@org/ui-progress": ["lib/common/ui/ui-progress/src/index.ts"],
       "@org/ui-quiz-answer-item": [
         "lib/common/ui/ui-quiz-answer-item/src/index.ts"
       ],
-      "@org/ui-spinner": ["lib/common/ui/ui-spinner/src/index.ts"]
+      "@org/ui-reward": ["lib/common/ui/ui-reward/src/index.ts"],
+      "@org/ui-spinner": ["lib/common/ui/ui-spinner/src/index.ts"],
+      "@org/ui-todo-item": ["lib/common/ui/ui-todo-item/src/index.ts"],
+      "@org/utils-common": ["lib/common/utils/utils-common/src/index.ts"],
+      "@org/utils-data-service": [
+        "lib/common/utils/utils-data-service/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

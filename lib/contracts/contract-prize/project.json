@@ -1,0 +1,26 @@
+{
+  "name": "contract-prize",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "lib/contracts/contract-prize/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/lib/contracts/contract-prize",
+        "main": "lib/contracts/contract-prize/src/index.ts",
+        "tsConfig": "lib/contracts/contract-prize/tsconfig.lib.json",
+        "assets": ["lib/contracts/contract-prize/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "lib/contracts/contract-prize/jest.config.ts"
+      }
+    }
+  }
+}

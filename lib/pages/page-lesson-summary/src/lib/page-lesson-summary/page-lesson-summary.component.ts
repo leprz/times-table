@@ -1,19 +1,27 @@
 import { Component, computed, inject, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  CoinCollectorService,
-  ExerciseTry,
-  FormatHighScorePipe,
-  HighScoreService,
-  SummaryService
-} from '@org/feature-times-table';
+import { ExerciseSummaryService, ExerciseTry, FormatHighScorePipe, HighScoreService } from '@org/feature-times-table';
 import { Router, RouterLink } from '@angular/router';
-import { MessageBus } from '@org/message-bus';
+import { CoinCollectorService } from '@org/feature-coins';
+import { UiDialogComponent } from '@org/ui-dialog';
+import { featurePrizeDataServiceProviders } from '@org/feature-prize';
+import { FastSvgComponent } from '@push-based/ngx-fast-svg';
+import { LessonSummaryCoinsListener } from './lesson-summary-coins.listener';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { featureRewardsDataServiceProviders } from '@org/feature-rewards';
+import { UiPrizeComponent } from '@org/ui-prize';
 import { ScoreCalculatedEvent } from '@org/common-events';
+import { MessageBus } from '@org/message-bus';
+import { OnInitComponent } from '@org/page-common';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, FormatHighScorePipe, RouterLink],
+  imports: [CommonModule, FormatHighScorePipe, RouterLink, UiDialogComponent, OnInitComponent, FastSvgComponent, UiPrizeComponent],
+  providers: [
+    ...featureRewardsDataServiceProviders,
+    ...featurePrizeDataServiceProviders,
+    LessonSummaryCoinsListener
+  ],
   templateUrl: './page-lesson-summary.component.html',
   styleUrl: './page-lesson-summary.component.css',
 })
@@ -21,10 +29,10 @@ export class PageLessonSummaryComponent implements OnDestroy {
   readonly bestScoreService = inject(HighScoreService);
   readonly coinCollectorService = inject(CoinCollectorService);
   readonly routerLink = inject(Router);
+  private readonly summaryListener = inject(LessonSummaryCoinsListener);
+  private readonly messageBus = inject(MessageBus);
 
-  readonly currentMultiplicand = signal<number | null>(null);
   readonly score = signal<number | null>(null);
-  readonly total = signal<number | null>(null);
   readonly bestScore = signal<number>(this.bestScoreService.getHighScore());
   readonly coins = signal<number>(this.coinCollectorService.getCoins());
   readonly isNewBestScore = computed(() => {
@@ -38,25 +46,22 @@ export class PageLessonSummaryComponent implements OnDestroy {
   }
 
   constructor(
-    private readonly summaryService: SummaryService,
-    private readonly messageBus: MessageBus
+    private readonly summaryService: ExerciseSummaryService
   ) {
+    this.summaryListener.convertPricesToRewards$.pipe(
+      takeUntilDestroyed()
+    ).subscribe();
+
     if (this.summaryService.isInitialized()) {
-      this.currentMultiplicand.set(
-        this.summaryService.getMultiplicand() ?? null
-      );
       this.wrongAnswers.set(this.summaryService.getWrongAnswers());
       const score = this.summaryService.calculateScore();
-      this.score.set(score);
-      this.coins.set(this.coinCollectorService.getCoins());
-
       this.messageBus.emit(new ScoreCalculatedEvent({
         exerciseTotalScore: score
       }));
+      this.score.set(score);
+      this.coins.set(this.coinCollectorService.getCoins());
 
-      if (this.summaryService.hasTotalScore()) {
-        this.total.set(SummaryService.TOTAL_SCORE);
-      }
+
     } else {
       this.routerLink.navigate(['/']);
     }

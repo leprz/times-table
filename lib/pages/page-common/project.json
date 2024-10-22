@@ -2,7 +2,7 @@
   "name": "page-common",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "lib/pages/page-common/src",
-  "prefix": "lib",
+  "prefix": "page-common",
   "projectType": "library",
   "tags": [],
   "targets": {

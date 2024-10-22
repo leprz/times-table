@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UpdateService } from './service-worker-updater';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import { PageCommonTopBarComponent } from '@org/page-common';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, TopBarComponent],
+  imports: [RouterModule, PageCommonTopBarComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

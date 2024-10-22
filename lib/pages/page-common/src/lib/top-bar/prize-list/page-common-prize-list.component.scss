@@ -1,0 +1,38 @@
+@use 'src/_grid-mixins.scss';
+
+.top-bar__prize-list {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.prize-list__item {
+  width: 30rem;
+  max-width: 100%;
+  @include grid-mixins.media-sm {
+    width: 100%;
+  }
+}
+
+.prize-list__item-content {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: .2rem;
+  width: 100%;
+}
+
+.prize-list__item-required-coins {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  color: var(--color-primary);
+  fill: var(--color-primary);
+}
+
+.prize-list__item-required-coins-input {
+  flex: 1;
+}
+
+.prize-list__item-name {
+  width: 100%;
+}

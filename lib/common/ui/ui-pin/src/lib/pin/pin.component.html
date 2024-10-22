@@ -1,0 +1,42 @@
+@if(isPinCorrect()) {
+  <ng-content></ng-content>
+} @else {
+  <form [formGroup]="formGroup" (change)="onPinFormChanged()">
+    <input
+      type="password"
+      formControlName="pinField1"
+      #pinField1
+      [tabIndex]="1"
+      (keyup)="onKeyUp($event, pinField1, null, pinField2)"
+      (keydown)="pinField1.value = ''"
+      (focusin)="pinField1.select()"
+    >
+    <input
+      type="password"
+      formControlName="pinField2"
+      #pinField2
+      [tabIndex]="2"
+      (keyup)="onKeyUp($event, pinField2, pinField1, pinField3)"
+      (keydown)="pinField2.value = ''"
+      (focusin)="pinField2.select()"
+    >
+    <input
+      type="password"
+      formControlName="pinField3"
+      #pinField3
+      [tabIndex]="3"
+      (keyup)="onKeyUp($event, pinField3, pinField2, pinField4)"
+      (keydown)="pinField3.value = ''"
+      (focusin)="pinField3.select()"
+    >
+    <input
+      type="password"
+      formControlName="pinField4"
+      #pinField4
+      [tabIndex]="4"
+      (keyup)="onKeyUp($event, pinField4, pinField3, null)"
+      (keydown)="pinField4.value = ''"
+      (focusin)="pinField4.select()"
+    >
+  </form>
+}

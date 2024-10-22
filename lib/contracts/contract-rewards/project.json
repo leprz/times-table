@@ -1,0 +1,26 @@
+{
+  "name": "contract-rewards",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "lib/contracts/contract-rewards/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/lib/contracts/contract-rewards",
+        "main": "lib/contracts/contract-rewards/src/index.ts",
+        "tsConfig": "lib/contracts/contract-rewards/tsconfig.lib.json",
+        "assets": ["lib/contracts/contract-rewards/*.md"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "lib/contracts/contract-rewards/jest.config.ts"
+      }
+    }
+  }
+}

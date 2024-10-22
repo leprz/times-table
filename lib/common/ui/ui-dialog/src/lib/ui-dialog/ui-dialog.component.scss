@@ -1,10 +1,28 @@
 @use 'src/_grid-mixins.scss';
+.dialog--has-sticky-header {
+  header {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+  }
+}
 
 dialog {
   padding: 0;
   border-radius: 1rem;
 
-  main, footer, header {
+  section {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content max-content 1fr;
+  }
+
+  .ui-dialog__content {
+    overflow: auto;
+  }
+
+  .ui-dialog__content, footer, header {
     padding: 1rem;
   }
 
@@ -58,7 +76,7 @@ dialog {
       display: flex;
       flex-direction: column;
       height: 100%;
-      main {
+      .ui-dialog__content {
         height: 100%;
         overflow: auto;
       }

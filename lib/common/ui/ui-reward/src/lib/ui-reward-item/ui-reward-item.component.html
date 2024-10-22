@@ -1,0 +1,19 @@
+<article
+  class="ui-reward-item"
+  [ngClass]="{
+    'ui-reward-item--is-collected': data().isCollected
+  }"
+>
+  <div class="ui-reward-item__header">
+    @if (data().achievedAt) {
+      <time>{{ data().achievedAt | localeDate }}</time>
+    }
+    <span class="body-extra-small">
+      {{ data().name }}
+    </span>
+  </div>
+  <div class="ui-reward-item__coins body-small">
+    <fast-svg name="banknote" class="ui-reward-item__icon"></fast-svg>
+    <span class="ui-reward-item__coins-value">{{ data().requiredPoints }}</span>
+  </div>
+</article>

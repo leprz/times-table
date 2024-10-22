@@ -1,12 +1,22 @@
 import type { StorybookConfig } from '@storybook/angular';
 
 const config: StorybookConfig = {
-  stories: ['../lib/common/ui/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
-  addons: ['@storybook/addon-essentials'],
+  stories: ['../lib/common/ui/**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],
+  staticDirs: ['../public'],
+
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-interactions',
+    'storybook-addon-angular-router',
+  ],
+
   framework: {
     name: '@storybook/angular',
-    options: {},
+    options: {
+    },
   },
+
+  docs: {}
 };
 
 export default config;

@@ -1,0 +1,38 @@
+.page-rewards-next-achievement {
+  padding: 1.5rem 2rem;
+  border-radius: 2rem;
+  margin-bottom: 2rem;
+  color: var(--color-tertiary);
+  background: var(--color-primary);
+  display: block;
+}
+.page-rewards-next-achievement__prize-name {
+  margin-bottom: 0.2rem;
+}
+.page-rewards-next-achievement__prize-header {
+  text-align: center;
+  margin-bottom: 1em;
+}
+.page-rewards-next-achievement__prize-icon {
+  color: var(--color-tertiary);
+  display: inline-flex;
+  margin: 0 auto;
+  padding: .7em;
+  aspect-ratio: 1/1;
+  border-radius: 100px 200px 100px 200px / 200px 100px 200px 100px;
+  background: var(--color-orange);
+}
+
+.page-rewards-next-achievement__progress {
+  width: 100%;
+}
+
+.page-rewards-next-achievement__points {
+  margin-top: .2em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  fast-svg {
+    font-size: .6em;
+  }
+}

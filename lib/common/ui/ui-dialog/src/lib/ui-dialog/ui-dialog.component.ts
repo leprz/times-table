@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, output, signal, viewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  HostListener,
+  input,
+  output,
+  signal,
+  viewChild
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,6 +20,7 @@ import { CommonModule } from '@angular/common';
 })
 export class UiDialogComponent {
   private dialogElement = viewChild.required<ElementRef<HTMLDialogElement>>('dialogElement');
+  readonly hasStickyHeader = input<boolean>(false);
   isOpened = signal<boolean>(false);
 
   modalShowed = output<void>();

@@ -28,6 +28,8 @@ export class PageTimesTableQuizComponent {
   ) {}
 
   async navigateToSummary(): Promise<void> {
-    await this.router.navigate([links.summary]);
+    await this.router.navigate([links.summary], {
+      skipLocationChange: true,
+    });
   }
 }

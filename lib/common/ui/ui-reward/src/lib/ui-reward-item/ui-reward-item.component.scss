@@ -1,0 +1,23 @@
+.ui-reward-item {
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  gap: 1em;
+
+  time {
+    font-size: 0.8em;
+  }
+}
+
+.ui-reward-item__coins {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ui-reward-item__header {
+  display: flex;
+  flex-direction: column;
+}

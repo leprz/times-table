@@ -1,6 +1,6 @@
 import { Component, inject, output, signal } from '@angular/core';
 import { HighScoreService } from '../common/high-score/high-score.service';
-import { SummaryService } from '../common/summary.service';
+import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
 
 @Component({
   selector: 'feature-score',
@@ -9,7 +9,7 @@ import { SummaryService } from '../common/summary.service';
 })
 export class FeatureScoreComponent {
   highScoreService = inject(HighScoreService);
-  summaryService = inject(SummaryService);
+  summaryService = inject(ExerciseSummaryService);
   currentHighScore = signal(this.highScoreService.getHighScore());
   currentScore = signal(0);
   currentScoreRecalculated = output();
