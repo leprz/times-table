@@ -36,6 +36,7 @@
       ],
       "@org/ui-dialog": ["lib/common/ui/ui-dialog/src/index.ts"],
       "@org/ui-keyboard": ["lib/common/ui/ui-keyboard/src/index.ts"],
+      "@org/ui-prize": ["lib/common/ui/ui-prize/src/index.ts"],
       "@org/ui-quiz-answer-item": [
         "lib/common/ui/ui-quiz-answer-item/src/index.ts"
       ],

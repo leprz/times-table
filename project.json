@@ -94,6 +94,12 @@
     },
     "deploy": {
       "executor": "angular-cli-ghpages:deploy"
+    },
+    "storybook": {
+      "builder": "@storybook/angular:start-storybook",
+      "options": {
+        "browserTarget": "org:build"
+      }
     }
   }
 }
