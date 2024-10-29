@@ -1,7 +1,7 @@
 <feature-prize-search #featurePrizeSearch />
 <feature-coins #featureCoins />
-
-@if (featureCoins.coins(); as coins) {
+@let coins = featureCoins.coins();
+@if (coins !== null) {
   <page-common-on-init (onInit)="featurePrizeSearch.searchNextPrize(coins)" />
   @if (featurePrizeSearch.prizeList$ | async; as nextPrize) {
     <div class="page-rewards-next-achievement">
