@@ -24,7 +24,7 @@ export class FeaturePrizeSearchComponent {
   readonly loadAction = new Subject<GetOneNextPrizeBodyParams>();
   readonly messageBus = inject(MessageBus);
 
-  readonly prizeList$: Observable<GetOneNextPrizeResult> =
+  readonly nextPrize$: Observable<GetOneNextPrizeResult> =
     this.loadAction.asObservable().pipe(
       combineLatestWith(
         this.messageBus.on(PrizeCreatedEvent, 'reload prize list'),

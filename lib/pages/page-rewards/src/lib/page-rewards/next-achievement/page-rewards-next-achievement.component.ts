@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeatureCoinsComponent } from '@org/feature-coins';
 import { FeaturePrizeSearchComponent } from '@org/feature-prize';
@@ -13,4 +13,6 @@ import { FastSvgComponent } from '@push-based/ngx-fast-svg';
   templateUrl: './page-rewards-next-achievement.component.html',
   styleUrl: './page-rewards-next-achievement.component.scss',
 })
-export class PageRewardsNextAchievementComponent {}
+export class PageRewardsNextAchievementComponent {
+  highestReward = input.required<number | null>();
+}

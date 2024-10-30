@@ -3,7 +3,7 @@
 @let coins = featureCoins.coins();
 @if (coins !== null) {
   <page-common-on-init (onInit)="featurePrizeSearch.searchNextPrize(coins)" />
-  @if (featurePrizeSearch.prizeList$ | async; as nextPrize) {
+  @if (featurePrizeSearch.nextPrize$ | async; as nextPrize) {
     <div class="page-rewards-next-achievement">
       <div class="page-rewards-next-achievement__prize-header">
         <span class="page-rewards-next-achievement__prize-icon body-small">
@@ -18,7 +18,7 @@
       </div>
       <ui-progress-bar
         class="page-rewards-next-achievement__progress body-small"
-        [current]="featureCoins.coins() ?? 0"
+        [current]="(featureCoins.coins() ?? 0) - (highestReward() ?? 0) "
         [max]="nextPrize.requiredPoints"
       />
       <span class="page-rewards-next-achievement__points body-extra-small">

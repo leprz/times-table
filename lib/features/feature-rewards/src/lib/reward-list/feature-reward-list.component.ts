@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReadManyRewardsResult, RewardsDataServicePort, SearchManyRewardsBodyParams } from '@org/contract-rewards';
-import { combineLatestWith, Observable, Subject, switchMap } from 'rxjs';
+import { combineLatestWith, map, Observable, Subject, switchMap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MessageBus } from '@org/message-bus';
 import { RewardCollectedEvent, RewardCreatedEvent } from '@org/common-events';
 import { featureRewardsDataServiceProviders } from '../common/data-service/rewards.providers';
+import { filterNill } from '@org/utils-data-service';
 
 @Component({
   selector: 'feature-rewards-list',
@@ -38,6 +39,15 @@ export class FeatureRewardListComponent {
       return this.rewardsDataService.readMany();
     }),
     takeUntilDestroyed(),
+  );
+
+  readonly highestReward$: Observable<number> = this.rewards$.pipe(
+    filterNill(),
+    map(rewards => {
+      return rewards.content.reduce((acc, reward) => {
+        return reward.requiredPoints > acc ? reward.requiredPoints : acc;
+      }, 0);
+    })
   );
 
   loadAll(): void {

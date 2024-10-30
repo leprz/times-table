@@ -1,6 +1,6 @@
 <feature-rewards-list #featureRewardsList />
 <page-common-on-init (onInit)="featureRewardsList.loadAll()" />
-<page-rewards-next-achievement />
+<page-rewards-next-achievement [highestReward]="featureRewardsList.highestReward$ | async"/>
 <h3 class="body-extra-small">Zdobyte nagrody</h3>
 <div class="page-rewards__list">
   @if ((featureRewardsList.rewards$ | async); as rewards) {
