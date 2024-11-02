@@ -5,7 +5,8 @@
       <page-common-on-init (onInit)="featureRewardsList.loadNotCollectedYet()" />
         <a
           class="btn-icon btn-badge"
-          aria-label="Otwórz listę nagród"
+          aria-label="Open rewards list"
+          i18n-aria-label
           [routerLink]="[links.rewards]"
         >
           <fast-svg [name]="'banknote'" />
@@ -27,13 +28,13 @@
   </div>
   <button
     class="top-bar__action top-bar__action-settings btn-secondary btn-icon"
-    aria-label="Otwórz ustawienia"
+    aria-label="Open settings dialog"
+    i18n-aria-label
     (click)="settingsDialog.showModal()"
   >
     <fast-svg [name]="'settings'" />
   </button>
 </div>
-
 <ui-dialog
   [hasStickyHeader]="true"
   #settingsDialog
@@ -44,11 +45,11 @@
       <feature-coins #featureCoins />
       <button
         class="btn-icon"
-        (click)="featurePrizeCreate.create({
-        name: 'Nazwa nagrody',
-        isAchieved: false,
-        requiredPoints: (featureCoins.coins() ?? 0) + 50
-      })"><fast-svg name="diamond"/><span>dodaj nagrodę</span></button>
+        (click)="featurePrizeCreate.createNewPrize(featureCoins.coins() ?? 0)"
+      >
+        <fast-svg name="diamond" />
+        <span i18n>add prize</span>
+      </button>
     }
   </div>
   <div appUiDialogContent>

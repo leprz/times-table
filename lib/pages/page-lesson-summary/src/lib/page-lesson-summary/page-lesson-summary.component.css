@@ -32,6 +32,7 @@
 }
 
 .page-lesson-summary__wrong-answers {
+    text-align: center;
     li {
         display: grid;
         grid-template-columns: 1fr 1fr;

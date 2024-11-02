@@ -14,3 +14,4 @@ FROM nginx:stable-alpine
 
 COPY --from=builder /usr/src/app/dist/org/browser/ /usr/share/nginx/html
 COPY --from=builder /usr/src/app/http-server/nginx-default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /usr/src/app/http-server/nginx.conf /etc/nginx/nginx.conf

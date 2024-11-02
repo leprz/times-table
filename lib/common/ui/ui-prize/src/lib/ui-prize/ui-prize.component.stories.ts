@@ -23,7 +23,7 @@ export const Primary: Story = {
   args: {
     prize: {
       requiredPoints: 1000,
-      prizeName: 'Wycieczka na księżyc'
+      prizeName: 'Trip to the Moon',
     }
   },
 };

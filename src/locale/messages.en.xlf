@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="7819314041543176992" datatype="html">
+        <source>Close</source>
+        <target state="translated">Close</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/common/ui/ui-dialog/src/lib/ui-dialog/ui-dialog.component.html</context>
+          <context context-type="linenumber">16,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7956603970671173354" datatype="html">
+        <source>Prize</source>
+        <target state="translated">Prize</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/common/ui/ui-prize/src/lib/ui-prize/ui-prize.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1678868786883654993" datatype="html">
+        <source>Unlocked</source>
+        <target state="translated">Unlocked</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/common/ui/ui-prize/src/lib/ui-prize/ui-prize.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3670906616713353317" datatype="html">
+        <source>Open rewards list</source>
+        <target state="translated">Open rewards list</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4080237943266300131" datatype="html">
+        <source>Open settings dialog</source>
+        <target state="translated">Open settings dialog</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
+          <context context-type="linenumber">31,32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2628326099707109790" datatype="html">
+        <source>add prize</source>
+        <target state="translated">add prize</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
+          <context context-type="linenumber">51,52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3844720777262110149" datatype="html">
+        <source>No prizes added.</source>
+        <target state="translated">No prizes added.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/prize-list/page-common-prize-list.component.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7977540755068228352" datatype="html">
+        <source>Quiz</source>
+        <target state="translated">Quiz</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1457908377296177104" datatype="html">
+        <source>Beat the time</source>
+        <target state="translated">Beat the time</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8121907747276361298" datatype="html">
+        <source>Your score</source>
+        <target state="translated">Your score</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-summary/src/lib/page-lesson-summary/page-lesson-summary.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2930269370073972819" datatype="html">
+        <source>Your previous best score</source>
+        <target state="translated">Your previous best score</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-summary/src/lib/page-lesson-summary/page-lesson-summary.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7104559488293735846" datatype="html">
+        <source>Wrong answers</source>
+        <target state="translated">Wrong answers</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-summary/src/lib/page-lesson-summary/page-lesson-summary.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4923167637649318288" datatype="html">
+        <source>back</source>
+        <target state="translated">back</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-summary/src/lib/page-lesson-summary/page-lesson-summary.component.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8694412183891981250" datatype="html">
+        <source> Next reward </source>
+        <target state="translated"> Next reward </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/next-achievement/page-rewards-next-achievement.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1258548682816604713" datatype="html">
+        <source>Collected rewards</source>
+        <target state="translated">Collected rewards</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/page-rewards.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2143798367518771907" datatype="html">
+        <source>No rewards</source>
+        <target state="translated">No rewards</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/page-rewards.component.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5280218112746407598" datatype="html">
+        <source>New</source>
+        <target state="translated">New</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/page-rewards.component.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3696441476261813955" datatype="html">
+        <source>The correct answer is:</source>
+        <target state="translated">The correct answer is:</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-times-table-guesser/src/lib/page-times-table-guesser/page-times-table-guesser.component.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6921336596257236722" datatype="html">
+        <source>New version available. Load New Version?</source>
+        <target state="translated">New version available. Load New Version?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

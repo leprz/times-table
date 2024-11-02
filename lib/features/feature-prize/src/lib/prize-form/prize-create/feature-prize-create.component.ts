@@ -6,6 +6,7 @@ import { filterNill, UuidGen } from '@org/utils-data-service';
 import { MessageBus } from '@org/message-bus';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { PrizeCreatedEvent } from '@org/common-events';
+import { $localize } from '@angular/localize/init';
 
 @Component({
   selector: 'feature-prize-create',
@@ -24,6 +25,8 @@ export class FeaturePrizeCreateComponent {
   readonly createSubject = new Subject<CreateOnePrizeBodyParams>();
   readonly messageBus = inject(MessageBus);
   readonly uuidGen = inject(UuidGen);
+
+  readonly initialPrizeName = $localize`New Prize`;
 
   constructor() {
     this.createResult$.pipe(
@@ -49,6 +52,14 @@ export class FeaturePrizeCreateComponent {
     this.createSubject.next({
       ...payload,
       id: this.uuidGen.generate()
+    });
+  }
+
+  createNewPrize(collectedPoints: number): void {
+    this.create({
+      name: this.initialPrizeName,
+      isAchieved: false,
+      requiredPoints: collectedPoints + 500,
     });
   }
 }

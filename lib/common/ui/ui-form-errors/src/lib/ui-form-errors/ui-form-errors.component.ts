@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, OnDestroy, signal } from '@a
 
 import { AbstractControl, AbstractControlDirective, ValidationErrors } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { $localize } from '@angular/localize/init';
 
 @Component({
   selector: 'ui-form-errors',
@@ -32,12 +33,12 @@ export class UiFormErrorsComponent implements OnDestroy {
   }
 
   errorMessages: Record<string, ((params: ValidationErrors | null) => string) | undefined> = {
-    'required'  : ()  => `To pole jest wymagane`,
-    'maxlength' : (params)  => `Maksymalnie ${params ? params['requiredLength'] : ''} znaków`,
-    'minlength' : (params)  => `Minimalnie ${ params ? params['requiredLength'] : ''} znaków`,
-    'pattern'   : ()  => `Wartość nieprawidłowa`,
-    'min'       : (params)  => `Minimum amount should be ${params ? params['min'] : ''}`,
-    'whitespace': ()   => `White spaces are not allowed`,
+    'required'  : ()  => $localize`This field is required`,
+    'maxlength' : (params)  => $localize`Maximum ${params ? params['requiredLength'] : ''} characters`,
+    'minlength' : (params)  => $localize`Minimum ${ params ? params['requiredLength'] : ''} characters`,
+    'pattern'   : ()  => $localize`Wrong format`,
+    'min'       : (params)  => $localize`Minimum amount should be ${params ? params['min'] : ''}`,
+    'whitespace': ()   => $localize`White spaces are not allowed`,
   };
 
   ngOnDestroy(): void {

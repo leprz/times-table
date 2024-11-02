@@ -5,6 +5,13 @@
   "prefix": "app",
   "sourceRoot": "./src",
   "tags": [],
+  "i18n": {
+    "sourceLocale": "en-US",
+    "locales": {
+      "en": "src/locale/messages.en.xlf",
+      "pl": "src/locale/messages.pl.xlf"
+    }
+  },
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -12,15 +19,23 @@
         "{options.outputPath}"
       ],
       "options": {
+        "localize": true,
+        "i18nMissingTranslation": "warning",
         "outputPath": "dist/org",
         "index": "./src/index.html",
         "browser": "./src/main.ts",
         "polyfills": [
-          "zone.js"
+          "zone.js",
+          "@angular/localize/init"
         ],
         "tsConfig": "tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
+          {
+            "glob": "**/*",
+            "input": "src/assets",
+            "output": "/assets"
+          },
           {
             "glob": "**/*",
             "input": "public"
@@ -33,6 +48,12 @@
         "scripts": []
       },
       "configurations": {
+        "pl": {
+          "localize": ["pl"]
+        },
+        "en": {
+          "localize": ["en-US"]
+        },
         "production": {
           "budgets": [
             {
@@ -64,7 +85,10 @@
           "buildTarget": "org:build:production"
         },
         "development": {
-          "buildTarget": "org:build:development"
+          "buildTarget": "org:build:development,pl"
+        },
+        "development-en": {
+          "buildTarget": "org:build:development,en-US"
         }
       },
       "defaultConfiguration": "development"
@@ -72,7 +96,8 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "org:build"
+        "buildTarget": "org:build",
+        "outputPath": "src/locale"
       }
     },
     "lint": {
@@ -96,7 +121,7 @@
       "executor": "angular-cli-ghpages:deploy"
     },
     "storybook": {
-      "builder": "@storybook/angular:start-storybook",
+      "executor": "@storybook/angular:start-storybook",
       "options": {
         "browserTarget": "org:build"
       }

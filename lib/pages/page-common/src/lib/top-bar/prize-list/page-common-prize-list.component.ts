@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 import {
-  FeaturePrizeCreateComponent,
   FeaturePrizeDeleteComponent,
   FeaturePrizeEditComponent,
   FeaturePrizeFormComponent,
@@ -21,7 +20,6 @@ import { OnInitComponent } from '../../on-init/on-init.component';
   imports: [
     AsyncPipe,
     FastSvgComponent,
-    FeaturePrizeCreateComponent,
     FeaturePrizeDeleteComponent,
     FeaturePrizeListComponent,
     OnInitComponent,

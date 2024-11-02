@@ -21,7 +21,7 @@ export class AppComponent {
 
     this.updateService.onNewVersionAvailable$
       .pipe(takeUntilDestroyed()).subscribe(() => {
-        if(confirm('Nowa wersja aplikacji jest dostępna. Czy chcesz ją zainstalować?')) {
+        if(confirm($localize`New version available. Load New Version?`)) {
           this.updateService.refreshApp();
         }
       });

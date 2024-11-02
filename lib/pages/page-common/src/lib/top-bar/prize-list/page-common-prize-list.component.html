@@ -4,7 +4,7 @@
   <feature-prize-list #featurePrizeList />
   @if ((featurePrizeList.prizeList$ | async)?.content; as prizeList) {
     @if(prizeList.length === 0) {
-      <h2>Brak dodanych nagród.</h2>
+      <h2 i18n>No prizes added.</h2>
     }
     @for(prize of prizeList; track prize.id) {
       @if(prize.isAchieved) {

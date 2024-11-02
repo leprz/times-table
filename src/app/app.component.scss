@@ -10,12 +10,12 @@
   grid-template-columns: 1fr;
   grid-template-rows: min-content 1fr;
   min-height: 100vh;
-  background-image: url("/assets/decor-right.png"), url("/assets/decor-left.png"), url("/assets/bg.svg");
+  background-image: url("../assets/decor-right.png"), url("../assets/decor-left.png"), url("../assets/bg.svg");
   background-size: auto, auto, cover;
   background-position: bottom right, bottom left, bottom center;
   background-repeat: no-repeat;
   @include grid-mixins.media-sm{
-    background-image: url("/assets/bg.svg");
+    background-image: url("../assets/bg.svg");
     background-position: bottom center;
     background-size: cover;
   }

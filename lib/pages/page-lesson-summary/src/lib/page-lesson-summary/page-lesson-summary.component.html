@@ -1,6 +1,6 @@
 <div class="page-lesson-summary__score body-small">
   @if (score() !== null) {
-    <h2>Twój wynik</h2>
+    <h2 i18n>Your score</h2>
     <p class="body-large">
       @if (isNewBestScore()) {
         {{ score() | formatHighScore }}
@@ -10,13 +10,13 @@
     </p>
   }
   @if (bestScore() !== 0) {
-    <h3>Twój poprzedni najlepszy wynik</h3>
+    <h3 i18n>Your previous best score</h3>
     <p class="body-large">{{ bestScore() }}</p>
   }
 </div>
 <div class="page-lesson-summary__wrong-answers body-small">
   @if (wrongAnswers().length) {
-    <h3>Niepoprawne odpowiedzi</h3>
+    <h3 i18n>Wrong answers</h3>
     <ul class="body-extra-small">
       @for (answer of wrongAnswers(); track $index) {
         <li>
@@ -42,5 +42,5 @@
   }
 </div>
 <div class="page-lesson-summary__actions">
-  <button routerLink="/" class="btn-primary">Wróć</button>
+  <button routerLink="/" class="btn-primary" i18n>back</button>
 </div>

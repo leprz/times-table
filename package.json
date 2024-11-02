@@ -37,6 +37,7 @@
     "@angular/cli": "~18.2.0",
     "@angular/compiler-cli": "~18.2.0",
     "@angular/language-service": "~18.2.0",
+    "@angular/localize": "^18.2.9",
     "@angular/pwa": "^18.2.0",
     "@ngneat/edit-in-place": "^1.9.0",
     "@nx/devkit": "19.3.0",

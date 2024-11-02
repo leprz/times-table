@@ -1,12 +1,12 @@
 <feature-rewards-list #featureRewardsList />
 <page-common-on-init (onInit)="featureRewardsList.loadAll()" />
 <page-rewards-next-achievement [highestReward]="featureRewardsList.highestReward$ | async"/>
-<h3 class="body-extra-small">Zdobyte nagrody</h3>
+<h3 class="body-extra-small" i18n>Collected rewards</h3>
 <div class="page-rewards__list">
   @if ((featureRewardsList.rewards$ | async); as rewards) {
     @if(rewards.content.length === 0) {
       <div class="page-rewards__list-item--is-empty">
-        <span class="body-medium">Brak nagród</span>
+        <span class="body-medium" i18n>No rewards</span>
       </div>
     }
     @for (reward of rewards.content; track reward.id) {
@@ -29,7 +29,7 @@
             ></ui-prize>
           </ui-dialog-clear>
           <div class="page-rewards__list-item-wrapper">
-            <div class="ribbon">Nowa</div>
+            <div class="ribbon" i18n>New</div>
             <ui-reward-item
               class="page-rewards__list-item page-rewards__list-item--is-not-collected"
               [data]="reward | mapRewardItemToUi"
