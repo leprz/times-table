@@ -8,14 +8,14 @@
   "start_url": "./",
   "screenshots": [
         {
-            "src": "screenshot.png",
+            "src": "screenshot.webp",
             "sizes": "640x320",
             "type": "image/png",
             "form_factor": "wide",
             "label": "Tabliczka Mnożenia"
         },
         {
-            "src": "screenshot-mobile.png",
+            "src": "screenshot-mobile.webp",
             "sizes": "375x667",
             "type": "image/png",
             "form_factor": "narrow",
