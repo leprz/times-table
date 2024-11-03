@@ -11,29 +11,34 @@ export const appRoutes: Route[] = [
       ),
   },
   {
-    path: linkDefinition('quiz'),
+    path: linkDefinition('multiplication_quiz'),
     pathMatch: 'full',
     loadComponent: () =>
       import('@org/page-times-table-quiz').then(
-        (m) => m.PageMultiplicandSelectorComponent
+        (c) => c.PageMultiplicandSelectorComponent
       ),
   },
   {
-    path: linkDefinition('quiz__$multiplicand'),
-    loadComponent: () =>
+    path: linkDefinition('multiplication_quiz__$multiplicand'),
+    loadChildren: () =>
       import('@org/page-times-table-quiz').then(
-        (m) => m.PageTimesTableQuizComponent
+        (r) => r.pageTimesTableQuizMultiplicationRoutes
       ),
+  },
+  {
+    path: linkDefinition('multiplication_calculation'),
+    loadChildren: () =>
+      import('@org/page-times-table-guesser').then((m) => m.pageTimesTableGuesserMultiplicationRoutes),
+  },
+  {
+    path: linkDefinition('division_calculation'),
+    loadChildren: () =>
+      import('@org/page-times-table-guesser').then((m) => m.pageTimesTableGuesserDivisionRoutes),
   },
   {
     path: linkDefinition('summary'),
     loadChildren: () =>
       import('@org/page-lesson-summary').then((m) => m.pageLessonSummaryRoutes),
-  },
-  {
-    path: linkDefinition('count'),
-    loadChildren: () =>
-      import('@org/page-times-table-guesser').then((m) => m.pageTimesTableGuesserRoutes),
   },
   {
     path: linkDefinition('rewards'),

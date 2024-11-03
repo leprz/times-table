@@ -1,8 +1,9 @@
 export const links = {
-  quiz: '/quiz',
-  quiz__$multiplicand: '/quiz/:multiplicand',
+  multiplication_quiz: '/multiplication/quiz',
+  multiplication_quiz__$multiplicand: '/multiplication/quiz/:multiplicand',
+  multiplication_calculation: '/multiplication/calculation',
+  division_calculation: '/division/calculation',
   summary: '/summary',
-  count: '/count',
   rewards: '/rewards'
 } as const;
 

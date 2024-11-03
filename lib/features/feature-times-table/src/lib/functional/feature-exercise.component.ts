@@ -1,23 +1,28 @@
 import { Component, computed, inject, input, OnDestroy, output, signal } from '@angular/core';
-import { Equation, MultiplicationGenerator, Randomizer } from '../exercise-generator/multiplication-generator';
+import { Randomizer } from '../exercise-generator/equation-generator-multiplication';
+import { Equation, ExerciseGenerator } from '../exercise-generator/exercise-generator';
 import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
 
 @Component({
   selector: 'feature-exercise',
   standalone: true,
+  providers: [ExerciseGenerator],
   template: '<ng-content></ng-content>',
 })
 export class FeatureExerciseComponent implements OnDestroy{
-  numberOfExercises = input<number | null>(null);
-  minMultiplicand = input<number>(1);
-  maxMultiplicand = input<number>(9);
-  minMultiplier = input<number>(1);
-  maxMultiplier = input<number>(9);
-  generatedExercises = signal<Equation[]>([]);
-  exercises = computed(() => {
+  readonly exerciseGenerator = inject(ExerciseGenerator);
+  readonly summaryService = inject(ExerciseSummaryService);
+
+  readonly numberOfExercises = input<number | null>(null);
+  readonly minMultiplicand = input<number>(1);
+  readonly maxMultiplicand = input<number>(9);
+  readonly minMultiplier = input<number>(1);
+  readonly maxMultiplier = input<number>(9);
+  readonly generatedExercises = signal<Equation[]>([]);
+  readonly exercises = computed(() => {
     return [
       ...Randomizer.randomizeArray(
-        MultiplicationGenerator.list(
+        this.exerciseGenerator.generateEquations(
           this.minMultiplicand(),
           this.maxMultiplicand(),
           this.minMultiplier(),
@@ -29,31 +34,29 @@ export class FeatureExerciseComponent implements OnDestroy{
     ];
   });
 
-  currentExerciseIndex = signal(0);
-  currentExercise = computed<Equation | null>(
+  readonly currentExerciseIndex = signal(0);
+  readonly currentExercise = computed<Equation | null>(
     () => this.exercises()[this.currentExerciseIndex()] ?? null
   );
-  correctAnswers = signal(0);
-  incorrectAnswers = signal(0);
-  outputDelay = input<number>(0);
-  isAnswered = signal(false);
-  isCorrect = signal<boolean | null>(null);
+  readonly correctAnswers = signal(0);
+  readonly incorrectAnswers = signal(0);
+  readonly outputDelay = input<number>(0);
+  readonly isAnswered = signal(false);
+  readonly isCorrect = signal<boolean | null>(null);
 
-  answered = output();
-  answeredDelayed = output();
-  exerciseCompleted = output();
-  exerciseCompletedDelayed = output();
-  wrongAnswerAdded = output<{
+  readonly answered = output();
+  readonly answeredDelayed = output();
+  readonly exerciseCompleted = output();
+  readonly exerciseCompletedDelayed = output();
+  readonly wrongAnswerAdded = output<{
     correctAnswer: number;
   }>();
-  correctAnswerAdded = output<void>();
-
-  summaryService = inject(ExerciseSummaryService);
+  readonly correctAnswerAdded = output<void>();
 
   interval: ReturnType<typeof setInterval>[] = [];
 
   constructor() {
-    this.summaryService.init();
+    this.exerciseGenerator.initialize(this.summaryService);
   }
 
   ngOnDestroy(): void {
@@ -78,6 +81,7 @@ export class FeatureExerciseComponent implements OnDestroy{
       this.summaryService.recordTry({
         operandB: exercise.operandB,
         operandA: exercise.operandA,
+        correctAnswer: exercise.product,
         answer: null,
         answerTime: time ?? 0,
         isCorrect: false,
@@ -94,6 +98,7 @@ export class FeatureExerciseComponent implements OnDestroy{
           operandB: exercise.operandB,
           operandA: exercise.operandA,
           answer: parseInt(answer),
+          correctAnswer: exercise.product,
           answerTime: time ?? 0,
           isCorrect: true,
         });
@@ -106,6 +111,7 @@ export class FeatureExerciseComponent implements OnDestroy{
           operandB: exercise.operandB,
           operandA: exercise.operandA,
           answer: parseInt(answer),
+          correctAnswer: exercise.product,
           answerTime: time ?? 0,
           isCorrect: false,
         });
@@ -128,7 +134,7 @@ export class FeatureExerciseComponent implements OnDestroy{
     if (this.numberOfExercises() === null) {
       this.generatedExercises.set([
         ...this.generatedExercises(),
-        ...MultiplicationGenerator.list(
+        ...this.exerciseGenerator.generateEquations(
           this.minMultiplicand(),
           this.maxMultiplicand(),
           this.minMultiplier(),

@@ -20,10 +20,8 @@
       </a>
     </span>
     <span class="top-bar__action app__action-high-score">
-        <button class="btn-icon" disabled>
-          <fast-svg [name]="'star'" />
-          <span>{{ highScore() }}</span>
-        </button>
+      <feature-high-score #featureHighScore />
+      <ui-badge-high-score [highScore]="featureHighScore.highScore()"/>
     </span>
   </div>
   <button

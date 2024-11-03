@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
@@ -39,7 +39,7 @@
         <target state="translated">Open settings dialog</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">31,32</context>
+          <context context-type="linenumber">29,30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2628326099707109790" datatype="html">
@@ -47,7 +47,7 @@
         <target state="translated">add prize</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">51,52</context>
+          <context context-type="linenumber">49,50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3844720777262110149" datatype="html">
@@ -58,20 +58,40 @@
           <context context-type="linenumber">7,8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7977540755068228352" datatype="html">
-        <source>Quiz</source>
-        <target state="translated">Quiz</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
-          <context context-type="linenumber">2,3</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1457908377296177104" datatype="html">
-        <source>Beat the time</source>
-        <target state="translated">Beat the time</target>
+      <trans-unit id="1584168115399690728" datatype="html">
+        <source>I can multiply</source>
+        <target state="translated">I can multiply</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
           <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7977540755068228352" datatype="html">
+        <source>Quiz</source>
+         <target state="translated">Quiz</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4123309725761687156" datatype="html">
+        <source>Calculation</source>
+          <target state="translated">Calculation</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2157552349562301932" datatype="html">
+        <source>I can divide</source>
+          <target state="translated">I can divide</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">10,11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8121907747276361298" datatype="html">
@@ -151,7 +171,7 @@
         <target state="translated">New version available. Load New Version?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
     </body>

@@ -4,6 +4,7 @@ import { ExerciseTry, ExerciseTryUtil } from './exercise-try.interface';
 
 export interface Exercise {
   tries: ExerciseTry[];
+  operationSign: string;
 }
 
 @Injectable({
@@ -26,10 +27,15 @@ export class ExerciseSummaryService {
     this.exercise?.tries.push(try_);
   }
 
-  init(): void {
+  init(operationSign: string): void {
     this.exercise = {
-      tries: []
+      tries: [],
+      operationSign
     };
+  }
+
+  getOperationSign(): string {
+    return this.exercise?.operationSign ?? '';
   }
 
   isInitialized(): boolean {

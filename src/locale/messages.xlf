@@ -34,14 +34,14 @@
         <source>Open settings dialog</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">31,32</context>
+          <context context-type="linenumber">29,30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2628326099707109790" datatype="html">
         <source>add prize</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">51,52</context>
+          <context context-type="linenumber">49,50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3844720777262110149" datatype="html">
@@ -51,18 +51,36 @@
           <context context-type="linenumber">7,8</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="1584168115399690728" datatype="html">
+        <source>I can multiply</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="7977540755068228352" datatype="html">
         <source>Quiz</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
-          <context context-type="linenumber">2,3</context>
+          <context context-type="linenumber">5,6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="1457908377296177104" datatype="html">
-        <source>Beat the time</source>
+      <trans-unit id="4123309725761687156" datatype="html">
+        <source>Calculation</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
-          <context context-type="linenumber">3,4</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2157552349562301932" datatype="html">
+        <source>I can divide</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">10,11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8121907747276361298" datatype="html">
@@ -132,7 +150,7 @@
         <source>New version available. Load New Version?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
     </body>

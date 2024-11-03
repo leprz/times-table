@@ -2,8 +2,9 @@ export interface ExerciseTry {
   operandA: number;
   operandB: number;
   answer: number | null;
-  answerTime: number;
+  correctAnswer: number;
   isCorrect: boolean;
+  answerTime: number;
 }
 
 export class ExerciseTryUtil {

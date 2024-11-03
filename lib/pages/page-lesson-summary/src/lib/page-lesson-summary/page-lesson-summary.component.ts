@@ -38,8 +38,8 @@ export class PageLessonSummaryComponent implements OnDestroy {
   readonly isNewBestScore = computed(() => {
     return (this.score() ?? 0) > this.bestScore();
   });
-
-  wrongAnswers = signal<ExerciseTry[]>([]);
+  readonly operationSign = signal<string>('?');
+  readonly wrongAnswers = signal<ExerciseTry[]>([]);
 
   ngOnDestroy(): void {
     this.summaryService.reset();
@@ -60,8 +60,7 @@ export class PageLessonSummaryComponent implements OnDestroy {
       }));
       this.score.set(score);
       this.coins.set(this.coinCollectorService.getCoins());
-
-
+      this.operationSign.set(this.summaryService.getOperationSign());
     } else {
       this.routerLink.navigate(['/']);
     }

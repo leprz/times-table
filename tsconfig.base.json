@@ -20,6 +20,9 @@
       "@org/contract-rewards": ["lib/contracts/contract-rewards/src/index.ts"],
       "@org/feature-coins": ["lib/features/feature-coins/src/index.ts"],
       "@org/feature-common": ["lib/features/feature-common/src/index.ts"],
+      "@org/feature-high-score": [
+        "lib/features/feature-high-score/src/index.ts"
+      ],
       "@org/feature-prize": ["lib/features/feature-prize/src/index.ts"],
       "@org/feature-rewards": ["lib/features/feature-rewards/src/index.ts"],
       "@org/feature-times-table": [
@@ -41,6 +44,7 @@
       "@org/page-times-table-quiz": [
         "lib/pages/page-times-table-quiz/src/index.ts"
       ],
+      "@org/ui-badge": ["lib/common/ui/ui-badge/src/index.ts"],
       "@org/ui-common": ["lib/common/ui/ui-common/src/index.ts"],
       "@org/ui-dialog": ["lib/common/ui/ui-dialog/src/index.ts"],
       "@org/ui-form-errors": ["lib/common/ui/ui-form-errors/src/index.ts"],

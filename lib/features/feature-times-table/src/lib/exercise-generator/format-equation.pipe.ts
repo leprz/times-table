@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Equation } from './multiplication-generator';
+import { Equation, Operation } from './exercise-generator';
 
 @Pipe({
   name: 'formatEquation',
@@ -12,6 +12,8 @@ export class FormatEquationPipe implements PipeTransform {
       return '';
     }
 
-    return `${value.operandA} x ${value.operandB} = ${product}`;
+    const sign = value.operation === Operation.Multiplication ? 'x' : '÷';
+
+    return `${value.operandA} ${sign} ${value.operandB} = ${product}`;
   }
 }

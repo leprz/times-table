@@ -22,7 +22,7 @@
         <li>
       <span class="page-lesson-summary__wrong-answer-item">
         <span>{{ answer.operandA }}</span>
-        <span>&nbsp;x&nbsp;</span>
+        <span>&nbsp;{{ operationSign() }}&nbsp;</span>
         <span>{{ answer.operandB }}</span>
         <span>&nbsp;=</span>
         <span class="page-lesson-summary__wrong-answer-result">
@@ -34,7 +34,7 @@
         </span>
       </span>
           <span class="page-lesson-summary__correct-result">{{
-              answer.operandA * answer.operandB
+              answer.correctAnswer
             }}</span>
         </li>
       }

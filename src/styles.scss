@@ -19,6 +19,8 @@ h1, h2, h3, h4, h5, h6 {
   --color-orange: #ff9800;
   --color-green: #4caf50;
   --color-red: #f44336;
+
+  --font-size-medium: clamp(1rem, min(5cqw, 5cqh) + 1rem, 5rem);
 }
 
 .body-extra-small {
@@ -35,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .body-medium {
   &, h1, h2, h3 {
-    font-size: clamp(1rem, min(5cqw, 5cqh) + 1rem, 5rem);
+    font-size: var(--font-size-medium);
   }
 }
 
@@ -156,7 +158,7 @@ a.btn-icon {
 
 .surface {
   padding: max(.5rem, .2em);
-  border-radius: 3rem;
+  border-radius: .5em;
   background-color: var(--color-tertiary);
 }
 
