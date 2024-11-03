@@ -6,12 +6,27 @@
   <base href="/" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" type="image/x-icon" href="favicon.ico" />
-  <link rel="manifest" href="manifest.webmanifest">
   <link rel=preconnect href="https://fonts.googleapis.com">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="My App">
   <meta name="theme-color" content="#1976d2">
+  <script>
+    let lang = document
+      .getElementsByTagName('html')[0]
+      .getAttribute('lang');
+
+    const supportedLanguages = ['en', 'pl'];
+
+    if (!supportedLanguages.includes(lang)) {
+      lang = 'en';
+    }
+
+    const manifest = document.createElement('link');
+    manifest.rel = 'manifest';
+    manifest.href = `manifest-${lang}.json`;
+    document.head.appendChild(manifest);
+  </script>
 </head>
 <body>
 <app-root></app-root>
