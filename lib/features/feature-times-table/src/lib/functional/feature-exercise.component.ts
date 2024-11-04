@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, OnDestroy, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, OnDestroy, output, signal } from '@angular/core';
 import { Randomizer } from '../exercise-generator/equation-generator-multiplication';
 import { Equation, ExerciseGenerator } from '../exercise-generator/exercise-generator';
 import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
@@ -8,6 +8,7 @@ import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summ
   standalone: true,
   providers: [ExerciseGenerator],
   template: '<ng-content></ng-content>',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeatureExerciseComponent implements OnDestroy{
   readonly exerciseGenerator = inject(ExerciseGenerator);

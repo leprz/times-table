@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { links } from '@org/page-common';
@@ -8,6 +8,7 @@ import { links } from '@org/page-common';
   imports: [CommonModule, RouterLink],
   templateUrl: './page-lesson-selector.component.html',
   styleUrl: './page-lesson-selector.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageLessonSelectorComponent {
   protected readonly links = links;

@@ -1,4 +1,4 @@
-import { Component, computed, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuizAnswerToAnswerUiPipe } from './quiz-answer-to-answer-ui.pipe';
 import { v4 as uuidv4 } from 'uuid';
@@ -16,6 +16,7 @@ export interface UiAnswer {
   imports: [CommonModule, QuizAnswerToAnswerUiPipe, UiQuizAnswerItemComponent],
   templateUrl: 'random-quiz-answer-list.component.html',
   styleUrl: 'random-quiz-answer-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RandomQuizAnswerListComponent {
   isAnswered = input<boolean>(false);

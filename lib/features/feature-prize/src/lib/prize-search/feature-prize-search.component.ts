@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { combineLatestWith, Observable, Subject, switchMap } from 'rxjs';
 import { GetOneNextPrizeBodyParams, GetOneNextPrizeResult, PrizeDataServicePort } from '@org/contract-prize';
 import { PrizeDataServiceIndexedDb } from '../data-service/prize-data-service.indexed-db';
@@ -16,7 +16,8 @@ import { PrizeUpdatedEvent } from '../common/prize-updated.event';
   }],
   template: `
     <ng-content></ng-content>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeaturePrizeSearchComponent {
   readonly prizeDataService = inject(PrizeDataServicePort);

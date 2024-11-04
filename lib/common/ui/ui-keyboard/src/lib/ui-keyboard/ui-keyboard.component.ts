@@ -1,4 +1,4 @@
-import { Component, HostListener, input, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './ui-keyboard.component.html',
   styleUrl: './ui-keyboard.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UiKeyboardComponent {
   isDisabled = input(false);

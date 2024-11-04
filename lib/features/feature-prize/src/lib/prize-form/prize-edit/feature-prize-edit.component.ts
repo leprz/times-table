@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { combineLatestWith, Observable, Subject, switchMap } from 'rxjs';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import {
@@ -20,7 +20,8 @@ import { PrizeUpdatedEvent } from '../../common/prize-updated.event';
   }],
   template: `
     <ng-content></ng-content>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeaturePrizeEditComponent {
   readonly params = input.required<UpdateOnePrizePathParams>();

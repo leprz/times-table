@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnDestroy, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExerciseSummaryService, ExerciseTry, FormatHighScorePipe, HighScoreService } from '@org/feature-times-table';
 import { Router, RouterLink } from '@angular/router';
@@ -24,6 +24,7 @@ import { OnInitComponent } from '@org/page-common';
   ],
   templateUrl: './page-lesson-summary.component.html',
   styleUrl: './page-lesson-summary.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageLessonSummaryComponent implements OnDestroy {
   readonly bestScoreService = inject(HighScoreService);

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Observable, Subject, switchMap, tap } from 'rxjs';
 import { CreateOnePrizeBodyParams, CreateOnePrizeResult, PrizeDataServicePort } from '@org/contract-prize';
 import { PrizeDataServiceIndexedDb } from '../../data-service/prize-data-service.indexed-db';
@@ -17,7 +17,8 @@ import { $localize } from '@angular/localize/init';
   }],
   template: `
     <ng-content></ng-content>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeaturePrizeCreateComponent {
   readonly prizeDataService = inject(PrizeDataServicePort);

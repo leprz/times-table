@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { combineLatestWith, interval, map, of, take } from 'rxjs';
 
@@ -8,6 +8,7 @@ import { combineLatestWith, interval, map, of, take } from 'rxjs';
   imports: [CommonModule],
   templateUrl: './ui-spinner.component.html',
   styleUrl: './ui-spinner.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UiSpinnerComponent {
   readonly isVisible$ = of(false).pipe(

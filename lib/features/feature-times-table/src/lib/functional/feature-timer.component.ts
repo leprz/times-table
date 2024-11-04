@@ -1,9 +1,19 @@
-import { AfterViewInit, Component, computed, input, OnDestroy, output, signal } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  OnDestroy,
+  output,
+  signal
+} from '@angular/core';
 
 @Component({
   selector: 'feature-timer',
   standalone: true,
   template: '<ng-content></ng-content>',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeatureTimerComponent implements AfterViewInit, OnDestroy {
   timer = input.required<number>(); // seconds

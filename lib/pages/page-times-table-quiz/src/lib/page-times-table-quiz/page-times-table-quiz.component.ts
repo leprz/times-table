@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FeatureExerciseComponent,
@@ -15,6 +15,7 @@ import { links } from '@org/page-common';
   imports: [CommonModule, RandomQuizAnswerListComponent, FeatureExerciseComponent, FeatureTimerComponent, FormatEquationPipe],
   templateUrl: './page-times-table-quiz.component.html',
   styleUrl: './page-times-table-quiz.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageTimesTableQuizComponent {
   private readonly paramMap = toSignal(this.activatedRoute.paramMap);

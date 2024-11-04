@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FeatureRewardListComponent,
@@ -19,5 +19,6 @@ import { PageRewardsNextAchievementComponent } from './next-achievement/page-rew
   imports: [CommonModule, FeatureRewardListComponent, OnInitComponent, UiRewardItemComponent, RewardItemToUiMapperPipe, UiPrizeComponent, UiDialogClearComponent, FeatureRewardsUpdateComponent, FeaturePrizeSearchComponent, FeatureCoinsComponent, UiProgressBarComponent, PageRewardsNextAchievementComponent],
   templateUrl: './page-rewards.component.html',
   styleUrl: './page-rewards.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageRewardsComponent {}

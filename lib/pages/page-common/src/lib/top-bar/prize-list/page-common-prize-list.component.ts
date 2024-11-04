@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 import {
@@ -30,7 +30,8 @@ import { OnInitComponent } from '../../on-init/on-init.component';
     FeaturePrizeEditComponent,
     FeatureCoinsComponent
   ],
-  styleUrls: ['./page-common-prize-list.component.scss']
+  styleUrls: ['./page-common-prize-list.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageCommonPrizeListComponent {
 

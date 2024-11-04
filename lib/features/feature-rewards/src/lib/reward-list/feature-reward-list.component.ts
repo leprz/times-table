@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReadManyRewardsResult, RewardsDataServicePort, SearchManyRewardsBodyParams } from '@org/contract-rewards';
 import { combineLatestWith, map, Observable, Subject, switchMap } from 'rxjs';
@@ -16,6 +16,7 @@ import { filterNill } from '@org/utils-data-service';
     ...featureRewardsDataServiceProviders
   ],
   template: `<ng-content></ng-content>`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeatureRewardListComponent {
     private readonly rewardsDataService = inject(RewardsDataServicePort);

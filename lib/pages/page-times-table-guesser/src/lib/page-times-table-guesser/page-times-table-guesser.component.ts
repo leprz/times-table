@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { links } from '@org/page-common';
@@ -29,6 +29,7 @@ import { UiKeyboardComponent } from '@org/ui-keyboard';
   ],
   templateUrl: './page-times-table-guesser.component.html',
   styleUrl: './page-times-table-guesser.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageTimesTableGuesserComponent {
   private readonly router = inject(Router);

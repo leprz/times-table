@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { RewardsDataServicePort, UpdateOneRewardBodyParams, UpdateOneRewardPathParams } from '@org/contract-rewards';
 import { MessageBus } from '@org/message-bus';
 import { combineLatestWith, Subject, switchMap, tap } from 'rxjs';
@@ -14,6 +14,7 @@ import { featureRewardsDataServiceProviders } from '../common/data-service/rewar
   providers: [
     ...featureRewardsDataServiceProviders
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeatureRewardsUpdateComponent {
   readonly params = input.required<UpdateOneRewardPathParams>();

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { MessageBus } from '@org/message-bus';
 import { CoinsCalculatedEvent } from '@org/common-events';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -8,7 +8,8 @@ import { CoinCollectorService } from './coin-collector.service';
   standalone: true,
   template: `
     <ng-content></ng-content>`,
-  selector: 'feature-coins'
+  selector: 'feature-coins',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeatureCoinsComponent {
   readonly coins = signal<number | null>(null);

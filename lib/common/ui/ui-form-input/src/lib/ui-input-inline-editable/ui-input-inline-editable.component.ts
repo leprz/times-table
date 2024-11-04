@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   EditableComponent,
@@ -27,8 +27,11 @@ import { UiFormErrorsComponent } from '@org/ui-form-errors';
   ],
   templateUrl: './ui-input-inline-editable.component.html',
   styleUrl: './ui-input-inline-editable.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UiInputInlineEditableComponent {
+  changeDetectionRef = inject(ChangeDetectorRef);
+
   isEnabled = input<boolean>(true);
   initialValue = input.required<string>();
   control = input.required<FormControl>();
@@ -36,6 +39,12 @@ export class UiInputInlineEditableComponent {
   save = output<void>();
   cancel = output<void>();
   modeChange = output<void>();
+
+  constructor() {
+    effect(() => {
+      this.changeDetectionRef.detectChanges();
+    });
+  }
 
   onSave(): void {
     if (this.control().invalid) {

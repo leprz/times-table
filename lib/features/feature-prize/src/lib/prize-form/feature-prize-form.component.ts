@@ -1,4 +1,4 @@
-import { Component, effect, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, inject, input, output } from '@angular/core';
 import { UpdateOnePrizeBodyParams } from '@org/contract-prize';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FeaturePrizeFormControlsBuilder } from './feature-prize-form-controls-builder.service';
@@ -10,13 +10,14 @@ export type TodoEditFormData = Partial<UpdateOnePrizeBodyParams>;
   standalone: true,
   selector: 'feature-prize-form',
   template: `
-    <ng-content></ng-content>`
+    <ng-content></ng-content>`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeaturePrizeFormComponent {
-  id = input.required<string>();
-  params = input<TodoEditFormData>({});
+  readonly id = input.required<string>();
+  readonly params = input<TodoEditFormData>({});
 
-  formSubmittedSuccessfully = output<TodoEditFormData>();
+  readonly formSubmittedSuccessfully = output<TodoEditFormData>();
 
   private readonly fb = inject(FormBuilder);
   private readonly fcb = inject(FeaturePrizeFormControlsBuilder);

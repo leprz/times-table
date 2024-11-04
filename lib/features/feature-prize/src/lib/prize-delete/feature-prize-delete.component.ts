@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { combineLatestWith, Observable, Subject, switchMap, tap } from 'rxjs';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { DeleteOnePrizePathParams, PrizeDataServicePort } from '@org/contract-prize';
@@ -16,7 +16,8 @@ import { PrizeDataServiceIndexedDb } from '../data-service/prize-data-service.in
   }],
   template: `
     <ng-content></ng-content>
-  `
+  `,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeaturePrizeDeleteComponent {
   readonly params = input.required<DeleteOnePrizePathParams>();

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 import { UiDialogComponent } from '@org/ui-dialog';
@@ -31,7 +31,8 @@ import { UiBadgeHighScoreComponent } from '@org/ui-badge';
     UiBadgeHighScoreComponent
   ],
   templateUrl: './page-common-top-bar.component.html',
-  styleUrl: './page-common-top-bar.component.css'
+  styleUrl: './page-common-top-bar.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PageCommonTopBarComponent {
   protected readonly links = links;

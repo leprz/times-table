@@ -1,4 +1,4 @@
-import { Component, inject, output, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
 import { HighScoreService } from '../common/high-score/high-score.service';
 import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
 
@@ -6,6 +6,7 @@ import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summ
   selector: 'feature-score',
   standalone: true,
   template: `<ng-content></ng-content>`,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeatureScoreComponent {
   highScoreService = inject(HighScoreService);
