@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { PageCreateLinkQuizQuestionPipePipe } from './link-quiz-question.pipe';
-import { links } from '@org/page-common';
+import { LayoutModeService, links } from '@org/page-common';
 
 @Component({
   standalone: true,
@@ -14,4 +14,8 @@ import { links } from '@org/page-common';
 export class PageMultiplicandSelectorComponent {
   multiplicands = Array.from({ length: 9 }, (_, i) => i + 1);
   protected readonly links = links;
+  private readonly layoutModeService = inject(LayoutModeService);
+  constructor() {
+    this.layoutModeService.applyMode('distraction-free');
+  }
 }

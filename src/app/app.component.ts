@@ -2,11 +2,12 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { UpdateService } from './service-worker-updater';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PageCommonTopBarComponent } from '@org/page-common';
+import { PageCommonLayoutModeComponent, PageCommonTopBarComponent } from '@org/page-common';
+import { UiFormErrorsComponent } from '@org/ui-form-errors';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, PageCommonTopBarComponent],
+  imports: [RouterModule, PageCommonTopBarComponent, UiFormErrorsComponent, PageCommonLayoutModeComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

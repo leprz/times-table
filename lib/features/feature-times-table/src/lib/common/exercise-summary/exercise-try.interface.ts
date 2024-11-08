@@ -1,3 +1,4 @@
+// TODO use Equation interface to unify formatEquation pipe
 export interface ExerciseTry {
   operandA: number;
   operandB: number;

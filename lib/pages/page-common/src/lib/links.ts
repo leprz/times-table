@@ -4,7 +4,8 @@ export const links = {
   multiplication_calculation: '/multiplication/calculation',
   division_calculation: '/division/calculation',
   summary: '/summary',
-  rewards: '/rewards'
+  rewards: '/rewards',
+  home: '/',
 } as const;
 
 export function linkDefinition(link: keyof typeof links): string {

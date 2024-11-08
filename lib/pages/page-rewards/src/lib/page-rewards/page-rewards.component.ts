@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FeatureRewardListComponent,
@@ -8,7 +8,7 @@ import {
 import { UiRewardItemComponent } from '@org/ui-reward';
 import { UiDialogClearComponent } from '@org/ui-dialog';
 import { UiPrizeComponent } from '@org/ui-prize';
-import { OnInitComponent } from '@org/page-common';
+import { LayoutModeService, OnInitComponent } from '@org/page-common';
 import { FeaturePrizeSearchComponent } from '@org/feature-prize';
 import { FeatureCoinsComponent } from '@org/feature-coins';
 import { UiProgressBarComponent } from '@org/ui-progress';
@@ -21,4 +21,10 @@ import { PageRewardsNextAchievementComponent } from './next-achievement/page-rew
   styleUrl: './page-rewards.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PageRewardsComponent {}
+export class PageRewardsComponent {
+  private readonly layoutModeService = inject(LayoutModeService);
+
+  constructor() {
+    this.layoutModeService.applyMode('normal');
+  }
+}

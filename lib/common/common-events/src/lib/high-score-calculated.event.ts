@@ -1,7 +1,3 @@
 import { Event } from '@org/message-bus';
 
-export class HighScoreCalculatedEvent extends Event<{ highScore: number }> {
-  constructor(payload: { highScore: number }) {
-    super(payload);
-  }
-}
+export class HighScoreCalculatedEvent<T extends { highScore: number, exerciseKey?: string }> extends Event<T> {}

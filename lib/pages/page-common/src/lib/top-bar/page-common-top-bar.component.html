@@ -9,8 +9,8 @@
           i18n-aria-label
           [routerLink]="[links.rewards]"
         >
-          <fast-svg [name]="'banknote'" />
           <feature-coins #featureCoinCollector />
+          <fast-svg [name]="'banknote'" />
           <span>{{ featureCoinCollector.coins() }}</span>
           @if (featureRewardsList.rewards$ | async; as rewards) {
             @if (rewards.count > 0) {
@@ -19,19 +19,28 @@
           }
       </a>
     </span>
-    <span class="top-bar__action app__action-high-score">
-      <feature-high-score #featureHighScore />
-      <ui-badge-high-score [highScore]="featureHighScore.highScore()"/>
+    <span class="top-bar__action" uiTeleportOutlet="top-bar-action">
     </span>
   </div>
-  <button
-    class="top-bar__action top-bar__action-settings btn-secondary btn-icon"
-    aria-label="Open settings dialog"
-    i18n-aria-label
-    (click)="settingsDialog.showModal()"
-  >
-    <fast-svg [name]="'settings'" />
-  </button>
+  @if(isSettingsButtonVisible()) {
+    <button
+      class="top-bar__action top-bar__action-settings btn-secondary btn-icon"
+      aria-label="Open settings dialog"
+      i18n-aria-label
+      (click)="settingsDialog.showModal()"
+    >
+      <fast-svg [name]="'settings'" />
+    </button>
+  }
+  @if(isBackButtonVisible()) {
+    <button
+      class="top-bar__action top-bar__action-home btn-secondary btn-icon"
+      aria-label="Navigate to home page"
+      [routerLink]="[links.home]"
+    >
+      <span>&#8617;</span>
+    </button>
+  }
 </div>
 <ui-dialog
   [hasStickyHeader]="true"

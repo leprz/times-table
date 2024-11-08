@@ -18,7 +18,7 @@ export interface Equation {
 export class ExerciseGenerator {
   private readonly equationGenerator = inject(EquationGeneratorPort);
   initialize(summaryService: ExerciseSummaryService): void {
-    summaryService.init(this.equationGenerator.getOperationSign());
+    this.equationGenerator.initialize(summaryService);
   }
 
   generateEquations(

@@ -1,17 +1,17 @@
 <div class="page-lesson-summary__score body-small">
-  @if (score() !== null) {
+  @if (currentExerciseScore() !== null) {
     <h2 i18n>Your score</h2>
     <p class="body-large">
-      @if (isNewBestScore()) {
-        {{ score() | formatHighScore }}
+      @if (isNewHighScore()) {
+        {{ currentExerciseScore() | formatHighScore }}
       } @else {
-        {{ score() }}
+        {{ currentExerciseScore() }}
       }
     </p>
   }
-  @if (bestScore() !== 0) {
+  @if (previousHighScore() !== 0) {
     <h3 i18n>Your previous best score</h3>
-    <p class="body-large">{{ bestScore() }}</p>
+    <p class="body-large">{{ previousHighScore() }}</p>
   }
 </div>
 <div class="page-lesson-summary__wrong-answers body-small">

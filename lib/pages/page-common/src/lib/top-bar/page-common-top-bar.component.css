@@ -19,9 +19,3 @@
     display: flex;
     gap: 1rem;
 }
-
-.app__action-high-score {
-    button {
-        background: var(--color-orange);
-    }
-}

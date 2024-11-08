@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
-import { HighScoreService } from '../common/high-score/high-score.service';
 import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
 
 @Component({
@@ -9,9 +8,7 @@ import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summ
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeatureScoreComponent {
-  highScoreService = inject(HighScoreService);
   summaryService = inject(ExerciseSummaryService);
-  currentHighScore = signal(this.highScoreService.getHighScore());
   currentScore = signal(0);
   currentScoreRecalculated = output();
 

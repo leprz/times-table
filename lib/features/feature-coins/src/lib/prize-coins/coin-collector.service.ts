@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { CoinsCalculatedEvent, ScoreCalculatedEvent } from '@org/common-events';
+import { CoinsCalculatedEvent, ExerciseFinishedEvent } from '@org/common-events';
 import { MessageBus } from '@org/message-bus';
 import { CoinPrizePolicy } from './coin-prize-policy.service';
 import { LocalStorageService } from '@org/local-storage';
@@ -19,12 +19,12 @@ export class CoinCollectorService {
   }
 
   listen$ = this.messageBusService
-    .on(ScoreCalculatedEvent, 'recalculate coins for new score')
+    .on(ExerciseFinishedEvent, 'recalculate coins for new score')
     .pipe(
       tap((event) => {
         if (event) {
           const currentCoinsValue = this.getCoins();
-          const earnedCoins = this.coinPrizePolicy.countPrize(event.payload.exerciseTotalScore);
+          const earnedCoins = this.coinPrizePolicy.countPrize(event.payload.totalScore);
           this.setCoins(currentCoinsValue + earnedCoins);
           this.messageBusService.emit(new CoinsCalculatedEvent({ totalCoins: this.getCoins() }));
         }

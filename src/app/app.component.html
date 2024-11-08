@@ -1,6 +1,10 @@
 <div class="app">
   <header>
-    <page-common-top-bar></page-common-top-bar>
+    <page-common-top-bar #topBar />
+    <page-common-layout-mode
+      #layoutMode
+      (layoutModeChanged)="layoutMode.applyMode(topBar)"
+    />
   </header>
   <main>
     <router-outlet></router-outlet>

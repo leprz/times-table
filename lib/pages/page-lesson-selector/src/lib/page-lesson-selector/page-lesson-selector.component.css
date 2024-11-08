@@ -6,7 +6,19 @@
     align-items: center;
     gap: 1rem;
 }
-
+section {
+    width: 100%;
+    max-width: 40rem;
+}
+header {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: .2em;
+    justify-content: space-between;
+}
+.page-lesson-selector__lesson-high-score {
+    font-size: 1rem;
+}
 h3 {
     margin-top: 0;
 }
@@ -21,4 +33,7 @@ h3 {
     flex-wrap: wrap;
     justify-content: center;
     gap: min(4rem, 0.5em);
+    button {
+        flex: 1;
+    }
 }

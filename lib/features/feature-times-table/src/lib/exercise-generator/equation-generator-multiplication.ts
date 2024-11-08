@@ -1,10 +1,9 @@
 import { EquationGeneratorPort } from './equation-generator.port';
 import { Equation, Operation } from './exercise-generator';
 
-export class EquationGeneratorMultiplication implements EquationGeneratorPort {
-  getOperationSign(): string {
-    return 'x';
-  }
+export class EquationGeneratorMultiplication extends EquationGeneratorPort {
+  protected operation: Operation = Operation.Multiplication;
+  protected operationSign = 'x';
 
   generateEquation(
     multiplicand: number,

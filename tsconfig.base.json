@@ -58,6 +58,7 @@
       ],
       "@org/ui-reward": ["lib/common/ui/ui-reward/src/index.ts"],
       "@org/ui-spinner": ["lib/common/ui/ui-spinner/src/index.ts"],
+      "@org/ui-teleport": ["lib/common/ui/ui-teleport/src/index.ts"],
       "@org/ui-todo-item": ["lib/common/ui/ui-todo-item/src/index.ts"],
       "@org/utils-common": ["lib/common/utils/utils-common/src/index.ts"],
       "@org/utils-data-service": [

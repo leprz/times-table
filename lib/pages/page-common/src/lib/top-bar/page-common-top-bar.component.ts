@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 import { UiDialogComponent } from '@org/ui-dialog';
@@ -10,8 +10,8 @@ import { RouterLink } from '@angular/router';
 import { links } from '../links';
 import { OnInitComponent } from '../on-init/on-init.component';
 import { FeatureRewardListComponent } from '@org/feature-rewards';
-import { FeatureHighScoreComponent } from '@org/feature-high-score';
-import { UiBadgeHighScoreComponent } from '@org/ui-badge';
+import { LayoutMode, WithLayoutMode } from '../layout-mode/page-common-layout-mode.component';
+import { UiTeleportOutletDirective } from '@org/ui-teleport';
 
 @Component({
   selector: 'page-common-top-bar',
@@ -27,13 +27,28 @@ import { UiBadgeHighScoreComponent } from '@org/ui-badge';
     RouterLink,
     FeatureRewardListComponent,
     OnInitComponent,
-    FeatureHighScoreComponent,
-    UiBadgeHighScoreComponent
+    UiTeleportOutletDirective
   ],
   templateUrl: './page-common-top-bar.component.html',
   styleUrl: './page-common-top-bar.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PageCommonTopBarComponent {
+export class PageCommonTopBarComponent implements WithLayoutMode {
   protected readonly links = links;
+  readonly isSettingsButtonVisible = signal(false);
+  readonly isBackButtonVisible = signal(false);
+
+  onLayoutModeChange(mode: LayoutMode): void {
+    switch (mode) {
+      default:
+      case 'normal':
+        this.isSettingsButtonVisible.set(true);
+        this.isBackButtonVisible.set(false);
+        break;
+      case 'distraction-free':
+        this.isSettingsButtonVisible.set(false);
+        this.isBackButtonVisible.set(true);
+        break;
+    }
+  }
 }

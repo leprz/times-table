@@ -1,8 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ExerciseSummaryService, ExerciseTry, FormatHighScorePipe, HighScoreService } from '@org/feature-times-table';
+import {
+  ExerciseSummary,
+  ExerciseSummaryService,
+  ExerciseTry,
+  FormatHighScorePipe,
+  HighScoreService,
+  SummaryPresenter
+} from '@org/feature-times-table';
 import { Router, RouterLink } from '@angular/router';
-import { CoinCollectorService } from '@org/feature-coins';
 import { UiDialogComponent } from '@org/ui-dialog';
 import { featurePrizeDataServiceProviders } from '@org/feature-prize';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
@@ -10,8 +16,6 @@ import { LessonSummaryCoinsListener } from './lesson-summary-coins.listener';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { featureRewardsDataServiceProviders } from '@org/feature-rewards';
 import { UiPrizeComponent } from '@org/ui-prize';
-import { ScoreCalculatedEvent } from '@org/common-events';
-import { MessageBus } from '@org/message-bus';
 import { OnInitComponent } from '@org/page-common';
 
 @Component({
@@ -26,18 +30,15 @@ import { OnInitComponent } from '@org/page-common';
   styleUrl: './page-lesson-summary.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PageLessonSummaryComponent implements OnDestroy {
+export class PageLessonSummaryComponent implements OnDestroy, SummaryPresenter {
   readonly bestScoreService = inject(HighScoreService);
-  readonly coinCollectorService = inject(CoinCollectorService);
   readonly routerLink = inject(Router);
   private readonly summaryListener = inject(LessonSummaryCoinsListener);
-  private readonly messageBus = inject(MessageBus);
 
-  readonly score = signal<number | null>(null);
-  readonly bestScore = signal<number>(this.bestScoreService.getHighScore());
-  readonly coins = signal<number>(this.coinCollectorService.getCoins());
-  readonly isNewBestScore = computed(() => {
-    return (this.score() ?? 0) > this.bestScore();
+  readonly currentExerciseScore = signal<number | null>(null);
+  readonly previousHighScore = signal<number>(0);
+  readonly isNewHighScore = computed(() => {
+    return (this.currentExerciseScore() ?? 0) > this.previousHighScore();
   });
   readonly operationSign = signal<string>('?');
   readonly wrongAnswers = signal<ExerciseTry[]>([]);
@@ -54,16 +55,16 @@ export class PageLessonSummaryComponent implements OnDestroy {
     ).subscribe();
 
     if (this.summaryService.isInitialized()) {
-      this.wrongAnswers.set(this.summaryService.getWrongAnswers());
-      const score = this.summaryService.calculateScore();
-      this.messageBus.emit(new ScoreCalculatedEvent({
-        exerciseTotalScore: score
-      }));
-      this.score.set(score);
-      this.coins.set(this.coinCollectorService.getCoins());
-      this.operationSign.set(this.summaryService.getOperationSign());
+      this.summaryService.finishExercise(this);
     } else {
       this.routerLink.navigate(['/']);
     }
+  }
+
+  showExerciseSummary(summary: ExerciseSummary): void {
+    this.previousHighScore.set(this.bestScoreService.getHighScore(summary.highScoreKey));
+    this.wrongAnswers.set(summary.wrongAnswers);
+    this.currentExerciseScore.set(summary.score);
+    this.operationSign.set(summary.operationSign);
   }
 }

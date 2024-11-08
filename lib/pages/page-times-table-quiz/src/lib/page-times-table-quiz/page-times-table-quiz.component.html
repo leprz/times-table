@@ -1,3 +1,7 @@
+<feature-high-score [key]="exercise.currentExercise()?.operation" #featureHighScore />
+<span *uiTeleportTo="'top-bar-action'">
+  <ui-badge-high-score [highScore]="featureHighScore.highScore()"/>
+</span>
 <feature-timer
   #timer
   [timer]="5"
@@ -9,7 +13,7 @@
   #exercise
   [minMultiplicand]="multiplicand()"
   [maxMultiplicand]="multiplicand()"
-  [numberOfExercises]="9"
+  [numberOfExercises]="2"
   [outputDelay]="1"
   (answered)="timer.stop()"
   (answeredDelayed)="timer.restart()"

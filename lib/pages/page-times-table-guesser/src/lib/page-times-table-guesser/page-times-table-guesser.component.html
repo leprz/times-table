@@ -1,4 +1,4 @@
-<feature-timer #timer [timer]="120" (timesUp)="navigateToSummary()" />
+<feature-timer #timer [timer]="101" (timesUp)="navigateToSummary()" />
 
 <feature-timer
   #penaltyTimer
@@ -28,12 +28,16 @@
       <span class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--current-score">
         {{ score.currentScore() }}
       </span>
-          @if (score.currentHighScore()) {
+          <feature-high-score #featureHighScore [key]="exercise.currentExercise()?.operation"/>
+          @if (featureHighScore.highScore() > 0) {
             /
             <span class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--high-score">{{
-                score.currentHighScore() | formatHighScore
+                featureHighScore.highScore() | formatHighScore
               }}</span>
           }
+          <span *uiTeleportTo="'top-bar-action'">
+            <ui-badge-high-score [highScore]="featureHighScore.highScore()"/>
+          </span>
         </feature-score>
       </div>
       @if (exercise.currentExercise()) {

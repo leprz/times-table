@@ -38,5 +38,5 @@ export class MessageBus {
 export abstract class Event<T> {
   public readonly name: string = this.constructor.name;
 
-  protected constructor(public readonly payload: T) {}
+  constructor(public readonly payload: T) {}
 }
