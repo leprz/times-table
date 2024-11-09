@@ -19,7 +19,8 @@
           }
       </a>
     </span>
-    <span class="top-bar__action" uiTeleportOutlet="top-bar-action">
+    <span class="top-bar__action">
+      <ng-container uiTeleportOutlet="top-bar-action"></ng-container>
     </span>
   </div>
   @if(isSettingsButtonVisible()) {
@@ -38,7 +39,7 @@
       aria-label="Navigate to home page"
       [routerLink]="[links.home]"
     >
-      <span>&#8617;</span>
+      <fast-svg [name]="'corner-down-left'" />
     </button>
   }
 </div>
