@@ -21,6 +21,14 @@
     </span>
     <span class="top-bar__action">
       <ng-container uiTeleportOutlet="top-bar-action"></ng-container>
+      @if(isShareButtonVisible()) {
+        <button
+          class="top-bar__action top-bar__action-share btn-secondary btn-icon"
+          (click)="shareDialog.showModal()"
+        >
+          <fast-svg [name]="'megaphone'" />
+        </button>
+      }
     </span>
   </div>
   @if(isSettingsButtonVisible()) {
@@ -35,7 +43,7 @@
   }
   @if(isBackButtonVisible()) {
     <button
-      class="top-bar__action top-bar__action-home btn-secondary btn-icon"
+      class="top-bar__action top-bar__action-home btn-primary btn-icon"
       aria-label="Navigate to home page"
       [routerLink]="[links.home]"
     >
@@ -52,7 +60,7 @@
       <feature-prize-create #featurePrizeCreate />
       <feature-coins #featureCoins />
       <button
-        class="btn-icon"
+        class="btn-icon btn-secondary"
         (click)="featurePrizeCreate.createNewPrize(featureCoins.coins() ?? 0)"
       >
         <fast-svg name="diamond" />
@@ -65,4 +73,10 @@
       <page-common-prize-list></page-common-prize-list>
     }
   </div>
+</ui-dialog>
+
+<ui-dialog #shareDialog>
+  @defer (when shareDialog.isOpened()) {
+    <page-common-share-app/>
+  }
 </ui-dialog>

@@ -117,9 +117,6 @@
         "jestConfig": "jest.config.app.ts"
       }
     },
-    "deploy": {
-      "executor": "angular-cli-ghpages:deploy"
-    },
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
       "options": {

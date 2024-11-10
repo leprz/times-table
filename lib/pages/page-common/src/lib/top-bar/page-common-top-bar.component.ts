@@ -12,6 +12,7 @@ import { OnInitComponent } from '../on-init/on-init.component';
 import { FeatureRewardListComponent } from '@org/feature-rewards';
 import { LayoutMode, WithLayoutMode } from '../layout-mode/page-common-layout-mode.component';
 import { UiTeleportOutletDirective } from '@org/ui-teleport';
+import { ShareAppComponent } from '../share-app/share-app.component';
 
 @Component({
   selector: 'page-common-top-bar',
@@ -27,7 +28,8 @@ import { UiTeleportOutletDirective } from '@org/ui-teleport';
     RouterLink,
     FeatureRewardListComponent,
     OnInitComponent,
-    UiTeleportOutletDirective
+    UiTeleportOutletDirective,
+    ShareAppComponent
   ],
   templateUrl: './page-common-top-bar.component.html',
   styleUrl: './page-common-top-bar.component.css',
@@ -37,6 +39,7 @@ export class PageCommonTopBarComponent implements WithLayoutMode {
   protected readonly links = links;
   readonly isSettingsButtonVisible = signal(false);
   readonly isBackButtonVisible = signal(false);
+  readonly isShareButtonVisible = signal(false);
 
   onLayoutModeChange(mode: LayoutMode): void {
     switch (mode) {
@@ -44,10 +47,12 @@ export class PageCommonTopBarComponent implements WithLayoutMode {
       case 'normal':
         this.isSettingsButtonVisible.set(true);
         this.isBackButtonVisible.set(false);
+        this.isShareButtonVisible.set(true);
         break;
       case 'distraction-free':
         this.isSettingsButtonVisible.set(false);
         this.isBackButtonVisible.set(true);
+        this.isShareButtonVisible.set(false);
         break;
     }
   }

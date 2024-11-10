@@ -26,6 +26,14 @@
           <context context-type="linenumber">13,14</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="434607506935826974" datatype="html">
+        <source>Boost Math Skills Together - Tell a friend!</source>
+        <target state="translated">Uczcie się razem - udostępnij koledze!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-common/src/lib/share-app/share-app.component.ts</context>
+          <context context-type="linenumber">8,9</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3670906616713353317" datatype="html">
         <source>Open rewards list</source>
         <target state="translated">Otwórz listę nagród</target>
