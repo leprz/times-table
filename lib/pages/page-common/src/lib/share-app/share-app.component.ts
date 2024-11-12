@@ -27,8 +27,12 @@ import { FastSvgComponent } from '@push-based/ngx-fast-svg';
         display: flex;
         justify-content: center;
         flex-direction: column;
-        gap: 1rem;
+        gap: 3rem;
         align-items: center
+    }`,
+    `h2 {
+        margin-bottom: 0;
+        max-width: 30rem;
     }`,
     `canvas {
         max-height: 50svh

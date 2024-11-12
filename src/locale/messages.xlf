@@ -27,28 +27,28 @@
         <source>Boost Math Skills Together - Tell a friend!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/share-app/share-app.component.ts</context>
-          <context context-type="linenumber">8,9</context>
+          <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3670906616713353317" datatype="html">
         <source>Open rewards list</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">8,9</context>
+          <context context-type="linenumber">14,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4080237943266300131" datatype="html">
         <source>Open settings dialog</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">35,36</context>
+          <context context-type="linenumber">46,47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2628326099707109790" datatype="html">
         <source>add prize</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">65,66</context>
+          <context context-type="linenumber">76,77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3844720777262110149" datatype="html">
@@ -123,6 +123,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/next-achievement/page-rewards-next-achievement.component.html</context>
           <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2776398707702428623" datatype="html">
+        <source>set prize</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/next-achievement/page-rewards-next-achievement.component.html</context>
+          <context context-type="linenumber">34,37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1258548682816604713" datatype="html">

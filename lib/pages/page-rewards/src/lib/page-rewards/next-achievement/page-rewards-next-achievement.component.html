@@ -25,5 +25,12 @@
         <fast-svg name="banknote" />{{ featureCoins.coins() }} / {{ nextPrize.requiredPoints }}
       </span>
     </div>
+  } @else {
+    <a
+      class="btn-secondary"
+      [routerLink]="['./']"
+      [fragment]="'settings'"
+      [skipLocationChange]="true"
+    i18n>set prize</a>
   }
 }

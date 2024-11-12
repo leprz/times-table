@@ -5,7 +5,9 @@ export const links = {
   division_calculation: '/division/calculation',
   summary: '/summary',
   rewards: '/rewards',
+  rewards__settings: '/rewards#settings',
   home: '/',
+  home__settings: '/#settings'
 } as const;
 
 export function linkDefinition(link: keyof typeof links): string {

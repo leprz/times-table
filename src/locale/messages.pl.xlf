@@ -31,7 +31,7 @@
         <target state="translated">Uczcie się razem - udostępnij koledze!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/share-app/share-app.component.ts</context>
-          <context context-type="linenumber">8,9</context>
+          <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3670906616713353317" datatype="html">
@@ -39,7 +39,7 @@
         <target state="translated">Otwórz listę nagród</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">8,9</context>
+          <context context-type="linenumber">14,15</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4080237943266300131" datatype="html">
@@ -47,7 +47,7 @@
         <target state="translated">Otwórz ustawienia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">29,30</context>
+          <context context-type="linenumber">46,47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2628326099707109790" datatype="html">
@@ -55,7 +55,7 @@
         <target state="translated">dodaj nagrodę</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">49,50</context>
+          <context context-type="linenumber">76,77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3844720777262110149" datatype="html">
@@ -71,7 +71,7 @@
         <target state="translated">Potrafię mnożyć</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
-          <context context-type="linenumber">3,4</context>
+          <context context-type="linenumber">4,5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7977540755068228352" datatype="html">
@@ -79,27 +79,27 @@
         <target state="translated">Quiz</target>
          <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
-          <context context-type="linenumber">5,6</context>
+          <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4123309725761687156" datatype="html">
-      <source>Calculation</source>
-      <target state="translated">Liczenie</target>
-      <context-group purpose="location">
-        <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
-        <context context-type="linenumber">6,7</context>
-      </context-group>
-      <context-group purpose="location">
-        <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
-        <context context-type="linenumber">12,13</context>
-      </context-group>
-    </trans-unit>
-    <trans-unit id="2157552349562301932" datatype="html">
+        <source>Calculation</source>
+        <target state="translated">Liczenie</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2157552349562301932" datatype="html">
         <source>I can divide</source>
         <target state="translated">Potrafię dzielić</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
-          <context context-type="linenumber">10,11</context>
+          <context context-type="linenumber">17,18</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8121907747276361298" datatype="html">
@@ -142,6 +142,14 @@
           <context context-type="linenumber">13,14</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="2776398707702428623" datatype="html">
+        <source>set prize</source>
+        <target state="translated">ustaw nagrodę</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/next-achievement/page-rewards-next-achievement.component.html</context>
+          <context context-type="linenumber">34,37</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="1258548682816604713" datatype="html">
         <source>Collected rewards</source>
         <target state="translated">Zebrane nagrody</target>
@@ -171,7 +179,7 @@
         <target state="translated">Poprawna odpowiedź to:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-times-table-guesser/src/lib/page-times-table-guesser/page-times-table-guesser.component.html</context>
-          <context context-type="linenumber">43,44</context>
+          <context context-type="linenumber">47,48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6921336596257236722" datatype="html">
@@ -179,7 +187,7 @@
         <target state="translated">Dostępna jest nowa wersja. Czy chcesz zaktualizować?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.ts</context>
-          <context context-type="linenumber">24</context>
+          <context context-type="linenumber">26</context>
         </context-group>
       </trans-unit>
     </body>

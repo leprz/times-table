@@ -5,11 +5,12 @@ import { FeaturePrizeSearchComponent } from '@org/feature-prize';
 import { OnInitComponent } from '@org/page-common';
 import { UiProgressBarComponent } from '@org/ui-progress';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'page-rewards-next-achievement',
   standalone: true,
-  imports: [CommonModule, FeatureCoinsComponent, FeaturePrizeSearchComponent, OnInitComponent, UiProgressBarComponent, FastSvgComponent],
+  imports: [CommonModule, FeatureCoinsComponent, FeaturePrizeSearchComponent, OnInitComponent, UiProgressBarComponent, FastSvgComponent, RouterLink],
   templateUrl: './page-rewards-next-achievement.component.html',
   styleUrl: './page-rewards-next-achievement.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

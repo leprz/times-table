@@ -86,7 +86,7 @@ body, input {
 }
 
 button,
-a[class^="btn-"] {
+a[class*="btn-"] {
   position: relative;
   font-family: "LXGW WenKai TC", cursive;
   font-size: 1em;

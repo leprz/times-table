@@ -13,6 +13,7 @@ import { FeatureRewardListComponent } from '@org/feature-rewards';
 import { LayoutMode, WithLayoutMode } from '../layout-mode/page-common-layout-mode.component';
 import { UiTeleportOutletDirective } from '@org/ui-teleport';
 import { ShareAppComponent } from '../share-app/share-app.component';
+import { RouteManagerComponent } from '../route-manager.component';
 
 @Component({
   selector: 'page-common-top-bar',
@@ -29,7 +30,8 @@ import { ShareAppComponent } from '../share-app/share-app.component';
     FeatureRewardListComponent,
     OnInitComponent,
     UiTeleportOutletDirective,
-    ShareAppComponent
+    ShareAppComponent,
+    RouteManagerComponent
   ],
   templateUrl: './page-common-top-bar.component.html',
   styleUrl: './page-common-top-bar.component.css',
@@ -56,4 +58,6 @@ export class PageCommonTopBarComponent implements WithLayoutMode {
         break;
     }
   }
+
+  protected readonly console = console;
 }

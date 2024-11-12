@@ -46,7 +46,7 @@ export class PageCommonLayoutModeComponent {
     this.layoutModeChanged.emit();
   }
 
-  applyMode(component: WithLayoutMode): void {
+  applyModeTo(component: WithLayoutMode): void {
     component.onLayoutModeChange(this.mode());
   }
 }

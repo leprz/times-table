@@ -1,3 +1,9 @@
+<page-common-route-manager
+  #routeManager
+  [observeFragment]="'settings'"
+  (fragmentEnabled)="settingsDialog.showModal()"
+/>
+
 <div class="top-bar body-extra-small">
   <div class="top-bar__actions-primary">
     <span class="top-bar__action app__action-coins">
@@ -32,14 +38,16 @@
     </span>
   </div>
   @if(isSettingsButtonVisible()) {
-    <button
+    <a
       class="top-bar__action top-bar__action-settings btn-secondary btn-icon"
+      [routerLink]="[routeManager.activeUrl()]"
+      [fragment]="'settings'"
+      [skipLocationChange]="true"
       aria-label="Open settings dialog"
       i18n-aria-label
-      (click)="settingsDialog.showModal()"
     >
       <fast-svg [name]="'settings'" />
-    </button>
+    </a>
   }
   @if(isBackButtonVisible()) {
     <button
@@ -54,6 +62,7 @@
 <ui-dialog
   [hasStickyHeader]="true"
   #settingsDialog
+  (modalClosed)="routeManager.removeFragments()"
 >
   <div appUiDialogHeader>
     @defer (when settingsDialog.isOpened()) {

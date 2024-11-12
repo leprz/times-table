@@ -11,6 +11,7 @@ export interface ExerciseSummary {
   operationSign: string,
   highScoreKey?: string,
 }
+
 export interface SummaryPresenter {
   showExerciseSummary(
     summary: ExerciseSummary
