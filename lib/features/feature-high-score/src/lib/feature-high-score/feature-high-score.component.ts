@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HighScoreService } from '@org/feature-times-table';
 import { MessageBus } from '@org/message-bus';

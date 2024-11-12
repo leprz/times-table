@@ -3,7 +3,10 @@ import {
   CreateOneRewardBodyParams,
   CreateOneRewardResult,
   ReadManyRewardsResult,
-  SearchManyRewardsBodyParams, UpdateOneRewardBodyParams, UpdateOneRewardPathParams, UpdateOneRewardResult
+  SearchManyRewardsBodyParams,
+  UpdateOneRewardBodyParams,
+  UpdateOneRewardPathParams,
+  UpdateOneRewardResult
 } from './contract-rewards';
 
 export abstract class RewardsDataServicePort {

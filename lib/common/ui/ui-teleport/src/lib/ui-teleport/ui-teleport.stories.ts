@@ -1,6 +1,6 @@
-import {Meta, moduleMetadata, StoryObj} from '@storybook/angular';
-import {UiTeleportToDirective} from "./ui-teleport-to.directive";
-import {UiTeleportOutletDirective} from "./ui-teleport-outlet.directive";
+import { Meta, moduleMetadata, StoryObj } from '@storybook/angular';
+import { UiTeleportToDirective } from './ui-teleport-to.directive';
+import { UiTeleportOutletDirective } from './ui-teleport-outlet.directive';
 
 export default {
   title: 'Teleport',

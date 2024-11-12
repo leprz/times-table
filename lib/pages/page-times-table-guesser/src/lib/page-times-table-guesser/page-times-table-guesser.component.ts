@@ -4,10 +4,10 @@ import { Router } from '@angular/router';
 import { LayoutModeService, links } from '@org/page-common';
 import {
   FeatureExerciseComponent,
-  FormatEquationPipe,
-  FormatHighScorePipe,
   FeatureScoreComponent,
-  FeatureTimerComponent
+  FeatureTimerComponent,
+  FormatEquationPipe,
+  FormatHighScorePipe
 } from '@org/feature-times-table';
 import { UiKeyboardComponent } from '@org/ui-keyboard';
 import { FeatureHighScoreComponent } from '@org/feature-high-score';

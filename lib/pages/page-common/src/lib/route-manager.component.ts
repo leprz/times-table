@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, effect, inject, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { ActivatedRoute, EventType, Router } from '@angular/router';
 import { takeUntilDestroyed, toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { filterNill } from '@org/utils-data-service';

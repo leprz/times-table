@@ -5,7 +5,7 @@ import {
   NgModuleRef,
   TemplateRef,
   Type,
-  ViewContainerRef,
+  ViewContainerRef
 } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 

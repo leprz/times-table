@@ -5,9 +5,11 @@ import {
   DeleteOnePrizeResult,
   GetManyAchievedPrizeBodyParams,
   GetManyAchievedPrizeResult,
+  GetOneNextPrizeBodyParams,
+  GetOneNextPrizeResult,
   ReadManyPrizesResult,
   ReadOnePrizePathParams,
-  ReadOnePrizeResult, GetOneNextPrizeBodyParams, GetOneNextPrizeResult,
+  ReadOnePrizeResult,
   UpdateOnePrizeBodyParams,
   UpdateOnePrizePathParams,
   UpdateOnePrizeResult

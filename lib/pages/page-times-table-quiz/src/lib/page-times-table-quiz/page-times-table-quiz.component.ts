@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import {
   FeatureExerciseComponent,
   FeatureTimerComponent,
-  FormatEquationPipe, Operation,
+  FormatEquationPipe,
+  Operation,
   RandomQuizAnswerListComponent
 } from '@org/feature-times-table';
 import { toSignal } from '@angular/core/rxjs-interop';

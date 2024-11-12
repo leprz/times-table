@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { combineLatest, combineLatestWith, Observable, Subject, switchMap } from 'rxjs';
-import { PrizeDataServicePort, ReadManyPrizesResult, GetOneNextPrizeBodyParams } from '@org/contract-prize';
+import { GetOneNextPrizeBodyParams, PrizeDataServicePort, ReadManyPrizesResult } from '@org/contract-prize';
 import { PrizeDataServiceIndexedDb } from '../data-service/prize-data-service.indexed-db';
 import { MessageBus } from '@org/message-bus';
 import { PrizeDeletedEvent } from '../common/prize-deleted.event';

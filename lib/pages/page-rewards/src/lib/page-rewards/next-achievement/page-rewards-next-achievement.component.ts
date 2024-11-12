@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeatureCoinsComponent } from '@org/feature-coins';
 import { FeaturePrizeSearchComponent } from '@org/feature-prize';
-import { OnInitComponent } from '@org/page-common';
+import { LayoutModeService, OnInitComponent } from '@org/page-common';
 import { UiProgressBarComponent } from '@org/ui-progress';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 import { RouterLink } from '@angular/router';
@@ -17,4 +17,9 @@ import { RouterLink } from '@angular/router';
 })
 export class PageRewardsNextAchievementComponent {
   highestReward = input.required<number | null>();
+  layoutModeService = inject(LayoutModeService);
+
+  constructor() {
+    this.layoutModeService.applyMode('distraction-free');
+  }
 }

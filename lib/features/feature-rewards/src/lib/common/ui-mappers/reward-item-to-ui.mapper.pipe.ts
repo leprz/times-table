@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { RewardResponseItem } from '@org/contract-rewards';
 import { UiRewardItem } from '@org/ui-reward';
+
 @Pipe({
   standalone: true,
   name: 'mapRewardItemToUi'

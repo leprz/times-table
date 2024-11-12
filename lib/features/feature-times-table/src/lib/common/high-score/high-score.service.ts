@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { MessageBus } from '@org/message-bus';
-import { HighScoreCalculatedEvent, ExerciseFinishedEvent } from '@org/common-events';
+import { ExerciseFinishedEvent, HighScoreCalculatedEvent } from '@org/common-events';
 import { LocalStorageService } from '@org/local-storage';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 

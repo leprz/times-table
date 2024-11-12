@@ -1,6 +1,6 @@
-import type {Meta, StoryObj} from '@storybook/angular';
-import {UiTodoItemComponent} from './ui-todo-item.component';
-import {UiTodoItem} from "./ui-todo-item.interface";
+import type { Meta, StoryObj } from '@storybook/angular';
+import { UiTodoItemComponent } from './ui-todo-item.component';
+import { UiTodoItem } from './ui-todo-item.interface';
 
 const meta: Meta<UiTodoItemComponent> = {
   component: UiTodoItemComponent,
