@@ -2,6 +2,7 @@
   @if (correctValue(); as correctValue) {
     <ui-quiz-answer-item
       class="random-quiz-answer-list__answer"
+      draggable="false"
       [isDisabled]="isAnswered()"
       [answer]="answer | mapQuizAnswerToAnswerUi : correctValue"
       (click)="onAnswerClick(answer.value)"
