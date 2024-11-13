@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { combineLatestWith, Observable, Subject, switchMap } from 'rxjs';
+import {
+  BehaviorSubject,
+  combineLatestWith,
+  Observable,
+  Subject,
+  switchMap,
+} from 'rxjs';
 import {
   GetOneNextPrizeBodyParams,
   GetOneNextPrizeResult,
@@ -10,6 +16,8 @@ import { MessageBus } from '@org/message-bus';
 import { PrizeDeletedEvent } from '../common/prize-deleted.event';
 import { PrizeCreatedEvent, RewardCreatedEvent } from '@org/common-events';
 import { PrizeUpdatedEvent } from '../common/prize-updated.event';
+import { PrizeSearch } from '@org/feature-coins';
+import { filterNill } from '@org/utils-data-service';
 
 @Component({
   selector: 'feature-prize-search',
@@ -23,15 +31,18 @@ import { PrizeUpdatedEvent } from '../common/prize-updated.event';
   template: ` <ng-content></ng-content> `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeaturePrizeSearchComponent {
+export class FeaturePrizeSearchComponent implements PrizeSearch {
   readonly prizeDataService = inject(PrizeDataServicePort);
 
-  readonly loadAction = new Subject<GetOneNextPrizeBodyParams>();
+  readonly loadAction = new BehaviorSubject<GetOneNextPrizeBodyParams | null>(
+    null,
+  );
   readonly messageBus = inject(MessageBus);
 
   readonly nextPrize$: Observable<GetOneNextPrizeResult> = this.loadAction
     .asObservable()
     .pipe(
+      filterNill(),
       combineLatestWith(
         this.messageBus.on(PrizeCreatedEvent, 'reload prize list'),
         this.messageBus.on(PrizeDeletedEvent, 'reload prize list'),

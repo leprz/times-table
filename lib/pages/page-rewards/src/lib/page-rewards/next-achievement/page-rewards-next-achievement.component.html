@@ -1,39 +1,41 @@
 <feature-prize-search #featurePrizeSearch />
-<feature-coins #featureCoins />
-@let coins = featureCoins.coins();
-@if (coins !== null) {
-  <page-common-on-init (onInit)="featurePrizeSearch.searchNextPrize(coins)" />
-  @if (featurePrizeSearch.nextPrize$ | async; as nextPrize) {
-    <div class="page-rewards-next-achievement">
-      <div class="page-rewards-next-achievement__prize-header">
-        <span class="page-rewards-next-achievement__prize-icon body-small">
-          <fast-svg name="diamond" />
-        </span>
-        <div class="page-rewards-next-achievement__prize-name body-small" i18n>
-          Next reward
-        </div>
+<feature-coins
+  #featureCoins
+  (coinsUpdated)="featureCoins.loadNextPrize(featurePrizeSearch)"
+/>
+@if (featurePrizeSearch.nextPrize$ | async; as nextPrize) {
+  <div class="page-rewards-next-achievement">
+    <div class="page-rewards-next-achievement__prize-header">
+      <span class="page-rewards-next-achievement__prize-icon body-small">
+        <fast-svg name="diamond" />
+      </span>
+      <div class="page-rewards-next-achievement__prize-name body-small" i18n>
+        Next reward
       </div>
-      <div class="page-rewards-next-achievement__prize-name body-extra-small">
-        {{ nextPrize.name }}
-      </div>
+    </div>
+    <div class="page-rewards-next-achievement__prize-name body-extra-small">
+      {{ nextPrize.name }}
+    </div>
+    @let highestRewardValue = highestReward();
+    @if (highestRewardValue !== null) {
       <ui-progress-bar
         class="page-rewards-next-achievement__progress body-small"
-        [current]="(featureCoins.coins() ?? 0) - (highestReward() ?? 0)"
-        [max]="nextPrize.requiredPoints"
+        [current]="featureCoins.coins() - highestRewardValue"
+        [max]="nextPrize.requiredPoints - highestRewardValue"
       />
-      <span class="page-rewards-next-achievement__points body-extra-small">
-        <fast-svg name="banknote" />{{ featureCoins.coins() }} /
-        {{ nextPrize.requiredPoints }}
-      </span>
-    </div>
-  } @else {
-    <a
-      class="btn-secondary"
-      [routerLink]="['./']"
-      [fragment]="'settings'"
-      [skipLocationChange]="true"
-      i18n
-      >set prize</a
-    >
-  }
+    }
+    <span class="page-rewards-next-achievement__points body-extra-small">
+      <fast-svg name="banknote" />{{ featureCoins.coins() }} /
+      {{ nextPrize.requiredPoints }}
+    </span>
+  </div>
+} @else {
+  <a
+    class="btn-secondary"
+    [routerLink]="['./']"
+    [fragment]="'settings'"
+    [skipLocationChange]="true"
+    i18n
+    >set prize</a
+  >
 }
