@@ -28,4 +28,4 @@ export const Teleport: StoryObj = {
       </div>
     `,
   }),
-}
+};

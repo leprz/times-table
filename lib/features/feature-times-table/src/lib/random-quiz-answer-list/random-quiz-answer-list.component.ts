@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QuizAnswerToAnswerUiPipe } from './quiz-answer-to-answer-ui.pipe';
 import { v4 as uuidv4 } from 'uuid';
@@ -16,7 +22,7 @@ export interface UiAnswer {
   imports: [CommonModule, QuizAnswerToAnswerUiPipe, UiQuizAnswerItemComponent],
   templateUrl: 'random-quiz-answer-list.component.html',
   styleUrl: 'random-quiz-answer-list.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RandomQuizAnswerListComponent {
   isAnswered = input<boolean>(false);
@@ -29,14 +35,14 @@ export class RandomQuizAnswerListComponent {
     }
     const wrongAnswers: number[] = Array.from(
       { length: this.answersNumber() - 1 },
-      () => correctAnswer
+      () => correctAnswer,
     ).reduce<number[]>((acc, correctValue, currentIndex) => {
       const randomizer = this.answersNumber() / 2 > currentIndex ? -1 : 1;
       return [...acc, correctValue + currentIndex + 3 * randomizer];
     }, []);
 
     const answers = [correctAnswer, ...wrongAnswers].sort(
-      () => Math.random() - 0.5
+      () => Math.random() - 0.5,
     );
     return answers.map((label) => {
       return {

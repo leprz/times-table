@@ -15,29 +15,36 @@ export class LessonSummaryCoinsListener {
   private readonly uuidGen = inject(UuidGen);
   private readonly clock = inject(Clock);
 
-
-  readonly convertPricesToRewards$ =
-    this.messageBus.on(CoinsCalculatedEvent, 'update rewards list').pipe(
-      filter(event => event !== null),
-      switchMap((event) => this.prizeDataService.findManyAchievedPrizes({
-        collectedPoints: event.payload.totalCoins,
-      })),
+  readonly convertPricesToRewards$ = this.messageBus
+    .on(CoinsCalculatedEvent, 'update rewards list')
+    .pipe(
+      filter((event) => event !== null),
+      switchMap((event) =>
+        this.prizeDataService.findManyAchievedPrizes({
+          collectedPoints: event.payload.totalCoins,
+        }),
+      ),
       switchMap((achievedPrizes) => {
-        return combineLatest(achievedPrizes.map(
-          (achievedPrize) => combineLatest([
-            this.rewardsDataService.createOne({
-              id: this.uuidGen.generate(),
-              name: achievedPrize.name,
-              requiredPoints: achievedPrize.requiredPoints,
-              achievedAt: this.clock.today().toISOString(),
-            }),
-            this.prizeDataService.updateOne({
-              id: achievedPrize.id,
-            }, {
-              isAchieved: true
-            })
-          ])
-        ));
+        return combineLatest(
+          achievedPrizes.map((achievedPrize) =>
+            combineLatest([
+              this.rewardsDataService.createOne({
+                id: this.uuidGen.generate(),
+                name: achievedPrize.name,
+                requiredPoints: achievedPrize.requiredPoints,
+                achievedAt: this.clock.today().toISOString(),
+              }),
+              this.prizeDataService.updateOne(
+                {
+                  id: achievedPrize.id,
+                },
+                {
+                  isAchieved: true,
+                },
+              ),
+            ]),
+          ),
+        );
       }),
       tap(() => this.messageBus.emit(new RewardCreatedEvent())),
     );

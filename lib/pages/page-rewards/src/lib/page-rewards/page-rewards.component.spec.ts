@@ -10,7 +10,7 @@ describe('PageRewardsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PageRewardsComponent],
-      providers: [provideLocationMocks(), provideRouter([])]
+      providers: [provideLocationMocks(), provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageRewardsComponent);

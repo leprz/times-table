@@ -1,12 +1,15 @@
 import { inject, Injectable } from '@angular/core';
-import { CoinsCalculatedEvent, ExerciseFinishedEvent } from '@org/common-events';
+import {
+  CoinsCalculatedEvent,
+  ExerciseFinishedEvent,
+} from '@org/common-events';
 import { MessageBus } from '@org/message-bus';
 import { CoinPrizePolicy } from './coin-prize-policy.service';
 import { LocalStorageService } from '@org/local-storage';
 import { shareReplay, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CoinCollectorService {
   localStorageService = inject(LocalStorageService);
@@ -14,9 +17,8 @@ export class CoinCollectorService {
 
   constructor(
     private readonly messageBusService: MessageBus,
-    private readonly coinPrizePolicy: CoinPrizePolicy
-  ) {
-  }
+    private readonly coinPrizePolicy: CoinPrizePolicy,
+  ) {}
 
   listen$ = this.messageBusService
     .on(ExerciseFinishedEvent, 'recalculate coins for new score')
@@ -24,12 +26,16 @@ export class CoinCollectorService {
       tap((event) => {
         if (event) {
           const currentCoinsValue = this.getCoins();
-          const earnedCoins = this.coinPrizePolicy.countPrize(event.payload.totalScore);
+          const earnedCoins = this.coinPrizePolicy.countPrize(
+            event.payload.totalScore,
+          );
           this.setCoins(currentCoinsValue + earnedCoins);
-          this.messageBusService.emit(new CoinsCalculatedEvent({ totalCoins: this.getCoins() }));
+          this.messageBusService.emit(
+            new CoinsCalculatedEvent({ totalCoins: this.getCoins() }),
+          );
         }
       }),
-      shareReplay(1)
+      shareReplay(1),
     );
 
   getCoins(): number {

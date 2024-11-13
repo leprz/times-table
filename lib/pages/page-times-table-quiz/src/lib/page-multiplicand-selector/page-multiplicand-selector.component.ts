@@ -9,7 +9,7 @@ import { LayoutModeService, links } from '@org/page-common';
   imports: [CommonModule, RouterLink, PageCreateLinkQuizQuestionPipePipe],
   templateUrl: './page-multiplicand-selector.component.html',
   styleUrl: './page-multiplicand-selector.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageMultiplicandSelectorComponent {
   multiplicands = Array.from({ length: 9 }, (_, i) => i + 1);

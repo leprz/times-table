@@ -7,7 +7,7 @@ import {
   FeatureScoreComponent,
   FeatureTimerComponent,
   FormatEquationPipe,
-  FormatHighScorePipe
+  FormatHighScorePipe,
 } from '@org/feature-times-table';
 import { UiKeyboardComponent } from '@org/ui-keyboard';
 import { FeatureHighScoreComponent } from '@org/feature-high-score';
@@ -31,11 +31,11 @@ import { UiBadgeHighScoreComponent } from '@org/ui-badge';
     FeatureTimerComponent,
     FeatureHighScoreComponent,
     UiTeleportToDirective,
-    UiBadgeHighScoreComponent
+    UiBadgeHighScoreComponent,
   ],
   templateUrl: './page-times-table-guesser.component.html',
   styleUrl: './page-times-table-guesser.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageTimesTableGuesserComponent {
   private readonly router = inject(Router);

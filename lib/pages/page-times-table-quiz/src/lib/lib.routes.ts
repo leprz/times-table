@@ -6,8 +6,6 @@ export const pageTimesTableQuizMultiplicationRoutes: Routes = [
   {
     path: '',
     component: PageTimesTableQuizComponent,
-    providers: [
-      ...equationGeneratorMultiplicationProviders,
-    ]
-  }
+    providers: [...equationGeneratorMultiplicationProviders],
+  },
 ];

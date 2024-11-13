@@ -7,12 +7,14 @@ export const pageLessonSummaryRoutes: Route[] = [
   {
     path: '',
     component: PageLessonSummaryComponent,
-    canActivate: [() => {
-      const summaryService = inject(ExerciseSummaryService);
-      if (!summaryService.isInitialized()) {
-        return ['/'];
-      }
-      return true;
-    }]
-  }
+    canActivate: [
+      () => {
+        const summaryService = inject(ExerciseSummaryService);
+        if (!summaryService.isInitialized()) {
+          return ['/'];
+        }
+        return true;
+      },
+    ],
+  },
 ];

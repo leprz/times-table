@@ -1,6 +1,9 @@
-<feature-high-score [key]="exercise.currentExercise()?.operation" #featureHighScore />
+<feature-high-score
+  [key]="exercise.currentExercise()?.operation"
+  #featureHighScore
+/>
 <span *uiTeleportTo="'top-bar-action'">
-  <ui-badge-high-score [highScore]="featureHighScore.highScore()"/>
+  <ui-badge-high-score [highScore]="featureHighScore.highScore()" />
 </span>
 <feature-timer
   #timer
@@ -21,7 +24,7 @@
 />
 <div class="page-times-table-quiz body-medium">
   <section class="page-times-table-quiz__question">
-    {{ exercise.currentExercise() | formatEquation : '?' }}
+    {{ exercise.currentExercise() | formatEquation: '?' }}
   </section>
   <time class="timer">{{ timer.remainingTime() }}s</time>
   <main class="page-times-table-quiz__answers">

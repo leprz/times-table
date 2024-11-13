@@ -12,11 +12,10 @@ const config: StorybookConfig = {
 
   framework: {
     name: '@storybook/angular',
-    options: {
-    },
+    options: {},
   },
 
-  docs: {}
+  docs: {},
 };
 
 export default config;

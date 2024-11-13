@@ -26,20 +26,20 @@ export class ExerciseGenerator {
     maxMultiplicand: number,
     minMultiplier: number,
     maxMultiplier: number,
-    count: number
+    count: number,
   ): Equation[] {
     return Array.from({ length: count }, (_, index) => {
       if (minMultiplicand === maxMultiplicand) {
         return this.equationGenerator.generateEquation(
           minMultiplicand,
-          minMultiplier + index
+          minMultiplier + index,
         );
       }
 
       if (minMultiplier === maxMultiplier) {
         return this.equationGenerator.generateEquation(
           minMultiplicand + index,
-          minMultiplier
+          minMultiplier,
         );
       }
 

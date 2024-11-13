@@ -3,31 +3,35 @@
 <div class="top-bar__prize-list">
   <feature-prize-list #featurePrizeList />
   @if ((featurePrizeList.prizeList$ | async)?.content; as prizeList) {
-    @if(prizeList.length === 0) {
+    @if (prizeList.length === 0) {
       <h2 i18n>No prizes added.</h2>
     }
-    @for(prize of prizeList; track prize.id) {
-      @if(prize.isAchieved) {
+    @for (prize of prizeList; track prize.id) {
+      @if (prize.isAchieved) {
         <ui-todo-item
           class="prize-list__item"
           [todo]="prize | mapPrizeItemToUi"
         >
           <feature-prize-delete #featurePrizeDelete [params]="prize" />
           <div class="prize-list__item-required-coins" todo-item-prefix>
-              <fast-svg name="banknote"/>
-              {{ prize.requiredPoints }}
+            <fast-svg name="banknote" />
+            {{ prize.requiredPoints }}
           </div>
           <button
             todo-item-suffix
             class="btn-icon btn-secondary"
             (click)="featurePrizeDelete.delete()"
-          ><fast-svg name="trash"/></button>
+          >
+            <fast-svg name="trash" />
+          </button>
         </ui-todo-item>
       } @else {
         <ui-todo-item
           class="prize-list__item"
           style="resize: both"
-          [isContainerOnly]="true" [todo]="prize | mapPrizeItemToUi">
+          [isContainerOnly]="true"
+          [todo]="prize | mapPrizeItemToUi"
+        >
           <div class="prize-list__item-content">
             <feature-prize-edit #featurePrizeEdit [params]="prize" />
             <feature-prize-form
@@ -43,11 +47,13 @@
               (save)="prizeForm.submit(prizeForm.keys['name'])"
             ></ui-form-input-inline-editable>
             <div class="prize-list__item-required-coins">
-              <fast-svg name="banknote"/>
+              <fast-svg name="banknote" />
               <ui-form-input-inline-editable
                 class="prize-list__item-required-coins-input body-extra-small"
                 [initialValue]="prize.requiredPoints + ''"
-                [control]="prizeForm.formGroup.controls[prizeForm.keys['requiredCoins']]"
+                [control]="
+                  prizeForm.formGroup.controls[prizeForm.keys['requiredCoins']]
+                "
                 (save)="prizeForm.submit(prizeForm.keys['requiredCoins'])"
               ></ui-form-input-inline-editable>
             </div>
@@ -58,7 +64,9 @@
             todo-item-suffix
             class="btn-icon btn-secondary"
             (click)="featurePrizeDelete.delete()"
-          ><fast-svg name="trash"/></button>
+          >
+            <fast-svg name="trash" />
+          </button>
         </ui-todo-item>
       }
     }

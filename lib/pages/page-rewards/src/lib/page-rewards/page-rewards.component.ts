@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {
   FeatureRewardListComponent,
   FeatureRewardsUpdateComponent,
-  RewardItemToUiMapperPipe
+  RewardItemToUiMapperPipe,
 } from '@org/feature-rewards';
 import { UiRewardItemComponent } from '@org/ui-reward';
 import { UiDialogClearComponent } from '@org/ui-dialog';
@@ -16,10 +16,23 @@ import { PageRewardsNextAchievementComponent } from './next-achievement/page-rew
 
 @Component({
   standalone: true,
-  imports: [CommonModule, FeatureRewardListComponent, OnInitComponent, UiRewardItemComponent, RewardItemToUiMapperPipe, UiPrizeComponent, UiDialogClearComponent, FeatureRewardsUpdateComponent, FeaturePrizeSearchComponent, FeatureCoinsComponent, UiProgressBarComponent, PageRewardsNextAchievementComponent],
+  imports: [
+    CommonModule,
+    FeatureRewardListComponent,
+    OnInitComponent,
+    UiRewardItemComponent,
+    RewardItemToUiMapperPipe,
+    UiPrizeComponent,
+    UiDialogClearComponent,
+    FeatureRewardsUpdateComponent,
+    FeaturePrizeSearchComponent,
+    FeatureCoinsComponent,
+    UiProgressBarComponent,
+    PageRewardsNextAchievementComponent,
+  ],
   templateUrl: './page-rewards.component.html',
   styleUrl: './page-rewards.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageRewardsComponent {
   private readonly layoutModeService = inject(LayoutModeService);

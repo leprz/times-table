@@ -4,7 +4,7 @@
       class="random-quiz-answer-list__answer"
       draggable="false"
       [isDisabled]="isAnswered()"
-      [answer]="answer | mapQuizAnswerToAnswerUi : correctValue"
+      [answer]="answer | mapQuizAnswerToAnswerUi: correctValue"
       (click)="onAnswerClick(answer.value)"
     ></ui-quiz-answer-item>
   }

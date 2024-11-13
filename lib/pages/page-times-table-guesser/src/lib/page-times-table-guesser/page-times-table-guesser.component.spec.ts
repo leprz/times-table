@@ -9,7 +9,7 @@ describe('PageCountComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PageTimesTableGuesserComponent],
-      providers: [...equationGeneratorMultiplicationProviders]
+      providers: [...equationGeneratorMultiplicationProviders],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageTimesTableGuesserComponent);

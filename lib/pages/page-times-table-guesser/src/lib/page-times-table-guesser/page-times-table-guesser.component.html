@@ -25,36 +25,48 @@
           #score
           (currentScoreRecalculated)="keyboard.reset()"
         >
-      <span class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--current-score">
-        {{ score.currentScore() }}
-      </span>
-          <feature-high-score #featureHighScore [key]="exercise.currentExercise()?.operation"/>
+          <span
+            class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--current-score"
+          >
+            {{ score.currentScore() }}
+          </span>
+          <feature-high-score
+            #featureHighScore
+            [key]="exercise.currentExercise()?.operation"
+          />
           @if (featureHighScore.highScore() > 0) {
             /
-            <span class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--high-score">{{
-                featureHighScore.highScore() | formatHighScore
-              }}</span>
+            <span
+              class="page-times-table-guesser__score-bar page-times-table-guesser__score-bar--high-score"
+              >{{ featureHighScore.highScore() | formatHighScore }}</span
+            >
           }
           <span *uiTeleportTo="'top-bar-action'">
-            <ui-badge-high-score [highScore]="featureHighScore.highScore()"/>
+            <ui-badge-high-score [highScore]="featureHighScore.highScore()" />
           </span>
         </feature-score>
       </div>
       @if (exercise.currentExercise()) {
         <span class="page-times-table-guesser__current-exercise">
-        <span class="page-times-table-guesser__wrong-answer-indicator">
-          @if (exercise.isCorrect() === false) {
-            <span i18n>The correct answer is:</span>
-          }
+          <span class="page-times-table-guesser__wrong-answer-indicator">
+            @if (exercise.isCorrect() === false) {
+              <span i18n>The correct answer is:</span>
+            }
+          </span>
+          <span class="page-times-table-guesser__answer">
+            @if (exercise.isCorrect() === false) {
+              {{
+                exercise.currentExercise()
+                  | formatEquation: exercise.currentExercise()?.product + ''
+              }}
+            } @else {
+              {{
+                exercise.currentExercise()
+                  | formatEquation: keyboard.inputValue()
+              }}
+            }
+          </span>
         </span>
-        <span class="page-times-table-guesser__answer">
-          @if (exercise.isCorrect() === false) {
-            {{ exercise.currentExercise() | formatEquation : (exercise.currentExercise()?.product + '') }}
-          } @else {
-            {{ exercise.currentExercise() | formatEquation : keyboard.inputValue() }}
-          }
-        </span>
-      </span>
       }
     </div>
     <ui-keyboard
@@ -62,6 +74,8 @@
       [isDisabled]="penaltyTimer.isRunning()"
       (submittedNonEmpty)="exercise.answer(keyboard.inputValue())"
     ></ui-keyboard>
-    <time class="page-times-table-guesser__remaining-time timer">{{ timer.remainingTime() }}s</time>
+    <time class="page-times-table-guesser__remaining-time timer"
+      >{{ timer.remainingTime() }}s</time
+    >
   </div>
 </div>

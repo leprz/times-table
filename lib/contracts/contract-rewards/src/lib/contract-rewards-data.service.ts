@@ -6,7 +6,7 @@ import {
   SearchManyRewardsBodyParams,
   UpdateOneRewardBodyParams,
   UpdateOneRewardPathParams,
-  UpdateOneRewardResult
+  UpdateOneRewardResult,
 } from './contract-rewards';
 
 export abstract class RewardsDataServicePort {
@@ -14,9 +14,16 @@ export abstract class RewardsDataServicePort {
 
   abstract readMany(): Observable<ReadManyRewardsResult>;
 
-  abstract searchMany(criteria: SearchManyRewardsBodyParams): Observable<ReadManyRewardsResult>;
+  abstract searchMany(
+    criteria: SearchManyRewardsBodyParams,
+  ): Observable<ReadManyRewardsResult>;
 
-  abstract createOne(bodyParams: CreateOneRewardBodyParams): Observable<CreateOneRewardResult>;
+  abstract createOne(
+    bodyParams: CreateOneRewardBodyParams,
+  ): Observable<CreateOneRewardResult>;
 
-  abstract updateOne(pathParams: UpdateOneRewardPathParams, bodyParams: UpdateOneRewardBodyParams): Observable<UpdateOneRewardResult>;
+  abstract updateOne(
+    pathParams: UpdateOneRewardPathParams,
+    bodyParams: UpdateOneRewardBodyParams,
+  ): Observable<UpdateOneRewardResult>;
 }

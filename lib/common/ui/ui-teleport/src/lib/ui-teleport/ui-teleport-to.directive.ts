@@ -1,4 +1,10 @@
-import { Directive, effect, input, OnDestroy, TemplateRef } from '@angular/core';
+import {
+  Directive,
+  effect,
+  input,
+  OnDestroy,
+  TemplateRef,
+} from '@angular/core';
 import { UiTeleportService } from './ui-teleport.service';
 
 @Directive({
@@ -10,7 +16,7 @@ export class UiTeleportToDirective implements OnDestroy {
 
   constructor(
     private readonly templateRef: TemplateRef<unknown>,
-    private readonly teleportService: UiTeleportService
+    private readonly teleportService: UiTeleportService,
   ) {
     effect(() => {
       this.startTeleportation();
@@ -25,7 +31,7 @@ export class UiTeleportToDirective implements OnDestroy {
     if (this.uiTeleportTo()) {
       this.teleportService.startTeleportation(
         this.uiTeleportTo(),
-        this.templateRef
+        this.templateRef,
       );
     }
   }

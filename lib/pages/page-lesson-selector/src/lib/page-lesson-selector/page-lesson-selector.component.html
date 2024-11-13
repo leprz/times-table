@@ -3,25 +3,37 @@
     <header>
       <h3 class="body-small" i18n>I can multiply</h3>
       <div class="page-lesson-selector__lesson-high-score body-extra-small">
-        <feature-high-score [key]="Operation.Multiplication" #featureHighScoreMultiply />
-        <ui-badge-high-score [highScore]="featureHighScoreMultiply.highScore()"/>
+        <feature-high-score
+          [key]="Operation.Multiplication"
+          #featureHighScoreMultiply
+        />
+        <ui-badge-high-score
+          [highScore]="featureHighScoreMultiply.highScore()"
+        />
       </div>
     </header>
     <footer class="page-lesson-selector__actions body-medium">
       <button [routerLink]="links.multiplication_quiz" i18n>Quiz</button>
-      <button [routerLink]="links.multiplication_calculation" i18n>Calculation</button>
+      <button [routerLink]="links.multiplication_calculation" i18n>
+        Calculation
+      </button>
     </footer>
   </section>
   <section class="surface">
     <header>
       <h3 class="body-small" i18n>I can divide</h3>
       <div class="page-lesson-selector__lesson-high-score body-extra-small">
-        <feature-high-score [key]="Operation.Division" #featureHighScoreDivide />
-        <ui-badge-high-score [highScore]="featureHighScoreDivide.highScore()"/>
+        <feature-high-score
+          [key]="Operation.Division"
+          #featureHighScoreDivide
+        />
+        <ui-badge-high-score [highScore]="featureHighScoreDivide.highScore()" />
       </div>
     </header>
     <footer class="page-lesson-selector__actions body-medium">
-      <button [routerLink]="links.division_calculation" i18n>Calculation</button>
+      <button [routerLink]="links.division_calculation" i18n>
+        Calculation
+      </button>
     </footer>
   </section>
 </div>

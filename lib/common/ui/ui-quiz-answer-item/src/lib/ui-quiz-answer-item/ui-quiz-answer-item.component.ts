@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface QuizAnswerItem {
@@ -12,7 +17,7 @@ export interface QuizAnswerItem {
   imports: [CommonModule],
   templateUrl: './ui-quiz-answer-item.component.html',
   styleUrl: './ui-quiz-answer-item.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiQuizAnswerItemComponent {
   answer = input.required<QuizAnswerItem>();

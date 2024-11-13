@@ -1,6 +1,18 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, OnDestroy, output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  OnDestroy,
+  output,
+  signal,
+} from '@angular/core';
 import { Randomizer } from '../exercise-generator/equation-generator-multiplication';
-import { Equation, ExerciseGenerator } from '../exercise-generator/exercise-generator';
+import {
+  Equation,
+  ExerciseGenerator,
+} from '../exercise-generator/exercise-generator';
 import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
 
 @Component({
@@ -8,9 +20,9 @@ import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summ
   standalone: true,
   providers: [ExerciseGenerator],
   template: '<ng-content></ng-content>',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeatureExerciseComponent implements OnDestroy{
+export class FeatureExerciseComponent implements OnDestroy {
   readonly exerciseGenerator = inject(ExerciseGenerator);
   readonly summaryService = inject(ExerciseSummaryService);
 
@@ -28,8 +40,8 @@ export class FeatureExerciseComponent implements OnDestroy{
           this.maxMultiplicand(),
           this.minMultiplier(),
           this.maxMultiplier(),
-          this.numberOfExercises() ?? 1
-        )
+          this.numberOfExercises() ?? 1,
+        ),
       ),
       ...this.generatedExercises(),
     ];
@@ -37,7 +49,7 @@ export class FeatureExerciseComponent implements OnDestroy{
 
   readonly currentExerciseIndex = signal(0);
   readonly currentExercise = computed<Equation | null>(
-    () => this.exercises()[this.currentExerciseIndex()] ?? null
+    () => this.exercises()[this.currentExerciseIndex()] ?? null,
   );
   readonly correctAnswers = signal(0);
   readonly incorrectAnswers = signal(0);
@@ -140,7 +152,7 @@ export class FeatureExerciseComponent implements OnDestroy{
           this.maxMultiplicand(),
           this.minMultiplier(),
           this.maxMultiplier(),
-          1
+          1,
         ),
       ]);
     }

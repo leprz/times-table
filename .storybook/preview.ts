@@ -1,2 +1,2 @@
-export const tags = ["autodocs"];
+export const tags = ['autodocs'];
 import '@angular/localize/init';

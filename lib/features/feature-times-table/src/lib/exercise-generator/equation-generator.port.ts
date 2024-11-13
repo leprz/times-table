@@ -8,8 +8,5 @@ export abstract class EquationGeneratorPort {
     summaryService.init(this.operationSign, this.operation);
   }
 
-  abstract generateEquation(
-    multiplicand: number,
-    multiplier: number
-  ): Equation;
+  abstract generateEquation(multiplicand: number, multiplier: number): Equation;
 }

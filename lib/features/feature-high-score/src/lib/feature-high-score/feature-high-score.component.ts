@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  input,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HighScoreService } from '@org/feature-times-table';
 import { MessageBus } from '@org/message-bus';
@@ -12,16 +19,17 @@ import { filterNill } from '@org/utils-data-service';
   standalone: true,
   imports: [CommonModule],
   template: `<ng-content></ng-content>`,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeatureHighScoreComponent {
   readonly key = input<string>();
 
-  readonly highScore = computed(
-    () => {
-      return this.newHighScore() ?? this.localStorageService.getHighScore(this.key() ?? undefined);
-    }
-  );
+  readonly highScore = computed(() => {
+    return (
+      this.newHighScore() ??
+      this.localStorageService.getHighScore(this.key() ?? undefined)
+    );
+  });
 
   readonly newHighScore = signal<number | null>(null);
 
@@ -29,17 +37,23 @@ export class FeatureHighScoreComponent {
   protected readonly messageBusService = inject(MessageBus);
 
   constructor() {
-    toObservable(this.key).pipe(
-      switchMap((key) =>
-        this.messageBusService.on(HighScoreCalculatedEvent, 'update high score in ui component').pipe(
-          filterNill(),
-          filter((event) => event.payload.exerciseKey === key)
-        )
-      ),
-      filterNill(),
-      takeUntilDestroyed()
-    ).subscribe((event) => {
-      this.newHighScore.set(this.localStorageService.getHighScore(event.payload.exerciseKey));
-    });
+    toObservable(this.key)
+      .pipe(
+        switchMap((key) =>
+          this.messageBusService
+            .on(HighScoreCalculatedEvent, 'update high score in ui component')
+            .pipe(
+              filterNill(),
+              filter((event) => event.payload.exerciseKey === key),
+            ),
+        ),
+        filterNill(),
+        takeUntilDestroyed(),
+      )
+      .subscribe((event) => {
+        this.newHighScore.set(
+          this.localStorageService.getHighScore(event.payload.exerciseKey),
+        );
+      });
   }
 }

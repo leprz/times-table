@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject, output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  output,
+  signal,
+} from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -6,26 +12,41 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   selector: 'ui-pin',
   templateUrl: './pin.component.html',
   styleUrl: './pin.component.scss',
-  imports: [
-    ReactiveFormsModule
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  imports: [ReactiveFormsModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PinComponent {
   readonly isPinCorrect = signal<boolean>(false);
   private readonly fb = inject(FormBuilder);
   readonly formGroup = this.fb.nonNullable.group({
-    pinField1: this.fb.nonNullable.control('', [Validators.minLength(1), Validators.min(1), Validators.max(9)]),
-    pinField2: this.fb.nonNullable.control('', [Validators.minLength(1), Validators.min(1), Validators.max(9)]),
-    pinField3: this.fb.nonNullable.control('', [Validators.minLength(1), Validators.min(1), Validators.max(9)]),
-    pinField4: this.fb.nonNullable.control('', [Validators.minLength(1), Validators.min(1), Validators.max(9)]),
+    pinField1: this.fb.nonNullable.control('', [
+      Validators.minLength(1),
+      Validators.min(1),
+      Validators.max(9),
+    ]),
+    pinField2: this.fb.nonNullable.control('', [
+      Validators.minLength(1),
+      Validators.min(1),
+      Validators.max(9),
+    ]),
+    pinField3: this.fb.nonNullable.control('', [
+      Validators.minLength(1),
+      Validators.min(1),
+      Validators.max(9),
+    ]),
+    pinField4: this.fb.nonNullable.control('', [
+      Validators.minLength(1),
+      Validators.min(1),
+      Validators.max(9),
+    ]),
   });
   protected readonly console = console;
 
   pinSubmitted = output<string>();
 
   onPinFormChanged(): void {
-    const pin = '' +
+    const pin =
+      '' +
       this.formGroup.controls.pinField1.value +
       this.formGroup.value.pinField2 +
       this.formGroup.value.pinField3 +
@@ -38,7 +59,12 @@ export class PinComponent {
     }
   }
 
-  onKeyUp(event: KeyboardEvent, currentInput: HTMLInputElement, prevInput: HTMLInputElement | null, nextInput: HTMLInputElement | null): void {
+  onKeyUp(
+    event: KeyboardEvent,
+    currentInput: HTMLInputElement,
+    prevInput: HTMLInputElement | null,
+    nextInput: HTMLInputElement | null,
+  ): void {
     if (event.key === 'Backspace') {
       if (prevInput) {
         prevInput.focus();

@@ -11,13 +11,12 @@ export interface PrizeItemEntity {
 @Injectable({
   providedIn: 'root',
 })
-export class PrizeDb extends Dexie{
+export class PrizeDb extends Dexie {
   readonly prizeItems!: Table<PrizeItemEntity, number>;
   constructor() {
     super('prizes');
     this.version(1).stores({
-      prizeItems: '++primaryId, id, name, isAchieved, requiredPoints'
+      prizeItems: '++primaryId, id, name, isAchieved, requiredPoints',
     });
   }
 }
-

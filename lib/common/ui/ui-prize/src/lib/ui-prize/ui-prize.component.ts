@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, input, OnDestroy, output, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  OnDestroy,
+  output,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 
@@ -13,7 +20,7 @@ export interface UiPrize {
   imports: [CommonModule, FastSvgComponent],
   templateUrl: './ui-prize.component.html',
   styleUrl: './ui-prize.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiPrizeComponent implements OnDestroy {
   readonly prize = input.required<UiPrize>();

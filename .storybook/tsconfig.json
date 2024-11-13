@@ -4,9 +4,5 @@
     "emitDecoratorMetadata": true
   },
   "exclude": ["../**/*.spec.ts"],
-  "include": [
-    "../lib/common/ui/**/*.stories.ts",
-    "*.js",
-    "*.ts"
-  ]
+  "include": ["../lib/common/ui/**/*.stories.ts", "*.js", "*.ts"]
 }

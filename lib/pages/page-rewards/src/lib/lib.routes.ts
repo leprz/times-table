@@ -5,5 +5,5 @@ export const pageRewardsRoutes: Route[] = [
   {
     path: '',
     component: PageRewardsComponent,
-  }
+  },
 ];

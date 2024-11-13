@@ -7,7 +7,7 @@ export const links = {
   rewards: '/rewards',
   rewards__settings: '/rewards#settings',
   home: '/',
-  home__settings: '/#settings'
+  home__settings: '/#settings',
 } as const;
 
 export function linkDefinition(link: keyof typeof links): string {

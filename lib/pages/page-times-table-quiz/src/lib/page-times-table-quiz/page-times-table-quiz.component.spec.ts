@@ -11,7 +11,11 @@ describe('PageTimesTableQuizComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PageTimesTableQuizComponent],
-      providers: [provideLocationMocks(), provideRouter([]), ...equationGeneratorMultiplicationProviders],
+      providers: [
+        provideLocationMocks(),
+        provideRouter([]),
+        ...equationGeneratorMultiplicationProviders,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageTimesTableQuizComponent);

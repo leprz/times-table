@@ -1,26 +1,26 @@
 .page-times-table-quiz {
-    display: flex;
-    height: 100%;
-    overflow: auto;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 2rem;
-    padding-left: 2rem;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
+  display: flex;
+  height: 100%;
+  overflow: auto;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 .page-times-table-quiz__question {
-    display: flex;
-    gap: 0.5rem;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
+  display: flex;
+  gap: 0.5rem;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }
 
 .page-times-table-quiz__answers {
-    width: 100%;
-    max-width: 20rem;
+  width: 100%;
+  max-width: 20rem;
 }

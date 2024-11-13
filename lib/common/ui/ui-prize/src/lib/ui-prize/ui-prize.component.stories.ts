@@ -10,11 +10,11 @@ const meta: Meta<UiPrizeComponent> = {
       providers: [
         provideFastSVG({
           url: (name: string) => `assets/icons-svg/${name}.svg`,
-          defaultSize: '1.5em'
-        })
-      ]
-    })
-  ]
+          defaultSize: '1.5em',
+        }),
+      ],
+    }),
+  ],
 };
 export default meta;
 type Story = StoryObj<UiPrizeComponent>;
@@ -24,6 +24,6 @@ export const Primary: Story = {
     prize: {
       requiredPoints: 1000,
       prizeName: 'Trip to the Moon',
-    }
+    },
   },
 };

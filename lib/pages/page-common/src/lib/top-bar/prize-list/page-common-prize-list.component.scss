@@ -3,7 +3,7 @@
 .top-bar__prize-list {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 .prize-list__item {
@@ -17,13 +17,13 @@
 .prize-list__item-content {
   display: flex;
   flex-direction: column-reverse;
-  gap: .2rem;
+  gap: 0.2rem;
   width: 100%;
 }
 
 .prize-list__item-required-coins {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
   align-items: center;
   color: var(--color-primary);
   fill: var(--color-primary);

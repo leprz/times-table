@@ -6,7 +6,7 @@ import {
   SearchManyRewardsBodyParams,
   UpdateOneRewardBodyParams,
   UpdateOneRewardPathParams,
-  UpdateOneRewardResult
+  UpdateOneRewardResult,
 } from '@org/contract-rewards';
 import { from, map, Observable } from 'rxjs';
 import { RewardsDb } from './rewards.indexed-db';
@@ -14,11 +14,10 @@ import { Injectable } from '@angular/core';
 import { reduceUndefined } from '@org/utils-common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RewardsDataServiceIndexedDb implements RewardsDataServicePort {
-  constructor(private readonly db: RewardsDb) {
-  }
+  constructor(private readonly db: RewardsDb) {}
 
   transaction(callback: () => void): void {
     this.db.transaction('rw', this.db.rewards, () => {
@@ -27,15 +26,19 @@ export class RewardsDataServiceIndexedDb implements RewardsDataServicePort {
   }
 
   readMany(): Observable<ReadManyRewardsResult> {
-    return from(this.db.rewards.orderBy('requiredPoints').reverse().toArray()).pipe(map(
-      content => ({
+    return from(
+      this.db.rewards.orderBy('requiredPoints').reverse().toArray(),
+    ).pipe(
+      map((content) => ({
         content,
-        count: content.length
-      }))
+        count: content.length,
+      })),
     );
   }
 
-  searchMany(criteria: SearchManyRewardsBodyParams): Observable<ReadManyRewardsResult> {
+  searchMany(
+    criteria: SearchManyRewardsBodyParams,
+  ): Observable<ReadManyRewardsResult> {
     const query = this.db.rewards.orderBy('requiredPoints').reverse();
 
     const { isAchieved } = criteria;
@@ -77,24 +80,35 @@ export class RewardsDataServiceIndexedDb implements RewardsDataServicePort {
     }
 
     return from(query.toArray()).pipe(
-      map(content => ({
+      map((content) => ({
         content,
-        count: content.length
-      }))
+        count: content.length,
+      })),
     );
   }
 
-  createOne(bodyParams: CreateOneRewardBodyParams): Observable<CreateOneRewardResult> {
-    return from(this.db.rewards.add({
-      requiredPoints: bodyParams.requiredPoints,
-      name: bodyParams.name,
-      id: bodyParams.id,
-      achievedAt: bodyParams.achievedAt,
-      collectedAt: null
-    })).pipe(map(() => undefined));
+  createOne(
+    bodyParams: CreateOneRewardBodyParams,
+  ): Observable<CreateOneRewardResult> {
+    return from(
+      this.db.rewards.add({
+        requiredPoints: bodyParams.requiredPoints,
+        name: bodyParams.name,
+        id: bodyParams.id,
+        achievedAt: bodyParams.achievedAt,
+        collectedAt: null,
+      }),
+    ).pipe(map(() => undefined));
   }
 
-  updateOne(pathParams: UpdateOneRewardPathParams, bodyParams: UpdateOneRewardBodyParams): Observable<UpdateOneRewardResult> {
-    return from(this.db.rewards.where({ id: pathParams.id }).modify(reduceUndefined(bodyParams))).pipe(map(() => undefined));
+  updateOne(
+    pathParams: UpdateOneRewardPathParams,
+    bodyParams: UpdateOneRewardBodyParams,
+  ): Observable<UpdateOneRewardResult> {
+    return from(
+      this.db.rewards
+        .where({ id: pathParams.id })
+        .modify(reduceUndefined(bodyParams)),
+    ).pipe(map(() => undefined));
   }
 }

@@ -1,7 +1,15 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
 import { combineLatestWith, Observable, Subject, switchMap, tap } from 'rxjs';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
-import { DeleteOnePrizePathParams, PrizeDataServicePort } from '@org/contract-prize';
+import {
+  DeleteOnePrizePathParams,
+  PrizeDataServicePort,
+} from '@org/contract-prize';
 import { filterNill } from '@org/utils-data-service';
 import { MessageBus } from '@org/message-bus';
 import { PrizeDeletedEvent } from '../common/prize-deleted.event';
@@ -10,14 +18,14 @@ import { PrizeDataServiceIndexedDb } from '../data-service/prize-data-service.in
 @Component({
   selector: 'feature-prize-delete',
   standalone: true,
-  providers: [{
-    provide: PrizeDataServicePort,
-    useClass: PrizeDataServiceIndexedDb
-  }],
-  template: `
-    <ng-content></ng-content>
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [
+    {
+      provide: PrizeDataServicePort,
+      useClass: PrizeDataServiceIndexedDb,
+    },
+  ],
+  template: ` <ng-content></ng-content> `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeaturePrizeDeleteComponent {
   readonly params = input.required<DeleteOnePrizePathParams>();
@@ -29,18 +37,17 @@ export class FeaturePrizeDeleteComponent {
   readonly deleteSubject = new Subject<void>();
 
   constructor() {
-    this.deleteResult$.pipe(
-      takeUntilDestroyed(),
-    ).subscribe();
+    this.deleteResult$.pipe(takeUntilDestroyed()).subscribe();
   }
 
-  private readonly deleteResult$: Observable<void> =
-    toObservable(this.params).pipe(
-      filterNill(),
-      combineLatestWith(this.deleteSubject.asObservable()),
-      switchMap(([payload]) => this.prizeDataService.deleteOne(payload)),
-      tap(() => this.messageBus.emit(new PrizeDeletedEvent()))
-    );
+  private readonly deleteResult$: Observable<void> = toObservable(
+    this.params,
+  ).pipe(
+    filterNill(),
+    combineLatestWith(this.deleteSubject.asObservable()),
+    switchMap(([payload]) => this.prizeDataService.deleteOne(payload)),
+    tap(() => this.messageBus.emit(new PrizeDeletedEvent())),
+  );
 
   delete(): void {
     this.deleteSubject.next();

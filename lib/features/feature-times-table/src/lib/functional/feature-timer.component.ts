@@ -6,14 +6,14 @@ import {
   input,
   OnDestroy,
   output,
-  signal
+  signal,
 } from '@angular/core';
 
 @Component({
   selector: 'feature-timer',
   standalone: true,
   template: '<ng-content></ng-content>',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeatureTimerComponent implements AfterViewInit, OnDestroy {
   timer = input.required<number>(); // seconds
@@ -38,7 +38,7 @@ export class FeatureTimerComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (this.startOnLoad()) {
-      const interval= setTimeout(() => {
+      const interval = setTimeout(() => {
         clearInterval(interval);
         this.start();
       }, this.delay() * 1000);

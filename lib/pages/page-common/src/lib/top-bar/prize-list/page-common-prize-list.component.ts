@@ -5,7 +5,7 @@ import {
   FeaturePrizeDeleteComponent,
   FeaturePrizeEditComponent,
   FeaturePrizeFormComponent,
-  FeaturePrizeListComponent
+  FeaturePrizeListComponent,
 } from '@org/feature-prize';
 import { PrizeItemToUiTodoItemMapperPipe } from '../prize-item-to-ui-todo-item.mapper.pipe';
 import { UiInputInlineEditableComponent } from '@org/ui-form-input';
@@ -28,11 +28,9 @@ import { OnInitComponent } from '../../on-init/on-init.component';
     UiTodoItemComponent,
     FeaturePrizeFormComponent,
     FeaturePrizeEditComponent,
-    FeatureCoinsComponent
+    FeatureCoinsComponent,
   ],
   styleUrls: ['./page-common-prize-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PageCommonPrizeListComponent {
-
-}
+export class PageCommonPrizeListComponent {}

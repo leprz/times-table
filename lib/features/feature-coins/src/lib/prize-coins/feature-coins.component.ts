@@ -6,23 +6,20 @@ import { CoinCollectorService } from './coin-collector.service';
 
 @Component({
   standalone: true,
-  template: `
-    <ng-content></ng-content>`,
+  template: ` <ng-content></ng-content>`,
   selector: 'feature-coins',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeatureCoinsComponent {
   readonly coins = signal<number | null>(null);
 
   constructor(
     private readonly messageBusService: MessageBus,
-    private readonly coinCollectorService: CoinCollectorService
+    private readonly coinCollectorService: CoinCollectorService,
   ) {
     this.coins.set(this.coinCollectorService.getCoins());
 
-    coinCollectorService.listen$.pipe(
-      takeUntilDestroyed()
-    ).subscribe();
+    coinCollectorService.listen$.pipe(takeUntilDestroyed()).subscribe();
 
     this.messageBusService
       .on(CoinsCalculatedEvent, 'update coins value in ui component')

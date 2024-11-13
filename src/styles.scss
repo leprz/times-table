@@ -4,11 +4,17 @@
   box-sizing: border-box;
 }
 
-span, p {
+span,
+p {
   text-wrap: pretty;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
@@ -28,30 +34,43 @@ canvas {
 }
 
 .body-extra-small {
-  &, h1, h2, h3 {
+  &,
+  h1,
+  h2,
+  h3 {
     font-size: clamp(1rem, min(1cqw, 1cqh) + 1rem, 1.5rem);
   }
 }
 
 .body-small {
-  &, h1, h2, h3 {
+  &,
+  h1,
+  h2,
+  h3 {
     font-size: clamp(1rem, min(2cqw, 2cqh) + 1rem, 3rem);
   }
 }
 
 .body-medium {
-  &, h1, h2, h3 {
+  &,
+  h1,
+  h2,
+  h3 {
     font-size: var(--font-size-medium);
   }
 }
 
 .body-large {
-  &, h1, h2, h3 {
+  &,
+  h1,
+  h2,
+  h3 {
     font-size: clamp(1rem, min(5cqw, 5cqh) + 3rem, 5rem);
   }
 }
 
-html, body {
+html,
+body {
   color: var(--color-primary);
   height: auto;
   min-height: 100%;
@@ -59,8 +78,9 @@ html, body {
   box-sizing: border-box;
 }
 
-body, input {
-  font-family: "LXGW WenKai TC", cursive;
+body,
+input {
+  font-family: 'LXGW WenKai TC', cursive;
   font-optical-sizing: auto;
   font-style: normal;
   margin: 0;
@@ -86,9 +106,9 @@ body, input {
 }
 
 button,
-a[class*="btn-"] {
+a[class*='btn-'] {
   position: relative;
-  font-family: "LXGW WenKai TC", cursive;
+  font-family: 'LXGW WenKai TC', cursive;
   font-size: 1em;
   font-weight: 500;
   text-decoration: none;
@@ -99,7 +119,6 @@ a[class*="btn-"] {
   fill: white;
   cursor: pointer;
   border-radius: 100px 250px 100px 200px / 200px 100px 200px 100px;
-
 
   &:nth-child(2n) {
     border-radius: 200px 100px 200px 100px / 100px 200px 100px 200px;
@@ -121,7 +140,7 @@ a[class*="btn-"] {
   }
 
   &:not([disabled]):active {
-    scale: .9;
+    scale: 0.9;
   }
 }
 
@@ -149,7 +168,7 @@ a.btn-tertiary {
 
 button.btn-icon,
 a.btn-icon {
-  padding: .2rem;
+  padding: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -157,13 +176,13 @@ a.btn-icon {
   min-width: 3rem;
 
   fast-svg + span {
-    padding-right: .5rem;
+    padding-right: 0.5rem;
   }
 }
 
 .surface {
-  padding: max(.5rem, .2em);
-  border-radius: .5em;
+  padding: max(0.5rem, 0.2em);
+  border-radius: 0.5em;
   background-color: var(--color-tertiary);
 }
 
@@ -172,8 +191,8 @@ a.btn-icon {
   font-weight: 500;
 }
 
-input[type=text],
-input[type=text]:focus-visible {
+input[type='text'],
+input[type='text']:focus-visible {
   outline: none;
   border: none;
   border-radius: 1rem;

@@ -1,10 +1,12 @@
 <feature-rewards-list #featureRewardsList />
 <page-common-on-init (onInit)="featureRewardsList.loadAll()" />
-<page-rewards-next-achievement [highestReward]="featureRewardsList.highestReward$ | async"/>
+<page-rewards-next-achievement
+  [highestReward]="featureRewardsList.highestReward$ | async"
+/>
 <h3 class="body-extra-small" i18n>Collected rewards</h3>
 <div class="page-rewards__list">
-  @if ((featureRewardsList.rewards$ | async); as rewards) {
-    @if(rewards.content.length === 0) {
+  @if (featureRewardsList.rewards$ | async; as rewards) {
+    @if (rewards.content.length === 0) {
       <div class="page-rewards__list-item--is-empty">
         <span class="body-medium" i18n>No rewards</span>
       </div>
@@ -12,20 +14,18 @@
     @for (reward of rewards.content; track reward.id) {
       <div>
         @if (reward.collectedAt === null) {
-          <feature-rewards-update
-            #featureRewardsUpdate
-            [params]="reward"
-          />
+          <feature-rewards-update #featureRewardsUpdate [params]="reward" />
           <ui-dialog-clear
             #prizeDialog
             (modalShowed)="prize.animate()"
             (modalClosed)="featureRewardsUpdate.collectReward()"
           >
-            <ui-prize [prize]="{
-              requiredPoints: reward.requiredPoints,
-              prizeName: reward.name,
-            }"
-            #prize
+            <ui-prize
+              [prize]="{
+                requiredPoints: reward.requiredPoints,
+                prizeName: reward.name,
+              }"
+              #prize
             ></ui-prize>
           </ui-dialog-clear>
           <div class="page-rewards__list-item-wrapper">

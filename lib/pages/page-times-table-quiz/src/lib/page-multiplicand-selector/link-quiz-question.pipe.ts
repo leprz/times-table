@@ -9,6 +9,9 @@ import { links } from '@org/page-common';
 })
 export class PageCreateLinkQuizQuestionPipePipe implements PipeTransform {
   transform(value: number): string {
-    return links.multiplication_quiz__$multiplicand.replace(':multiplicand', value.toString());
+    return links.multiplication_quiz__$multiplicand.replace(
+      ':multiplicand',
+      value.toString(),
+    );
   }
 }

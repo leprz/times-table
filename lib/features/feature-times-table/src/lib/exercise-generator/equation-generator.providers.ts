@@ -3,9 +3,9 @@ import { EquationGeneratorMultiplication } from './equation-generator-multiplica
 import { EquationGeneratorPort } from './equation-generator.port';
 
 export const equationGeneratorMultiplicationProviders = [
-    { provide: EquationGeneratorPort, useClass: EquationGeneratorMultiplication },
+  { provide: EquationGeneratorPort, useClass: EquationGeneratorMultiplication },
 ];
 
 export const equationGeneratorDivisionProviders = [
-    { provide: EquationGeneratorPort, useClass: EquationGeneratorDivision },
+  { provide: EquationGeneratorPort, useClass: EquationGeneratorDivision },
 ];

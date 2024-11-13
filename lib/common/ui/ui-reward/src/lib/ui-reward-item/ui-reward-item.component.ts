@@ -16,7 +16,7 @@ export interface UiRewardItem {
   imports: [CommonModule, FastSvgComponent, LocaleDatePipe],
   templateUrl: './ui-reward-item.component.html',
   styleUrl: './ui-reward-item.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiRewardItemComponent {
   data = input.required<UiRewardItem>();

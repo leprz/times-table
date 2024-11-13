@@ -6,7 +6,7 @@ import {
   input,
   output,
   signal,
-  viewChild
+  viewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -16,10 +16,11 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
   templateUrl: './ui-dialog-clear.component.html',
   styleUrls: ['./ui-dialog-clear.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiDialogClearComponent {
-  private dialogElement = viewChild.required<ElementRef<HTMLDialogElement>>('dialogElement');
+  private dialogElement =
+    viewChild.required<ElementRef<HTMLDialogElement>>('dialogElement');
   readonly hasStickyHeader = input<boolean>(false);
   isOpened = signal<boolean>(false);
 

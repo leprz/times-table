@@ -8,11 +8,11 @@ import { combineLatestWith, interval, map, of, take } from 'rxjs';
   imports: [CommonModule],
   templateUrl: './ui-spinner.component.html',
   styleUrl: './ui-spinner.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiSpinnerComponent {
   readonly isVisible$ = of(false).pipe(
     combineLatestWith(interval(300).pipe(take(1))),
-    map(() => true)
+    map(() => true),
   );
 }

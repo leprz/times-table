@@ -10,7 +10,7 @@ describe('TopBarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PageCommonTopBarComponent],
-      providers: [provideLocationMocks(), provideRouter([])]
+      providers: [provideLocationMocks(), provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageCommonTopBarComponent);

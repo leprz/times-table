@@ -2,7 +2,7 @@ import { filter, Observable, startWith, Subject, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MessageBus {
   isDebug = false;
@@ -13,7 +13,9 @@ export class MessageBus {
 
   private trace<T>(eventName: string, explain?: string, e?: Event<T>): void {
     if (this.isDebug) {
-      console.groupCollapsed(['on', eventName, explain].filter(v => v !== undefined).join(':'));
+      console.groupCollapsed(
+        ['on', eventName, explain].filter((v) => v !== undefined).join(':'),
+      );
       console.trace(e?.payload);
       console.groupEnd();
     }
@@ -24,8 +26,8 @@ export class MessageBus {
       this.trace(event.name, action);
     }
     return this.events$.pipe(
-      filter(e => e.name === event.name),
-      tap(e => this.trace(event.name, action, e)),
+      filter((e) => e.name === event.name),
+      tap((e) => this.trace(event.name, action, e)),
       startWith(null),
     );
   }

@@ -1,11 +1,32 @@
-<div
-  class="ui-keyboard"
-  [ngClass]="{ 'ui-keyboard--disabled': isDisabled() }"
->
-  @for (number of [1,2,3,4,5,6,7,8,9]; track number) {
-    <button draggable="false" (pointerdown)="onNumberClick(number)" class="btn-secondary">{{ number }}</button>
+<div class="ui-keyboard" [ngClass]="{ 'ui-keyboard--disabled': isDisabled() }">
+  @for (number of [1, 2, 3, 4, 5, 6, 7, 8, 9]; track number) {
+    <button
+      draggable="false"
+      (pointerdown)="onNumberClick(number)"
+      class="btn-secondary"
+    >
+      {{ number }}
+    </button>
   }
-  <button draggable="false" (pointerdown)="onBackspaceClick()" class="btn-secondary">C</button>
-  <button draggable="false" (pointerdown)="onNumberClick(0)" class="btn-secondary">0</button>
-  <button draggable="false" (pointerdown)="onSubmitClick()" class="btn-secondary">=</button>
+  <button
+    draggable="false"
+    (pointerdown)="onBackspaceClick()"
+    class="btn-secondary"
+  >
+    C
+  </button>
+  <button
+    draggable="false"
+    (pointerdown)="onNumberClick(0)"
+    class="btn-secondary"
+  >
+    0
+  </button>
+  <button
+    draggable="false"
+    (pointerdown)="onSubmitClick()"
+    class="btn-secondary"
+  >
+    =
+  </button>
 </div>

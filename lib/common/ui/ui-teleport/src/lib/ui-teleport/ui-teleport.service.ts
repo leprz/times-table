@@ -5,7 +5,7 @@ import {
   NgModuleRef,
   TemplateRef,
   Type,
-  ViewContainerRef
+  ViewContainerRef,
 } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 
@@ -14,7 +14,7 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 })
 export class UiTeleportService {
   private readonly activeTeleportsSubject = new BehaviorSubject<Set<string>>(
-    new Set([])
+    new Set([]),
   );
 
   private readonly teleportOutletMap = new Map<string, ViewContainerRef>();
@@ -22,7 +22,12 @@ export class UiTeleportService {
   isTeleportationActive$(key: string | null): Observable<boolean> {
     return this.activeTeleportsSubject
       .asObservable()
-      .pipe(map((activeTeleports): boolean => key !== null && activeTeleports.has(key)));
+      .pipe(
+        map(
+          (activeTeleports): boolean =>
+            key !== null && activeTeleports.has(key),
+        ),
+      );
   }
 
   registerPortalOutlet(key: string, viewContainerRef: ViewContainerRef): void {
@@ -53,7 +58,7 @@ export class UiTeleportService {
     key: string,
     component: Type<unknown>,
     environmentInjector: EnvironmentInjector | NgModuleRef<unknown>, // to ensure we have all deps
-    parentInjector?: Injector // to provide extra deps
+    parentInjector?: Injector, // to provide extra deps
   ): void {
     const outlet = this.teleportOutletMap.get(key);
 

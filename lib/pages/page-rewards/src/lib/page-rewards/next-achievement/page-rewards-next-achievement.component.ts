@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeatureCoinsComponent } from '@org/feature-coins';
 import { FeaturePrizeSearchComponent } from '@org/feature-prize';
@@ -10,10 +15,18 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'page-rewards-next-achievement',
   standalone: true,
-  imports: [CommonModule, FeatureCoinsComponent, FeaturePrizeSearchComponent, OnInitComponent, UiProgressBarComponent, FastSvgComponent, RouterLink],
+  imports: [
+    CommonModule,
+    FeatureCoinsComponent,
+    FeaturePrizeSearchComponent,
+    OnInitComponent,
+    UiProgressBarComponent,
+    FastSvgComponent,
+    RouterLink,
+  ],
   templateUrl: './page-rewards-next-achievement.component.html',
   styleUrl: './page-rewards-next-achievement.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageRewardsNextAchievementComponent {
   highestReward = input.required<number | null>();

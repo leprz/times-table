@@ -16,7 +16,9 @@ export type LayoutMode = 'normal' | 'distraction-free';
 export class LayoutModeService {
   private readonly messageBus = inject(MessageBus);
   applyMode(mode: LayoutMode): void {
-    this.messageBus.emit(new PageCommonLayoutModeChangedEvent({ layoutMode: mode }));
+    this.messageBus.emit(
+      new PageCommonLayoutModeChangedEvent({ layoutMode: mode }),
+    );
   }
 }
 
@@ -31,14 +33,12 @@ export class PageCommonLayoutModeComponent {
   layoutModeChanged = output();
 
   constructor() {
-    this.messageBus.on(PageCommonLayoutModeChangedEvent, 'apply layout mode')
-      .pipe(
-        filterNill(),
-        takeUntilDestroyed()
-      )
+    this.messageBus
+      .on(PageCommonLayoutModeChangedEvent, 'apply layout mode')
+      .pipe(filterNill(), takeUntilDestroyed())
       .subscribe((event) => {
-      this.setMode(event.payload.layoutMode);
-    });
+        this.setMode(event.payload.layoutMode);
+      });
   }
 
   setMode(mode: LayoutMode): void {

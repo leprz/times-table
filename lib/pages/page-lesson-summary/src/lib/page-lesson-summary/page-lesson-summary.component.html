@@ -20,22 +20,22 @@
     <ul class="body-extra-small">
       @for (answer of wrongAnswers(); track $index) {
         <li>
-      <span class="page-lesson-summary__wrong-answer-item">
-        <span>{{ answer.operandA }}</span>
-        <span>&nbsp;{{ operationSign() }}&nbsp;</span>
-        <span>{{ answer.operandB }}</span>
-        <span>&nbsp;=</span>
-        <span class="page-lesson-summary__wrong-answer-result">
-          @if (answer.answer !== null) {
-            {{ answer.answer }}
-          } @else {
-            ?
-          }
-        </span>
-      </span>
+          <span class="page-lesson-summary__wrong-answer-item">
+            <span>{{ answer.operandA }}</span>
+            <span>&nbsp;{{ operationSign() }}&nbsp;</span>
+            <span>{{ answer.operandB }}</span>
+            <span>&nbsp;=</span>
+            <span class="page-lesson-summary__wrong-answer-result">
+              @if (answer.answer !== null) {
+                {{ answer.answer }}
+              } @else {
+                ?
+              }
+            </span>
+          </span>
           <span class="page-lesson-summary__correct-result">{{
-              answer.correctAnswer
-            }}</span>
+            answer.correctAnswer
+          }}</span>
         </li>
       }
     </ul>

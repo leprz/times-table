@@ -10,7 +10,7 @@ describe('PageLessonSummaryComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PageLessonSummaryComponent],
-      providers: [provideLocationMocks(), provideRouter([])]
+      providers: [provideLocationMocks(), provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PageLessonSummaryComponent);

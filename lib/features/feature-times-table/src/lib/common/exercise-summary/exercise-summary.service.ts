@@ -6,16 +6,14 @@ import { ExerciseFinishedEvent } from '@org/common-events';
 import { MessageBus } from '@org/message-bus';
 
 export interface ExerciseSummary {
-  wrongAnswers: ExerciseTry[],
-  score: number,
-  operationSign: string,
-  highScoreKey?: string,
+  wrongAnswers: ExerciseTry[];
+  score: number;
+  operationSign: string;
+  highScoreKey?: string;
 }
 
 export interface SummaryPresenter {
-  showExerciseSummary(
-    summary: ExerciseSummary
-  ): void;
+  showExerciseSummary(summary: ExerciseSummary): void;
 }
 
 export interface Exercise {
@@ -25,23 +23,20 @@ export interface Exercise {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ExerciseSummaryService {
   messageBus = inject(MessageBus);
 
   private exercise: Exercise | null = null;
 
-  constructor(
-    private readonly exerciseScorePolicy: ExerciseScorePolicy,
-  ) {
-  }
+  constructor(private readonly exerciseScorePolicy: ExerciseScorePolicy) {}
 
   init(operationSign: string, operation: Operation): void {
     this.exercise = {
       tries: [],
       operationSign,
-      operation
+      operation,
     };
   }
 
@@ -65,7 +60,7 @@ export class ExerciseSummaryService {
 
     return this.exerciseScorePolicy.calculateScore({
       totalTries: ExerciseTryUtil.countTotal(exercise.tries),
-      correctTries: ExerciseTryUtil.countCorrect(exercise.tries)
+      correctTries: ExerciseTryUtil.countCorrect(exercise.tries),
     });
   }
 
@@ -75,13 +70,15 @@ export class ExerciseSummaryService {
       score,
       operationSign: this.getOperationSign(),
       wrongAnswers: this.getWrongAnswers(),
-      highScoreKey: this.exercise?.operation
+      highScoreKey: this.exercise?.operation,
     });
 
-    this.messageBus.emit(new ExerciseFinishedEvent({
-       totalScore: score,
-       exerciseKey: this.exercise?.operation.toString()
-    }));
+    this.messageBus.emit(
+      new ExerciseFinishedEvent({
+        totalScore: score,
+        exerciseKey: this.exercise?.operation.toString(),
+      }),
+    );
 
     this.reset();
   }

@@ -1,7 +1,10 @@
 <div class="page-multiplicand-selector surface body-large">
-  @for(multiplicand of multiplicands; track multiplicand) {
-    <button class="btn-primary" [routerLink]="multiplicand | pageCreateLinkQuizQuestionPipe">{{
-      multiplicand
-    }}</button>
+  @for (multiplicand of multiplicands; track multiplicand) {
+    <button
+      class="btn-primary"
+      [routerLink]="multiplicand | pageCreateLinkQuizQuestionPipe"
+    >
+      {{ multiplicand }}
+    </button>
   }
 </div>

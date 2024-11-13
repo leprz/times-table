@@ -22,7 +22,8 @@ $large: 100rem;
 }
 
 @mixin media-mobile-landscape {
-  @media (width < $medium) and (height <= $extra-small), (width < $medium) and (orientation: landscape) {
+  @media (width < $medium) and (height <= $extra-small),
+    (width < $medium) and (orientation: landscape) {
     @content;
   }
 }

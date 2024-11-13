@@ -10,7 +10,10 @@ import { RouterLink } from '@angular/router';
 import { links } from '../links';
 import { OnInitComponent } from '../on-init/on-init.component';
 import { FeatureRewardListComponent } from '@org/feature-rewards';
-import { LayoutMode, WithLayoutMode } from '../layout-mode/page-common-layout-mode.component';
+import {
+  LayoutMode,
+  WithLayoutMode,
+} from '../layout-mode/page-common-layout-mode.component';
 import { UiTeleportOutletDirective } from '@org/ui-teleport';
 import { ShareAppComponent } from '../share-app/share-app.component';
 import { RouteManagerComponent } from '../route-manager.component';
@@ -31,11 +34,11 @@ import { RouteManagerComponent } from '../route-manager.component';
     OnInitComponent,
     UiTeleportOutletDirective,
     ShareAppComponent,
-    RouteManagerComponent
+    RouteManagerComponent,
   ],
   templateUrl: './page-common-top-bar.component.html',
   styleUrl: './page-common-top-bar.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageCommonTopBarComponent implements WithLayoutMode {
   protected readonly links = links;

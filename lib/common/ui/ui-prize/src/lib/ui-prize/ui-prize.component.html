@@ -1,29 +1,27 @@
-<div class="ribbon"
-     [ngClass]="{ 'active': isActive() }"
->
+<div class="ribbon" [ngClass]="{ active: isActive() }">
   <div class="medallion"></div>
   <div class="ribbon-1">
     <span class="inner">
-        <span class="fadeLeft" i18n>Prize</span>
+      <span class="fadeLeft" i18n>Prize</span>
     </span>
   </div>
 
   <div class="ribbon-2">
     <span class="inner">
-       <span class="fadeRight" i18n>Unlocked</span>
+      <span class="fadeRight" i18n>Unlocked</span>
     </span>
   </div>
   <div class="ribbon-3">
     <span class="inner">
-       <span class="fadeLeft">
-         <span class="prize-value">
-           <fast-svg name="banknote"/>{{ prize().requiredPoints }}
-         </span>
-       </span>
+      <span class="fadeLeft">
+        <span class="prize-value">
+          <fast-svg name="banknote" />{{ prize().requiredPoints }}
+        </span>
+      </span>
     </span>
   </div>
   <div class="fadeIn ball">
-    <fast-svg name="diamond"/>
+    <fast-svg name="diamond" />
   </div>
 </div>
 

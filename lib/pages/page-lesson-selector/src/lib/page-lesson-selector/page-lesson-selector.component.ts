@@ -8,10 +8,15 @@ import { Operation } from '@org/feature-times-table';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, RouterLink, FeatureHighScoreComponent, UiBadgeHighScoreComponent],
+  imports: [
+    CommonModule,
+    RouterLink,
+    FeatureHighScoreComponent,
+    UiBadgeHighScoreComponent,
+  ],
   templateUrl: './page-lesson-selector.component.html',
   styleUrl: './page-lesson-selector.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageLessonSelectorComponent {
   protected readonly links = links;

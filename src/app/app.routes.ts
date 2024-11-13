@@ -7,7 +7,7 @@ export const appRoutes: Route[] = [
     path: '',
     loadComponent: () =>
       import('@org/page-lesson-selector').then(
-        (m) => m.PageLessonSelectorComponent
+        (m) => m.PageLessonSelectorComponent,
       ),
   },
   {
@@ -15,25 +15,29 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
     loadComponent: () =>
       import('@org/page-times-table-quiz').then(
-        (c) => c.PageMultiplicandSelectorComponent
+        (c) => c.PageMultiplicandSelectorComponent,
       ),
   },
   {
     path: linkDefinition('multiplication_quiz__$multiplicand'),
     loadChildren: () =>
       import('@org/page-times-table-quiz').then(
-        (r) => r.pageTimesTableQuizMultiplicationRoutes
+        (r) => r.pageTimesTableQuizMultiplicationRoutes,
       ),
   },
   {
     path: linkDefinition('multiplication_calculation'),
     loadChildren: () =>
-      import('@org/page-times-table-guesser').then((m) => m.pageTimesTableGuesserMultiplicationRoutes),
+      import('@org/page-times-table-guesser').then(
+        (m) => m.pageTimesTableGuesserMultiplicationRoutes,
+      ),
   },
   {
     path: linkDefinition('division_calculation'),
     loadChildren: () =>
-      import('@org/page-times-table-guesser').then((m) => m.pageTimesTableGuesserDivisionRoutes),
+      import('@org/page-times-table-guesser').then(
+        (m) => m.pageTimesTableGuesserDivisionRoutes,
+      ),
   },
   {
     path: linkDefinition('summary'),
@@ -48,5 +52,5 @@ export const appRoutes: Route[] = [
   {
     path: '**',
     redirectTo: '',
-  }
+  },
 ];

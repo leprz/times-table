@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, inject, input, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  effect,
+  inject,
+  input,
+  output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   EditableComponent,
@@ -6,7 +14,7 @@ import {
   EditableOnEnterDirective,
   EditableOnEscapeDirective,
   EditModeDirective,
-  ViewModeDirective
+  ViewModeDirective,
 } from '@ngneat/edit-in-place';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { UiFormErrorsComponent } from '@org/ui-form-errors';
@@ -27,7 +35,7 @@ import { UiFormErrorsComponent } from '@org/ui-form-errors';
   ],
   templateUrl: './ui-input-inline-editable.component.html',
   styleUrl: './ui-input-inline-editable.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiInputInlineEditableComponent {
   changeDetectionRef = inject(ChangeDetectorRef);

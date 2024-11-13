@@ -10,7 +10,7 @@
 }
 .ui-input-inline-editable {
   display: block;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
 
   &:not(.ui-input-inline-editable--is-enabled) {
     cursor: initial;
@@ -20,7 +20,8 @@
     display: block;
   }
 
-  span, input {
+  span,
+  input {
     font-weight: inherit;
     font-size: inherit;
     padding: 0;

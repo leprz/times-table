@@ -18,11 +18,12 @@
       </div>
       <ui-progress-bar
         class="page-rewards-next-achievement__progress body-small"
-        [current]="(featureCoins.coins() ?? 0) - (highestReward() ?? 0) "
+        [current]="(featureCoins.coins() ?? 0) - (highestReward() ?? 0)"
         [max]="nextPrize.requiredPoints"
       />
       <span class="page-rewards-next-achievement__points body-extra-small">
-        <fast-svg name="banknote" />{{ featureCoins.coins() }} / {{ nextPrize.requiredPoints }}
+        <fast-svg name="banknote" />{{ featureCoins.coins() }} /
+        {{ nextPrize.requiredPoints }}
       </span>
     </div>
   } @else {
@@ -31,6 +32,8 @@
       [routerLink]="['./']"
       [fragment]="'settings'"
       [skipLocationChange]="true"
-    i18n>set prize</a>
+      i18n
+      >set prize</a
+    >
   }
 }

@@ -1,5 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
-import { RewardsDataServicePort, UpdateOneRewardBodyParams, UpdateOneRewardPathParams } from '@org/contract-rewards';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input,
+} from '@angular/core';
+import {
+  RewardsDataServicePort,
+  UpdateOneRewardBodyParams,
+  UpdateOneRewardPathParams,
+} from '@org/contract-rewards';
 import { MessageBus } from '@org/message-bus';
 import { combineLatestWith, Subject, switchMap, tap } from 'rxjs';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
@@ -11,10 +20,8 @@ import { featureRewardsDataServiceProviders } from '../common/data-service/rewar
   selector: 'feature-rewards-update',
   standalone: true,
   template: '<ng-content></ng-content>',
-  providers: [
-    ...featureRewardsDataServiceProviders
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [...featureRewardsDataServiceProviders],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeatureRewardsUpdateComponent {
   readonly params = input.required<UpdateOneRewardPathParams>();
@@ -30,7 +37,9 @@ export class FeatureRewardsUpdateComponent {
 
   readonly updateReward$ = toObservable(this.params).pipe(
     combineLatestWith(this.collectSubject.asObservable()),
-    switchMap(([params, payload]) => this.rewardsDataService.updateOne(params, payload)),
+    switchMap(([params, payload]) =>
+      this.rewardsDataService.updateOne(params, payload),
+    ),
     tap(() => this.messageBus.emit(new RewardCollectedEvent())),
     takeUntilDestroyed(),
   );

@@ -12,7 +12,7 @@ import {
   ReadOnePrizeResult,
   UpdateOnePrizeBodyParams,
   UpdateOnePrizePathParams,
-  UpdateOnePrizeResult
+  UpdateOnePrizeResult,
 } from './contracts-prize';
 import { Observable } from 'rxjs';
 
@@ -22,27 +22,27 @@ export abstract class PrizeDataServicePort {
   abstract readMany(): Observable<ReadManyPrizesResult>;
 
   abstract deleteOne(
-    pathParams: DeleteOnePrizePathParams
+    pathParams: DeleteOnePrizePathParams,
   ): Observable<DeleteOnePrizeResult>;
 
   abstract readOneById(
-    pathParams: ReadOnePrizePathParams
+    pathParams: ReadOnePrizePathParams,
   ): Observable<ReadOnePrizeResult>;
 
   abstract createOne(
-    bodyParams: CreateOnePrizeBodyParams
+    bodyParams: CreateOnePrizeBodyParams,
   ): Observable<CreateOnePrizeResult>;
 
   abstract updateOne(
     pathParams: UpdateOnePrizePathParams,
-    bodyParams: UpdateOnePrizeBodyParams
+    bodyParams: UpdateOnePrizeBodyParams,
   ): Observable<UpdateOnePrizeResult>;
 
   abstract findManyAchievedPrizes(
-    bodyParams: GetManyAchievedPrizeBodyParams
+    bodyParams: GetManyAchievedPrizeBodyParams,
   ): Observable<GetManyAchievedPrizeResult>;
 
   abstract findNextPrize(
-    bodyParams: GetOneNextPrizeBodyParams
+    bodyParams: GetOneNextPrizeBodyParams,
   ): Observable<GetOneNextPrizeResult>;
 }
