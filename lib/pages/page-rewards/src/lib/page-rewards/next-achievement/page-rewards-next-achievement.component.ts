@@ -11,6 +11,7 @@ import { LayoutModeService, OnInitComponent } from '@org/page-common';
 import { UiProgressBarComponent } from '@org/ui-progress';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 import { RouterLink } from '@angular/router';
+import { PageRewardsNextAchievementProgressBarComponent } from './next-achievement-progress-bar/next-achievement-progress-bar.component';
 
 @Component({
   selector: 'page-rewards-next-achievement',
@@ -23,6 +24,7 @@ import { RouterLink } from '@angular/router';
     UiProgressBarComponent,
     FastSvgComponent,
     RouterLink,
+    PageRewardsNextAchievementProgressBarComponent,
   ],
   templateUrl: './page-rewards-next-achievement.component.html',
   styleUrl: './page-rewards-next-achievement.component.scss',

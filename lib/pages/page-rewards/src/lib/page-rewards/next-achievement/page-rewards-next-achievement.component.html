@@ -18,16 +18,12 @@
     </div>
     @let highestRewardValue = highestReward();
     @if (highestRewardValue !== null) {
-      <ui-progress-bar
-        class="page-rewards-next-achievement__progress body-small"
-        [current]="featureCoins.coins() - highestRewardValue"
-        [max]="nextPrize.requiredPoints - highestRewardValue"
+      <page-rewards-next-achievement-progress-bar
+        [coins]="featureCoins.coins()"
+        [highestReward]="highestRewardValue"
+        [nextPrizeRequiredPoints]="nextPrize.requiredPoints"
       />
     }
-    <span class="page-rewards-next-achievement__points body-extra-small">
-      <fast-svg name="banknote" />{{ featureCoins.coins() }} /
-      {{ nextPrize.requiredPoints }}
-    </span>
   </div>
 } @else {
   <a
