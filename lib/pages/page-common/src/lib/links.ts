@@ -3,6 +3,8 @@ export const links = {
   multiplication_quiz__$multiplicand: '/multiplication/quiz/:multiplicand',
   multiplication_calculation: '/multiplication/calculation',
   division_calculation: '/division/calculation',
+  subtraction_calculation: '/subtraction/calculation',
+  addition_calculation: '/addition/calculation',
   summary: '/summary',
   rewards: '/rewards',
   rewards__settings: '/rewards#settings',

@@ -40,6 +40,20 @@ export const appRoutes: Route[] = [
       ),
   },
   {
+    path: linkDefinition('subtraction_calculation'),
+    loadChildren: () =>
+      import('@org/page-times-table-guesser').then(
+        (m) => m.pageTimesTableGuesserSubtractionRoutes,
+      ),
+  },
+  {
+    path: linkDefinition('addition_calculation'),
+    loadChildren: () =>
+      import('@org/page-times-table-guesser').then(
+        (m) => m.pageTimesTableGuesserAdditionRoutes,
+      ),
+  },
+  {
     path: linkDefinition('summary'),
     loadChildren: () =>
       import('@org/page-lesson-summary').then((m) => m.pageLessonSummaryRoutes),

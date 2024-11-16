@@ -5,6 +5,8 @@ import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summ
 export enum Operation {
   Multiplication = 'multiplication',
   Division = 'division',
+  Subtraction = 'subtraction',
+  Addition = 'addition',
 }
 
 export interface Equation {

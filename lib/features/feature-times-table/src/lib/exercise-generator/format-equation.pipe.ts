@@ -12,8 +12,15 @@ export class FormatEquationPipe implements PipeTransform {
       return '';
     }
 
-    const sign = value.operation === Operation.Multiplication ? 'x' : '÷';
+    const sign = FormatEquationPipe.signsMap[value.operation];
 
     return `${value.operandA} ${sign} ${value.operandB} = ${product}`;
   }
+
+  private static signsMap: { [key in Operation]: string } = {
+    [Operation.Addition]: '+',
+    [Operation.Subtraction]: '-',
+    [Operation.Multiplication]: 'x',
+    [Operation.Division]: '÷',
+  };
 }

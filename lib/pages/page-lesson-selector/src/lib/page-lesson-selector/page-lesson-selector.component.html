@@ -36,4 +36,42 @@
       </button>
     </footer>
   </section>
+  <section class="surface">
+    <header>
+      <h3 class="body-small" i18n>I can add</h3>
+      <div class="page-lesson-selector__lesson-high-score body-extra-small">
+        <feature-high-score
+          [key]="Operation.Addition"
+          #featureHighScoreAddition
+        />
+        <ui-badge-high-score
+          [highScore]="featureHighScoreAddition.highScore()"
+        />
+      </div>
+    </header>
+    <footer class="page-lesson-selector__actions body-medium">
+      <button [routerLink]="links.addition_calculation" i18n>
+        Calculation
+      </button>
+    </footer>
+  </section>
+  <section class="surface">
+    <header>
+      <h3 class="body-small" i18n>I can subtract</h3>
+      <div class="page-lesson-selector__lesson-high-score body-extra-small">
+        <feature-high-score
+          [key]="Operation.Subtraction"
+          #featureHighScoreSubtract
+        />
+        <ui-badge-high-score
+          [highScore]="featureHighScoreSubtract.highScore()"
+        />
+      </div>
+    </header>
+    <footer class="page-lesson-selector__actions body-medium">
+      <button [routerLink]="links.subtraction_calculation" i18n>
+        Calculation
+      </button>
+    </footer>
+  </section>
 </div>

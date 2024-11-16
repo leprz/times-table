@@ -6,7 +6,7 @@
         <source>Close</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/common/ui/ui-dialog/src/lib/ui-dialog/ui-dialog.component.html</context>
-          <context context-type="linenumber">13,14</context>
+          <context context-type="linenumber">16,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7956603970671173354" datatype="html">
@@ -82,12 +82,34 @@
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
           <context context-type="linenumber">35,36</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">54,55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">73,74</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="2157552349562301932" datatype="html">
         <source>I can divide</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
           <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5916068026785956828" datatype="html">
+        <source>I can add</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1652678243416245352" datatype="html">
+        <source>I can subtract</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">60,61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8121907747276361298" datatype="html">
