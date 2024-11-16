@@ -1,7 +1,4 @@
-<dialog
-  [class]="{ 'dialog--has-sticky-header': hasStickyHeader() }"
-  #dialogElement
->
+<dialog [class]="{ 'dialog--has-sticky-header': hasStickyHeader() }">
   <section>
     <header>
       <ng-content select="[appUiDialogHeader]"></ng-content>
