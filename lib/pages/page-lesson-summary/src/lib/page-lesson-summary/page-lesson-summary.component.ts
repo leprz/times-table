@@ -16,26 +16,14 @@ import {
   SummaryPresenter,
 } from '@org/feature-times-table';
 import { Router, RouterLink } from '@angular/router';
-import { UiDialogComponent } from '@org/ui-dialog';
 import { featurePrizeDataServiceProviders } from '@org/feature-prize';
-import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 import { LessonSummaryCoinsListener } from './lesson-summary-coins.listener';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { featureRewardsDataServiceProviders } from '@org/feature-rewards';
-import { UiPrizeComponent } from '@org/ui-prize';
-import { OnInitComponent } from '@org/page-common';
 
 @Component({
   standalone: true,
-  imports: [
-    CommonModule,
-    FormatHighScorePipe,
-    RouterLink,
-    UiDialogComponent,
-    OnInitComponent,
-    FastSvgComponent,
-    UiPrizeComponent,
-  ],
+  imports: [CommonModule, FormatHighScorePipe, RouterLink],
   providers: [
     ...featureRewardsDataServiceProviders,
     ...featurePrizeDataServiceProviders,

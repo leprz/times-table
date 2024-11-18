@@ -10,7 +10,6 @@ import {
 import { PrizeItemToUiTodoItemMapperPipe } from '../prize-item-to-ui-todo-item.mapper.pipe';
 import { UiInputInlineEditableComponent } from '@org/ui-form-input';
 import { UiTodoItemComponent } from '@org/ui-todo-item';
-import { FeatureCoinsComponent } from '@org/feature-coins';
 import { OnInitComponent } from '../../on-init/on-init.component';
 
 @Component({
@@ -28,7 +27,6 @@ import { OnInitComponent } from '../../on-init/on-init.component';
     UiTodoItemComponent,
     FeaturePrizeFormComponent,
     FeaturePrizeEditComponent,
-    FeatureCoinsComponent,
   ],
   styleUrls: ['./page-common-prize-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -3,7 +3,7 @@
   #featureCoins
   (coinsUpdated)="featureCoins.loadNextPrize(featurePrizeSearch)"
 />
-@if (featurePrizeSearch.nextPrize$ | async; as nextPrize) {
+@if (featurePrizeSearch.nextPrize(); as nextPrize) {
   <div class="page-rewards-next-achievement">
     <div class="page-rewards-next-achievement__prize-header">
       <span class="page-rewards-next-achievement__prize-icon body-small">
@@ -16,12 +16,26 @@
     <div class="page-rewards-next-achievement__prize-name body-extra-small">
       {{ nextPrize.name }}
     </div>
-    @let highestRewardValue = highestReward();
-    @if (highestRewardValue !== null) {
+    @defer (when nextPrize) {
+      @if (featureRewardsList.highestReward() === undefined) {
+        <page-common-on-init
+          (onInit)="featureRewardsList.loadHighestReward()"
+        />
+      }
+      <feature-rewards-list
+        #featureRewardsList
+        (highestRewardLoaded)="
+          featureRewardsList.calculateRewardProgress(
+            featureCoins,
+            featurePrizeSearch,
+            progressBar
+          )
+        "
+      />
       <page-rewards-next-achievement-progress-bar
-        [coins]="featureCoins.coins()"
-        [highestReward]="highestRewardValue"
+        #progressBar
         [nextPrizeRequiredPoints]="nextPrize.requiredPoints"
+        [coins]="featureCoins.coins()"
       />
     }
   </div>

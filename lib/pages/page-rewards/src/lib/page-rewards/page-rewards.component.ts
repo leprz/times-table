@@ -9,9 +9,6 @@ import { UiRewardItemComponent } from '@org/ui-reward';
 import { UiDialogClearComponent } from '@org/ui-dialog';
 import { UiPrizeComponent } from '@org/ui-prize';
 import { LayoutModeService, OnInitComponent } from '@org/page-common';
-import { FeaturePrizeSearchComponent } from '@org/feature-prize';
-import { FeatureCoinsComponent } from '@org/feature-coins';
-import { UiProgressBarComponent } from '@org/ui-progress';
 import { PageRewardsNextAchievementComponent } from './next-achievement/page-rewards-next-achievement.component';
 
 @Component({
@@ -25,9 +22,6 @@ import { PageRewardsNextAchievementComponent } from './next-achievement/page-rew
     UiPrizeComponent,
     UiDialogClearComponent,
     FeatureRewardsUpdateComponent,
-    FeaturePrizeSearchComponent,
-    FeatureCoinsComponent,
-    UiProgressBarComponent,
     PageRewardsNextAchievementComponent,
   ],
   templateUrl: './page-rewards.component.html',

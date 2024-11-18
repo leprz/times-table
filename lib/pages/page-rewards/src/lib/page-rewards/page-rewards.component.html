@@ -1,11 +1,9 @@
 <feature-rewards-list #featureRewardsList />
 <page-common-on-init (onInit)="featureRewardsList.loadAll()" />
-<page-rewards-next-achievement
-  [highestReward]="featureRewardsList.highestReward$ | async"
-/>
+<page-rewards-next-achievement />
 <h3 class="body-extra-small" i18n>Collected rewards</h3>
 <div class="page-rewards__list">
-  @if (featureRewardsList.rewards$ | async; as rewards) {
+  @if (featureRewardsList.rewards(); as rewards) {
     @if (rewards.content.length === 0) {
       <div class="page-rewards__list-item--is-empty">
         <span class="body-medium" i18n>No rewards</span>

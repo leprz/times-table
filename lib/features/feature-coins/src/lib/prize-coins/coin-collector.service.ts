@@ -8,6 +8,10 @@ import { CoinPrizePolicy } from './coin-prize-policy.service';
 import { LocalStorageService } from '@org/local-storage';
 import { shareReplay, tap } from 'rxjs';
 
+export interface CoinPresenter {
+  presentCoins(coins: number): void;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -29,16 +33,19 @@ export class CoinCollectorService {
           const earnedCoins = this.coinPrizePolicy.countPrize(
             event.payload.totalScore,
           );
-          this.setCoins(currentCoinsValue + earnedCoins);
-          this.messageBusService.emit(
-            new CoinsCalculatedEvent({ totalCoins: this.getCoins() }),
-          );
+          const totalCoins = currentCoinsValue + earnedCoins;
+          this.setCoins(totalCoins);
+          this.messageBusService.emit(new CoinsCalculatedEvent({ totalCoins }));
         }
       }),
       shareReplay(1),
     );
 
-  getCoins(): number {
+  presentCoins(presenter: CoinPresenter): void {
+    presenter.presentCoins(this.getCoins());
+  }
+
+  private getCoins(): number {
     const coins = this.localStorageService.getItem(this.COINS_STORAGE_KEY);
     return coins ? parseInt(coins) : 0;
   }

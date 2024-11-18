@@ -8,7 +8,9 @@ import {
 import { MessageBus } from '@org/message-bus';
 import { CoinsCalculatedEvent } from '@org/common-events';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { CoinCollectorService } from './coin-collector.service';
+import { CoinCollectorService, CoinPresenter } from './coin-collector.service';
+
+import { CoinsSinceLastRewardCalculator } from '@org/feature-common';
 
 export interface PrizeSearch {
   searchNextPrize(collectedPoints: number): void;
@@ -20,14 +22,16 @@ export interface PrizeSearch {
   selector: 'feature-coins',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeatureCoinsComponent implements OnInit {
+export class FeatureCoinsComponent
+  implements OnInit, CoinPresenter, CoinsSinceLastRewardCalculator
+{
   readonly coins = signal<number>(0);
   readonly coinsUpdated = output<void>();
   constructor(
     private readonly messageBusService: MessageBus,
-    private readonly coinCollectorService: CoinCollectorService,
+    readonly coinCollectorService: CoinCollectorService,
   ) {
-    this.coins.set(this.coinCollectorService.getCoins());
+    coinCollectorService.presentCoins(this);
 
     coinCollectorService.listen$.pipe(takeUntilDestroyed()).subscribe();
 
@@ -36,10 +40,14 @@ export class FeatureCoinsComponent implements OnInit {
       .pipe(takeUntilDestroyed())
       .subscribe((event) => {
         if (event) {
-          this.coins.set(this.coinCollectorService.getCoins());
+          this.coins.set(event.payload.totalCoins);
           this.coinsUpdated.emit();
         }
       });
+  }
+
+  presentCoins(coins: number): void {
+    this.coins.set(coins);
   }
 
   ngOnInit(): void {
@@ -48,5 +56,15 @@ export class FeatureCoinsComponent implements OnInit {
 
   loadNextPrize(prizeSearch: PrizeSearch): void {
     prizeSearch.searchNextPrize(this.coins());
+  }
+
+  calculateAchievedPointsSinceLastReward(highestReward: number): number {
+    if (this.coins() < highestReward) {
+      throw new Error(
+        'Coins cannot be less than the highest reward. This means user should not have this reward',
+      );
+    }
+
+    return this.coins() - highestReward;
   }
 }

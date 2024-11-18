@@ -1,4 +1,6 @@
-import { TextEncoder, TextDecoder } from 'util';
+import { TextDecoder, TextEncoder } from 'util';
+import 'jest-preset-angular/setup-jest';
+
 Object.assign(global, { TextDecoder, TextEncoder });
 // @ts-expect-error https://thymikee.github.io/jest-preset-angular/docs/getting-started/test-environment
 globalThis.ngJest = {
@@ -7,4 +9,3 @@ globalThis.ngJest = {
     errorOnUnknownProperties: true,
   },
 };
-import 'jest-preset-angular/setup-jest';

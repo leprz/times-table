@@ -6,14 +6,12 @@ import {
   PageCommonLayoutModeComponent,
   PageCommonTopBarComponent,
 } from '@org/page-common';
-import { UiFormErrorsComponent } from '@org/ui-form-errors';
 
 @Component({
   standalone: true,
   imports: [
     RouterModule,
     PageCommonTopBarComponent,
-    UiFormErrorsComponent,
     PageCommonLayoutModeComponent,
   ],
   selector: 'app-root',

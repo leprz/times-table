@@ -31,7 +31,7 @@
         <target state="translated">Uczcie się razem - udostępnij koledze!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/share-app/share-app.component.ts</context>
-          <context context-type="linenumber">17,18</context>
+          <context context-type="linenumber">16,17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3670906616713353317" datatype="html">
@@ -170,7 +170,7 @@
         <target state="translated">ustaw nagrodę</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/next-achievement/page-rewards-next-achievement.component.html</context>
-          <context context-type="linenumber">35,38</context>
+          <context context-type="linenumber">49,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1258548682816604713" datatype="html">
@@ -178,7 +178,7 @@
         <target state="translated">Zebrane nagrody</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/page-rewards.component.html</context>
-          <context context-type="linenumber">6,7</context>
+          <context context-type="linenumber">4,5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2143798367518771907" datatype="html">
@@ -186,7 +186,7 @@
         <target state="translated">Brak nagród</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/page-rewards.component.html</context>
-          <context context-type="linenumber">11,12</context>
+          <context context-type="linenumber">9,10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5280218112746407598" datatype="html">
@@ -194,7 +194,7 @@
         <target state="translated">Nowa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/page-rewards.component.html</context>
-          <context context-type="linenumber">32,33</context>
+          <context context-type="linenumber">30,31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3696441476261813955" datatype="html">

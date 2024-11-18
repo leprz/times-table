@@ -1,16 +1,22 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  ReadManyRewardsResult,
-  RewardsDataServicePort,
-  SearchManyRewardsBodyParams,
-} from '@org/contract-rewards';
+import { ReadManyRewardsResult, RewardsDataServicePort, SearchManyRewardsBodyParams } from '@org/contract-rewards';
 import { combineLatestWith, map, Observable, Subject, switchMap } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { MessageBus } from '@org/message-bus';
 import { RewardCollectedEvent, RewardCreatedEvent } from '@org/common-events';
 import { featureRewardsDataServiceProviders } from '../common/data-service/rewards.providers';
 import { filterNill } from '@org/utils-data-service';
+import { CoinsSinceLastRewardCalculator, PointsToNextPrizeCalculator } from '@org/feature-common';
+
+export interface RewardProgressPresenter {
+  presentRewardProgress(progress: RewardProgress | null): void;
+}
+
+export interface RewardProgress {
+  actual: number;
+  target: number;
+}
 
 @Component({
   selector: 'feature-rewards-list',
@@ -21,16 +27,14 @@ import { filterNill } from '@org/utils-data-service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeatureRewardListComponent {
+  readonly highestRewardLoaded = output<void>();
   private readonly rewardsDataService = inject(RewardsDataServicePort);
   private readonly messageBus = inject(MessageBus);
-
-  readonly loadSubject = new Subject<{
+  private readonly loadSubject = new Subject<{
     searchBodyParams?: SearchManyRewardsBodyParams;
   }>();
-
-  readonly rewards$: Observable<ReadManyRewardsResult> = this.loadSubject
-    .asObservable()
-    .pipe(
+  private readonly rewards$: Observable<ReadManyRewardsResult> =
+    this.loadSubject.asObservable().pipe(
       combineLatestWith(
         this.messageBus.on(RewardCreatedEvent, 'update reward list in ui'),
         this.messageBus.on(RewardCollectedEvent, 'update reward list in ui'),
@@ -46,14 +50,52 @@ export class FeatureRewardListComponent {
       takeUntilDestroyed(),
     );
 
-  readonly highestReward$: Observable<number> = this.rewards$.pipe(
+  readonly rewards = toSignal(this.rewards$);
+  readonly rewardsCount = toSignal(
+    this.rewards$.pipe(map((rewards) => rewards.count)),
+  );
+
+  private readonly highestReward$: Observable<number> = this.rewards$.pipe(
     filterNill(),
     map((rewards) => {
+      this.highestRewardLoaded.emit();
       return rewards.content.reduce((acc, reward) => {
         return reward.requiredPoints > acc ? reward.requiredPoints : acc;
       }, 0);
     }),
   );
+
+  readonly highestReward = toSignal(this.highestReward$);
+
+  private calculateRewardActualPoints(
+    coins: CoinsSinceLastRewardCalculator,
+  ): number {
+    return coins.calculateAchievedPointsSinceLastReward(
+      this.highestReward() ?? 0,
+    );
+  }
+
+  private calculateRewardTargetPoints(
+    prize: PointsToNextPrizeCalculator,
+  ): number | null {
+    return prize.calculatePointsToNextPrize(this.highestReward() ?? 0);
+  }
+
+  calculateRewardProgress(
+    coins: CoinsSinceLastRewardCalculator,
+    prize: PointsToNextPrizeCalculator,
+    presenter: RewardProgressPresenter,
+  ): void {
+    const target = this.calculateRewardTargetPoints(prize);
+    if (target === null) {
+      presenter.presentRewardProgress(null);
+    } else {
+      presenter.presentRewardProgress({
+        actual: this.calculateRewardActualPoints(coins),
+        target,
+      });
+    }
+  }
 
   loadAll(): void {
     this.loadSubject.next({});
@@ -65,5 +107,9 @@ export class FeatureRewardListComponent {
         isCollected: false,
       },
     });
+  }
+
+  loadHighestReward(): void {
+    this.loadNotCollectedYet();
   }
 }

@@ -1,23 +1,27 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { UiProgressBarComponent } from '@org/ui-progress';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
+import { RewardProgress, RewardProgressPresenter } from '@org/feature-rewards';
 
 @Component({
   selector: 'page-rewards-next-achievement-progress-bar',
   standalone: true,
   imports: [UiProgressBarComponent, FastSvgComponent],
   template: `
-    <ui-progress-bar
-      class="page-rewards-next-achievement-progress-bar__progress body-small"
-      [current]="current()"
-      [max]="max()"
-    />
-    <span
-      class="page-rewards-next-achievement-progress-bar__progress-numbers body-extra-small"
-    >
-      <fast-svg name="banknote" />{{ coins() }} /
-      {{ nextPrizeRequiredPoints() }}
-    </span>
+    @if (progress() !== null) {
+      <ui-progress-bar
+        class="page-rewards-next-achievement-progress-bar__progress body-small"
+        [current]="progress()?.actual ?? 0"
+        [max]="progress()?.target ?? 0"
+      />
+      <span
+        class="page-rewards-next-achievement-progress-bar__progress-numbers body-extra-small"
+      >
+        <fast-svg name="banknote" />
+        {{ coins() }} /
+        {{ nextPrizeRequiredPoints() }}
+      </span>
+    }
   `,
   styles: [
     `
@@ -40,11 +44,13 @@ import { FastSvgComponent } from '@push-based/ngx-fast-svg';
     `,
   ],
 })
-export class PageRewardsNextAchievementProgressBarComponent {
-  coins = input.required<number>();
-  highestReward = input.required<number>();
-  nextPrizeRequiredPoints = input.required<number>();
-
-  current = computed(() => this.coins() - this.highestReward());
-  max = computed(() => this.nextPrizeRequiredPoints() - this.highestReward());
+export class PageRewardsNextAchievementProgressBarComponent
+  implements RewardProgressPresenter
+{
+  readonly progress = signal<RewardProgress | null>(null);
+  readonly coins = input<number>(0);
+  readonly nextPrizeRequiredPoints = input<number | null>(null);
+  presentRewardProgress(progress: RewardProgress): void {
+    this.progress.set(progress);
+  }
 }

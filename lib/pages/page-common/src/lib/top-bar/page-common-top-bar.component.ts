@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 import { UiDialogComponent } from '@org/ui-dialog';
-import { FormatHighScorePipe } from '@org/feature-times-table';
 import { PageCommonPrizeListComponent } from './prize-list/page-common-prize-list.component';
 import { FeatureCoinsComponent } from '@org/feature-coins';
 import { FeaturePrizeCreateComponent } from '@org/feature-prize';
@@ -25,7 +24,6 @@ import { RouteManagerComponent } from '../route-manager.component';
     CommonModule,
     FastSvgComponent,
     UiDialogComponent,
-    FormatHighScorePipe,
     PageCommonPrizeListComponent,
     FeatureCoinsComponent,
     FeaturePrizeCreateComponent,

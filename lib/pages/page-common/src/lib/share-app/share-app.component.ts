@@ -8,7 +8,6 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import QrCreator from 'qr-creator';
-import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 
 @Component({
   standalone: true,
@@ -74,7 +73,7 @@ import { FastSvgComponent } from '@push-based/ngx-fast-svg';
   ],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FastSvgComponent],
+  imports: [],
 })
 export class ShareAppComponent {
   private readonly qrCodeOutlet =

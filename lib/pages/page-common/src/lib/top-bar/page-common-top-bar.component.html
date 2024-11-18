@@ -14,9 +14,9 @@
         <feature-coins #featureCoinCollector />
         <fast-svg [name]="'banknote'" />
         <span>{{ featureCoinCollector.coins() }}</span>
-        @if (featureRewardsList.rewards$ | async; as rewards) {
-          @if (rewards.count > 0) {
-            <span class="badge">{{ rewards.count }}</span>
+        @if (featureRewardsList.rewardsCount(); as count) {
+          @if (count > 0) {
+            <span class="badge">{{ count }}</span>
           }
         }
       </a>

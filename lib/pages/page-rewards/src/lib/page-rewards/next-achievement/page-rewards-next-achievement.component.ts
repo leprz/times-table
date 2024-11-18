@@ -1,17 +1,12 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FeatureCoinsComponent } from '@org/feature-coins';
 import { FeaturePrizeSearchComponent } from '@org/feature-prize';
 import { LayoutModeService, OnInitComponent } from '@org/page-common';
-import { UiProgressBarComponent } from '@org/ui-progress';
 import { FastSvgComponent } from '@push-based/ngx-fast-svg';
 import { RouterLink } from '@angular/router';
 import { PageRewardsNextAchievementProgressBarComponent } from './next-achievement-progress-bar/next-achievement-progress-bar.component';
+import { FeatureRewardListComponent } from '@org/feature-rewards';
 
 @Component({
   selector: 'page-rewards-next-achievement',
@@ -20,18 +15,17 @@ import { PageRewardsNextAchievementProgressBarComponent } from './next-achieveme
     CommonModule,
     FeatureCoinsComponent,
     FeaturePrizeSearchComponent,
-    OnInitComponent,
-    UiProgressBarComponent,
     FastSvgComponent,
     RouterLink,
     PageRewardsNextAchievementProgressBarComponent,
+    FeatureRewardListComponent,
+    OnInitComponent,
   ],
   templateUrl: './page-rewards-next-achievement.component.html',
   styleUrl: './page-rewards-next-achievement.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageRewardsNextAchievementComponent {
-  highestReward = input.required<number | null>();
   layoutModeService = inject(LayoutModeService);
 
   constructor() {
