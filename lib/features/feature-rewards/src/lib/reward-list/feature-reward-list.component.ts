@@ -1,13 +1,25 @@
-import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReadManyRewardsResult, RewardsDataServicePort, SearchManyRewardsBodyParams } from '@org/contract-rewards';
+import {
+  ReadManyRewardsResult,
+  RewardsDataServicePort,
+  SearchManyRewardsBodyParams,
+} from '@org/contract-rewards';
 import { combineLatestWith, map, Observable, Subject, switchMap } from 'rxjs';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { MessageBus } from '@org/message-bus';
 import { RewardCollectedEvent, RewardCreatedEvent } from '@org/common-events';
 import { featureRewardsDataServiceProviders } from '../common/data-service/rewards.providers';
 import { filterNill } from '@org/utils-data-service';
-import { CoinsSinceLastRewardCalculator, PointsToNextPrizeCalculator } from '@org/feature-common';
+import {
+  CoinsSinceLastRewardCalculator,
+  PointsToNextPrizeCalculator,
+} from '@org/feature-common';
 
 export interface RewardProgressPresenter {
   presentRewardProgress(progress: RewardProgress | null): void;
@@ -58,7 +70,6 @@ export class FeatureRewardListComponent {
   private readonly highestReward$: Observable<number> = this.rewards$.pipe(
     filterNill(),
     map((rewards) => {
-      this.highestRewardLoaded.emit();
       return rewards.content.reduce((acc, reward) => {
         return reward.requiredPoints > acc ? reward.requiredPoints : acc;
       }, 0);
@@ -67,9 +78,19 @@ export class FeatureRewardListComponent {
 
   readonly highestReward = toSignal(this.highestReward$);
 
+  constructor() {
+    this.highestReward$.pipe(takeUntilDestroyed()).subscribe(() => {
+      this.highestRewardLoaded.emit();
+    });
+  }
+
   private calculateRewardActualPoints(
     coins: CoinsSinceLastRewardCalculator,
   ): number {
+    if (this.highestReward() === undefined) {
+      throw new Error('Highest reward should be loaded before calculating');
+    }
+
     return coins.calculateAchievedPointsSinceLastReward(
       this.highestReward() ?? 0,
     );
@@ -110,6 +131,6 @@ export class FeatureRewardListComponent {
   }
 
   loadHighestReward(): void {
-    this.loadNotCollectedYet();
+    this.loadAll();
   }
 }
