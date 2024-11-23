@@ -5,3 +5,5 @@ export NVM_DIR="$HOME/.nvm"
 
 npm run format
 npm run extract-i18n
+
+git add -A .

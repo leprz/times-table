@@ -40,12 +40,12 @@ export class ExerciseSummaryService {
     };
   }
 
-  recordTry(try_: ExerciseTry): void {
+  recordTry(exerciseTry: ExerciseTry): void {
     if (!this.exercise) {
       throw new Error('Exercise is not initialized');
     }
 
-    this.exercise?.tries.push(try_);
+    this.exercise?.tries.push(exerciseTry);
   }
 
   isInitialized(): boolean {
