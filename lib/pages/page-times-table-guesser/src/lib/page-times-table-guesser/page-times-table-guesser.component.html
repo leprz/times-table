@@ -8,14 +8,27 @@
   (timerReset)="exercise.nextExercise()"
 />
 
+<feature-sound
+  name="correct"
+  [preload]="true"
+  (beforeSoundStarted)="exercise.nextExercise()"
+  #soundCorrect
+/>
+
+<feature-sound
+  name="incorrect"
+  [preload]="true"
+  (beforeSoundStarted)="penaltyTimer.start()"
+  #soundIncorrect
+/>
+
 <feature-exercise
   #exercise
   (answered)="score.recalculateCurrentScore()"
   (exerciseCompleted)="navigateToSummary()"
-  (wrongAnswerAdded)="penaltyTimer.start()"
-  (correctAnswerAdded)="exercise.nextExercise()"
+  (wrongAnswerAdded)="soundIncorrect.playSound()"
+  (correctAnswerAdded)="soundCorrect.playSound()"
 />
-
 <div class="page-times-table-guesser body-medium">
   <div class="page-times-table-guesser__exercise">
     <div class="page-times-table-guesser__exercise-heading">
@@ -55,10 +68,12 @@
           </span>
           <span class="page-times-table-guesser__answer">
             @if (exercise.isCorrect() === false) {
-              {{
-                exercise.currentExercise()
-                  | formatEquation: exercise.currentExercise()?.product + ''
-              }}
+              <div [@shakeOnEnter]>
+                {{
+                  exercise.currentExercise()
+                    | formatEquation: exercise.currentExercise()?.product + ''
+                }}
+              </div>
             } @else {
               {{
                 exercise.currentExercise()
@@ -75,7 +90,7 @@
       (submittedNonEmpty)="exercise.answer(keyboard.inputValue())"
     ></ui-keyboard>
     <time class="page-times-table-guesser__remaining-time timer"
-      >{{ timer.remainingTime() }}s</time
-    >
+      >{{ timer.remainingTime() }}s
+    </time>
   </div>
 </div>

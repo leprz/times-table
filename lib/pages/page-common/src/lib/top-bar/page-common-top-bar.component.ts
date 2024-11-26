@@ -16,6 +16,7 @@ import {
 import { UiTeleportOutletDirective } from '@org/ui-teleport';
 import { ShareAppComponent } from '../share-app/share-app.component';
 import { RouteManagerComponent } from '../route-manager.component';
+import { FeatureSoundToggleComponent } from '@org/feature-sound';
 
 @Component({
   selector: 'page-common-top-bar',
@@ -33,6 +34,7 @@ import { RouteManagerComponent } from '../route-manager.component';
     UiTeleportOutletDirective,
     ShareAppComponent,
     RouteManagerComponent,
+    FeatureSoundToggleComponent,
   ],
   templateUrl: './page-common-top-bar.component.html',
   styleUrl: './page-common-top-bar.component.css',
@@ -43,16 +45,19 @@ export class PageCommonTopBarComponent implements WithLayoutMode {
   readonly isSettingsButtonVisible = signal(false);
   readonly isBackButtonVisible = signal(false);
   readonly isShareButtonVisible = signal(false);
+  readonly isCoinsButtonVisible = signal(false);
 
   onLayoutModeChange(mode: LayoutMode): void {
     switch (mode) {
       default:
       case 'normal':
+        this.isCoinsButtonVisible.set(true);
         this.isSettingsButtonVisible.set(true);
         this.isBackButtonVisible.set(false);
         this.isShareButtonVisible.set(true);
         break;
       case 'distraction-free':
+        this.isCoinsButtonVisible.set(false);
         this.isSettingsButtonVisible.set(false);
         this.isBackButtonVisible.set(true);
         this.isShareButtonVisible.set(false);

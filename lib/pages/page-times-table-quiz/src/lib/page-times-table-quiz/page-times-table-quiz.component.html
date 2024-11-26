@@ -5,6 +5,11 @@
 <span *uiTeleportTo="'top-bar-action'">
   <ui-badge-high-score [highScore]="featureHighScore.highScore()" />
 </span>
+
+<feature-sound name="correct" [preload]="true" #soundCorrect />
+
+<feature-sound name="incorrect" [preload]="true" #soundIncorrect />
+
 <feature-timer
   #timer
   [timer]="5"
@@ -21,6 +26,8 @@
   (answered)="timer.stop()"
   (answeredDelayed)="timer.restart()"
   (exerciseCompletedDelayed)="navigateToSummary()"
+  (correctAnswerAdded)="soundCorrect.playSound()"
+  (wrongAnswerAdded)="soundIncorrect.playSound()"
 />
 <div class="page-times-table-quiz body-medium">
   <section class="page-times-table-quiz__question">

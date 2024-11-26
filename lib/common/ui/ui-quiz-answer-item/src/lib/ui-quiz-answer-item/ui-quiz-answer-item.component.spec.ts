@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UiQuizAnswerItemComponent } from './ui-quiz-answer-item.component';
 import { ComponentRef } from '@angular/core';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 describe('UiQuizAnswerItemComponent', () => {
   let component: UiQuizAnswerItemComponent;
@@ -10,6 +11,7 @@ describe('UiQuizAnswerItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [UiQuizAnswerItemComponent],
+      providers: [provideNoopAnimations()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UiQuizAnswerItemComponent);

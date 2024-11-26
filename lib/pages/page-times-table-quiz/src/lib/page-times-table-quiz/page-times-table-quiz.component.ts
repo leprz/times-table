@@ -18,6 +18,7 @@ import { LayoutModeService, links } from '@org/page-common';
 import { FeatureHighScoreComponent } from '@org/feature-high-score';
 import { UiBadgeHighScoreComponent } from '@org/ui-badge';
 import { UiTeleportToDirective } from '@org/ui-teleport';
+import { FeatureSoundComponent } from '@org/feature-sound';
 
 @Component({
   standalone: true,
@@ -30,6 +31,7 @@ import { UiTeleportToDirective } from '@org/ui-teleport';
     FeatureHighScoreComponent,
     UiBadgeHighScoreComponent,
     UiTeleportToDirective,
+    FeatureSoundComponent,
   ],
   templateUrl: './page-times-table-quiz.component.html',
   styleUrl: './page-times-table-quiz.component.scss',

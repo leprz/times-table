@@ -1,26 +1,29 @@
 <div class="top-bar body-extra-small">
   <div class="top-bar__actions-primary">
-    <span class="top-bar__action app__action-coins">
-      <feature-rewards-list #featureRewardsList />
-      <page-common-on-init
-        (onInit)="featureRewardsList.loadNotCollectedYet()"
-      />
-      <a
-        class="btn-icon btn-badge"
-        aria-label="Open rewards list"
-        i18n-aria-label
-        [routerLink]="[links.rewards]"
-      >
-        <feature-coins #featureCoinCollector />
-        <fast-svg [name]="'banknote'" />
-        <span>{{ featureCoinCollector.coins() }}</span>
-        @if (featureRewardsList.rewardsCount(); as count) {
-          @if (count > 0) {
-            <span class="badge">{{ count }}</span>
+    @if (isCoinsButtonVisible()) {
+      <span class="top-bar__action app__action-coins">
+        <feature-rewards-list #featureRewardsList />
+        <page-common-on-init
+          (onInit)="featureRewardsList.loadNotCollectedYet()"
+        />
+
+        <a
+          class="btn-icon btn-badge"
+          aria-label="Open rewards list"
+          i18n-aria-label
+          [routerLink]="[links.rewards]"
+        >
+          <feature-coins #featureCoinCollector />
+          <fast-svg [name]="'banknote'" />
+          <span>{{ featureCoinCollector.coins() }}</span>
+          @if (featureRewardsList.rewardsCount(); as count) {
+            @if (count > 0) {
+              <span class="badge">{{ count }}</span>
+            }
           }
-        }
-      </a>
-    </span>
+        </a>
+      </span>
+    }
     <span class="top-bar__action">
       <ng-container uiTeleportOutlet="top-bar-action"></ng-container>
       @if (isShareButtonVisible()) {
@@ -33,27 +36,41 @@
       }
     </span>
   </div>
-  @if (isSettingsButtonVisible()) {
-    <a
-      class="top-bar__action top-bar__action-settings btn-secondary btn-icon"
-      [routerLink]="[routeManager.activeUrl()]"
-      [fragment]="'settings'"
-      [skipLocationChange]="true"
-      aria-label="Open settings dialog"
-      i18n-aria-label
-    >
-      <fast-svg [name]="'settings'" />
-    </a>
-  }
-  @if (isBackButtonVisible()) {
+  <div class="tob-bar__actions-secondary">
+    <feature-sound-toggle #soundToggle />
     <button
-      class="top-bar__action top-bar__action-home btn-primary btn-icon"
-      aria-label="Navigate to home page"
-      [routerLink]="[links.home]"
+      class="top-bar__action top-bar__action-home btn-secondary btn-icon"
+      aria-label="Toggle sound"
+      (click)="soundToggle.toggleMute()"
     >
-      <fast-svg [name]="'corner-down-left'" />
+      @if (soundToggle.isMuted()) {
+        <fast-svg [name]="'sound-off'" />
+      } @else {
+        <fast-svg [name]="'sound-on'" />
+      }
     </button>
-  }
+    @if (isSettingsButtonVisible()) {
+      <a
+        class="top-bar__action top-bar__action-settings btn-secondary btn-icon"
+        [routerLink]="[routeManager.activeUrl()]"
+        [fragment]="'settings'"
+        [skipLocationChange]="true"
+        aria-label="Open settings dialog"
+        i18n-aria-label
+      >
+        <fast-svg [name]="'settings'" />
+      </a>
+    }
+    @if (isBackButtonVisible()) {
+      <button
+        class="top-bar__action top-bar__action-home btn-primary btn-icon"
+        aria-label="Navigate to home page"
+        [routerLink]="[links.home]"
+      >
+        <fast-svg [name]="'corner-down-left'" />
+      </button>
+    }
+  </div>
 </div>
 
 <ui-dialog

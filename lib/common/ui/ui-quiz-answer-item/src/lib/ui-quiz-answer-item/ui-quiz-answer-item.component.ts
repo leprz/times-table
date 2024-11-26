@@ -5,6 +5,7 @@ import {
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { shakeOnBooleanChange } from '@org/ui-animation';
 
 export interface QuizAnswerItem {
   label: number;
@@ -17,6 +18,7 @@ export interface QuizAnswerItem {
   imports: [CommonModule],
   templateUrl: './ui-quiz-answer-item.component.html',
   styleUrl: './ui-quiz-answer-item.component.css',
+  animations: [shakeOnBooleanChange],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiQuizAnswerItemComponent {

@@ -25,6 +25,7 @@
       ],
       "@org/feature-prize": ["lib/features/feature-prize/src/index.ts"],
       "@org/feature-rewards": ["lib/features/feature-rewards/src/index.ts"],
+      "@org/feature-sound": ["lib/features/feature-sound/src/index.ts"],
       "@org/feature-times-table": [
         "lib/features/feature-times-table/src/index.ts"
       ],
@@ -44,6 +45,7 @@
       "@org/page-times-table-quiz": [
         "lib/pages/page-times-table-quiz/src/index.ts"
       ],
+      "@org/ui-animation": ["lib/common/ui/ui-animation/src/index.ts"],
       "@org/ui-badge": ["lib/common/ui/ui-badge/src/index.ts"],
       "@org/ui-common": ["lib/common/ui/ui-common/src/index.ts"],
       "@org/ui-dialog": ["lib/common/ui/ui-dialog/src/index.ts"],

@@ -3,6 +3,7 @@ import { PageTimesTableQuizComponent } from './page-times-table-quiz.component';
 import { provideLocationMocks } from '@angular/common/testing';
 import { provideRouter } from '@angular/router';
 import { equationGeneratorMultiplicationProviders } from '@org/feature-times-table';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 describe('PageTimesTableQuizComponent', () => {
   let component: PageTimesTableQuizComponent;
@@ -12,6 +13,7 @@ describe('PageTimesTableQuizComponent', () => {
     await TestBed.configureTestingModule({
       imports: [PageTimesTableQuizComponent],
       providers: [
+        provideNoopAnimations(),
         provideLocationMocks(),
         provideRouter([]),
         ...equationGeneratorMultiplicationProviders,

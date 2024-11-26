@@ -1,6 +1,7 @@
 <article
   class="answer-item body-small"
   (click)="onAnswerClick()"
+  [@shake]="isAnswered() && !answer().isCorrect"
   [ngClass]="{
     'answer-item--is-correct': isAnswered() && answer().isCorrect,
     'answer-item--is-incorrect': isAnswered() && !answer().isCorrect,

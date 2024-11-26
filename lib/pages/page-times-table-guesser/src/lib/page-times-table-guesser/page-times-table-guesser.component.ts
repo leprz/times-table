@@ -13,6 +13,8 @@ import { UiKeyboardComponent } from '@org/ui-keyboard';
 import { FeatureHighScoreComponent } from '@org/feature-high-score';
 import { UiTeleportToDirective } from '@org/ui-teleport';
 import { UiBadgeHighScoreComponent } from '@org/ui-badge';
+import { FeatureSoundComponent } from '@org/feature-sound';
+import { shakeOnEnter } from '@org/ui-animation';
 
 @Component({
   standalone: true,
@@ -32,14 +34,17 @@ import { UiBadgeHighScoreComponent } from '@org/ui-badge';
     FeatureHighScoreComponent,
     UiTeleportToDirective,
     UiBadgeHighScoreComponent,
+    FeatureSoundComponent,
   ],
   templateUrl: './page-times-table-guesser.component.html',
   styleUrl: './page-times-table-guesser.component.scss',
+  animations: [shakeOnEnter],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageTimesTableGuesserComponent {
   private readonly router = inject(Router);
   private readonly layoutModeService = inject(LayoutModeService);
+
   constructor() {
     this.layoutModeService.applyMode('distraction-free');
   }

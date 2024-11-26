@@ -15,7 +15,13 @@
   justify-self: flex-end;
 }
 
-.top-bar__actions-primary {
+.top-bar__actions-primary,
+.tob-bar__actions-secondary {
   display: flex;
   gap: 1rem;
+}
+
+.top-bar__action-icon {
+  display: inline-block;
+  overflow: hidden;
 }
