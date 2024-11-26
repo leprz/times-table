@@ -19,8 +19,10 @@ import { CommonModule } from '@angular/common';
 export class UiKeyboardComponent {
   isDisabled = input(false);
   inputValue = signal('');
+  maxAllowedInputValue = input(9999);
   submitted = output<void>();
   submittedNonEmpty = output<void>();
+  notAllowedValueEntered = output<void>();
 
   @HostListener('window:keydown', ['$event'])
   handleKeydown(event: KeyboardEvent): void {
@@ -40,6 +42,11 @@ export class UiKeyboardComponent {
 
   onNumberClick(number: number): void {
     if (this.isDisabled()) {
+      return;
+    }
+
+    if (parseInt(this.inputValue()) > this.maxAllowedInputValue()) {
+      this.notAllowedValueEntered.emit();
       return;
     }
 
