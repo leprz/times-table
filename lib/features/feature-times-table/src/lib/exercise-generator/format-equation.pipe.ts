@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Equation, Operation } from './exercise-generator';
+import { OperatorComposite } from '../complex-operation/complex-operation';
 
 @Pipe({
   name: 'formatEquation',
@@ -7,20 +7,14 @@ import { Equation, Operation } from './exercise-generator';
   pure: true,
 })
 export class FormatEquationPipe implements PipeTransform {
-  transform(value: Equation | null, product: string): string {
-    if (!value || product === null) {
+  transform(
+    value: OperatorComposite | null | undefined,
+    product: string,
+  ): string {
+    if (!value) {
       return '';
     }
 
-    const sign = FormatEquationPipe.signsMap[value.operation];
-
-    return `${value.operandA} ${sign} ${value.operandB} = ${product}`;
+    return `${value.toPrettyString()} = ${product}`;
   }
-
-  private static signsMap: { [key in Operation]: string } = {
-    [Operation.Addition]: '+',
-    [Operation.Subtraction]: '-',
-    [Operation.Multiplication]: '×',
-    [Operation.Division]: '÷',
-  };
 }

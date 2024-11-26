@@ -3,6 +3,7 @@ import { EquationGeneratorMultiplication } from './equation-generator-multiplica
 import { EquationGeneratorPort } from './equation-generator.port';
 import { EquationGeneratorSubtraction } from './equation-generator-subtraction';
 import { EquationGeneratorAddition } from './equation-generator-addition';
+import { EquationGeneratorComplexOperation } from './equation-generator-complex-operation';
 
 export const equationGeneratorMultiplicationProviders = [
   { provide: EquationGeneratorPort, useClass: EquationGeneratorMultiplication },
@@ -18,4 +19,11 @@ export const equationGeneratorSubtractionProviders = [
 
 export const equationGeneratorAdditionProviders = [
   { provide: EquationGeneratorPort, useClass: EquationGeneratorAddition },
+];
+
+export const equationGeneratorComplexOperationProviders = [
+  {
+    provide: EquationGeneratorPort,
+    useClass: EquationGeneratorComplexOperation,
+  },
 ];

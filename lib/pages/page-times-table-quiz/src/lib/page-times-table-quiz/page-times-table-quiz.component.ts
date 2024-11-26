@@ -9,7 +9,7 @@ import {
   FeatureExerciseComponent,
   FeatureTimerComponent,
   FormatEquationPipe,
-  Operation,
+  OperationKey,
   RandomQuizAnswerListComponent,
 } from '@org/feature-times-table';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -57,5 +57,5 @@ export class PageTimesTableQuizComponent {
     });
   }
 
-  protected readonly Operation = Operation;
+  protected readonly Operation = OperationKey;
 }

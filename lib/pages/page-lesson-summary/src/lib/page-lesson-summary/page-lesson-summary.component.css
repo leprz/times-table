@@ -31,8 +31,12 @@
   color: var(--color-green);
 }
 
-.page-lesson-summary__wrong-answers {
+.page-lesson-summary__wrong-answers-container {
   text-align: center;
+}
+
+ul.page-lesson-summary__wrong-answers {
+  padding: 0;
   li {
     display: grid;
     grid-template-columns: 1fr 1fr;

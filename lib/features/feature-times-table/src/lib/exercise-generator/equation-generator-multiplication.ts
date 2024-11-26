@@ -1,22 +1,21 @@
 import { EquationGeneratorPort } from './equation-generator.port';
-import { Equation, Operation } from './exercise-generator';
+import { Equation, OperationKey } from './exercise-generator';
+import { ExpressionBuilder } from '../complex-operation/complex-operation';
+import { inject, Injectable } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class EquationGeneratorMultiplication extends EquationGeneratorPort {
-  protected operation: Operation = Operation.Multiplication;
-  protected operationSign = 'x';
+  private readonly eb = inject(ExpressionBuilder);
+  protected operationKey: OperationKey = OperationKey.Multiplication;
 
   generateEquation(multiplicand: number, multiplier: number): Equation {
+    const operation = this.eb.mulNum(multiplicand, multiplier);
     return {
-      operandA: multiplicand,
-      operandB: multiplier,
-      product: multiplicand * multiplier,
-      operation: Operation.Multiplication,
+      operation,
+      product: operation.evaluate(),
+      operationKey: OperationKey.Multiplication,
     };
-  }
-}
-
-export class Randomizer {
-  static randomizeArray<T>(array: T[]): T[] {
-    return array.slice().sort(() => Math.random() - 0.5);
   }
 }

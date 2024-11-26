@@ -1,0 +1,14 @@
+<page-common-on-init
+  (onInit)="featureComplexOperation.generateRandomEquation()"
+/>
+<feature-complex-operation-component #featureComplexOperation />
+<ui-operation
+  style="margin-bottom: 3rem"
+  #operation
+  [operation]="uiOperation()"
+  (submitted)="onSubmitted($event)"
+/>
+
+<ui-keyboard #keyboard (submittedNonEmpty)="operation.submit()" />
+{{ featureComplexOperation.equation() }} =
+{{ featureComplexOperation.equationResult() }}

@@ -1,19 +1,20 @@
 import { inject, Injectable } from '@angular/core';
 import { EquationGeneratorPort } from './equation-generator.port';
 import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
+import { OperatorComposite } from '../complex-operation/complex-operation';
 
-export enum Operation {
+export enum OperationKey {
   Multiplication = 'multiplication',
   Division = 'division',
   Subtraction = 'subtraction',
   Addition = 'addition',
+  ComplexOperation = 'complex-operation',
 }
 
 export interface Equation {
-  operandA: number;
-  operandB: number;
   product: number;
-  operation: Operation;
+  operation: OperatorComposite;
+  operationKey: OperationKey;
 }
 
 @Injectable()
@@ -24,34 +25,40 @@ export class ExerciseGenerator {
   }
 
   generateEquations(
-    minMultiplicand: number,
-    maxMultiplicand: number,
-    minMultiplier: number,
-    maxMultiplier: number,
+    minOperand1: number,
+    maxOperand1: number,
+    minOperand2: number,
+    maxOperand2: number,
     count: number,
   ): Equation[] {
     return Array.from({ length: count }, (_, index) => {
-      if (minMultiplicand === maxMultiplicand) {
+      if (minOperand1 === maxOperand1) {
         return this.equationGenerator.generateEquation(
-          minMultiplicand,
-          minMultiplier + index,
+          minOperand1,
+          minOperand2 + index,
         );
       }
 
-      if (minMultiplier === maxMultiplier) {
+      if (minOperand2 === maxOperand2) {
         return this.equationGenerator.generateEquation(
-          minMultiplicand + index,
-          minMultiplier,
+          minOperand1 + index,
+          minOperand2,
         );
       }
 
-      const multiplicand =
-        Math.floor(Math.random() * (maxMultiplicand - minMultiplicand + 1)) +
-        minMultiplicand;
-      const multiplier =
-        Math.floor(Math.random() * (maxMultiplier - minMultiplier + 1)) +
-        minMultiplier;
-      return this.equationGenerator.generateEquation(multiplicand, multiplier);
+      const operand1 =
+        Math.floor(Math.random() * (maxOperand1 - minOperand1 + 1)) +
+        minOperand1;
+      const operand2 =
+        Math.floor(Math.random() * (maxOperand2 - minOperand2 + 1)) +
+        minOperand2;
+      return this.equationGenerator.generateEquation(operand1, operand2);
     });
+  }
+}
+
+export class Randomizer {
+  static randomizeArray<T>(array: T[]): T[] {
+    return array.slice().sort(() => Math.random() - 0.5);
   }
 }

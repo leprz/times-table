@@ -104,6 +104,10 @@
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
           <context context-type="linenumber">73,74</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">92,93</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="2157552349562301932" datatype="html">
         <source>I can divide</source>
@@ -112,18 +116,25 @@
           <context context-type="linenumber">24,25</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="2731274187086928378" datatype="html">
+        <source>I can solve complex operations</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
+          <context context-type="linenumber">41,42</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="5916068026785956828" datatype="html">
         <source>I can add</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
-          <context context-type="linenumber">41,42</context>
+          <context context-type="linenumber">60,61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1652678243416245352" datatype="html">
         <source>I can subtract</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-lesson-selector/src/lib/page-lesson-selector/page-lesson-selector.component.html</context>
-          <context context-type="linenumber">60,61</context>
+          <context context-type="linenumber">79,80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8121907747276361298" datatype="html">
@@ -151,7 +162,7 @@
         <source>back</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-lesson-summary/src/lib/page-lesson-summary/page-lesson-summary.component.html</context>
-          <context context-type="linenumber">45,46</context>
+          <context context-type="linenumber">43,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8694412183891981250" datatype="html">

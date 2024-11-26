@@ -1,0 +1,45 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 3rem;
+}
+.ui-operation {
+  anchor-name: --operator-button;
+  display: flex;
+  gap: 0.5rem;
+
+  &:hover {
+    color: red;
+  }
+}
+
+.ui-operation__operator-button {
+  display: inline-block;
+}
+
+.ui-operation__equation {
+  position-anchor: --operator-button;
+  top: anchor(bottom);
+  justify-self: anchor-center;
+}
+
+button {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+[popover] {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+input {
+  color: var(--color-tertiary);
+  background-color: var(--color-secondary);
+  width: fit-content;
+  max-width: 5rem;
+  text-align: center;
+}

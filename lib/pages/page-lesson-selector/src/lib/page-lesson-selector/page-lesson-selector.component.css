@@ -13,11 +13,12 @@ section {
 }
 header {
   display: flex;
-  flex-direction: column-reverse;
   gap: 0.2em;
   justify-content: space-between;
 }
 .page-lesson-selector__lesson-high-score {
+  display: flex;
+  justify-content: flex-end;
   font-size: 1rem;
 }
 h3 {

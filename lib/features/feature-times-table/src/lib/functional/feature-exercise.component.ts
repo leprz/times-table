@@ -8,10 +8,10 @@ import {
   output,
   signal,
 } from '@angular/core';
-import { Randomizer } from '../exercise-generator/equation-generator-multiplication';
 import {
   Equation,
   ExerciseGenerator,
+  Randomizer,
 } from '../exercise-generator/exercise-generator';
 import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
 
@@ -27,19 +27,19 @@ export class FeatureExerciseComponent implements OnDestroy {
   readonly summaryService = inject(ExerciseSummaryService);
 
   readonly numberOfExercises = input<number | null>(null);
-  readonly minMultiplicand = input<number>(1);
-  readonly maxMultiplicand = input<number>(9);
-  readonly minMultiplier = input<number>(1);
-  readonly maxMultiplier = input<number>(9);
+  readonly minOperand1 = input<number>(1);
+  readonly maxOperand1 = input<number>(9);
+  readonly minOperand2 = input<number>(1);
+  readonly maxOperand2 = input<number>(9);
   readonly generatedExercises = signal<Equation[]>([]);
   readonly exercises = computed(() => {
     return [
       ...Randomizer.randomizeArray(
         this.exerciseGenerator.generateEquations(
-          this.minMultiplicand(),
-          this.maxMultiplicand(),
-          this.minMultiplier(),
-          this.maxMultiplier(),
+          this.minOperand1(),
+          this.maxOperand1(),
+          this.minOperand2(),
+          this.maxOperand2(),
           this.numberOfExercises() ?? 1,
         ),
       ),
@@ -92,10 +92,9 @@ export class FeatureExerciseComponent implements OnDestroy {
     if (exercise && answer === null) {
       // record no answer
       this.summaryService.recordTry({
-        operandB: exercise.operandB,
-        operandA: exercise.operandA,
-        correctAnswer: exercise.product,
-        answer: null,
+        operation: exercise.operation.toPrettyString(),
+        answerCorrect: exercise.product,
+        answerGiven: null,
         answerTime: time ?? 0,
         isCorrect: false,
       });
@@ -108,10 +107,9 @@ export class FeatureExerciseComponent implements OnDestroy {
       if (exercise.product === parseInt(answer)) {
         // record correct answer
         this.summaryService.recordTry({
-          operandB: exercise.operandB,
-          operandA: exercise.operandA,
-          answer: parseInt(answer),
-          correctAnswer: exercise.product,
+          operation: exercise.operation.toPrettyString(),
+          answerGiven: parseInt(answer),
+          answerCorrect: exercise.product,
           answerTime: time ?? 0,
           isCorrect: true,
         });
@@ -121,10 +119,9 @@ export class FeatureExerciseComponent implements OnDestroy {
       } else {
         // record incorrect answer
         this.summaryService.recordTry({
-          operandB: exercise.operandB,
-          operandA: exercise.operandA,
-          answer: parseInt(answer),
-          correctAnswer: exercise.product,
+          operation: exercise.operation.toPrettyString(),
+          answerGiven: parseInt(answer),
+          answerCorrect: exercise.product,
           answerTime: time ?? 0,
           isCorrect: false,
         });
@@ -148,10 +145,10 @@ export class FeatureExerciseComponent implements OnDestroy {
       this.generatedExercises.set([
         ...this.generatedExercises(),
         ...this.exerciseGenerator.generateEquations(
-          this.minMultiplicand(),
-          this.maxMultiplicand(),
-          this.minMultiplier(),
-          this.maxMultiplier(),
+          this.minOperand1(),
+          this.maxOperand1(),
+          this.minOperand2(),
+          this.maxOperand2(),
           1,
         ),
       ]);

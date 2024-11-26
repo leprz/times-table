@@ -1,16 +1,18 @@
 import { EquationGeneratorPort } from './equation-generator.port';
-import { Equation, Operation } from './exercise-generator';
+import { Equation, OperationKey } from './exercise-generator';
+import { inject } from '@angular/core';
+import { ExpressionBuilder } from '../complex-operation/complex-operation';
 
 export class EquationGeneratorDivision extends EquationGeneratorPort {
-  protected operation: Operation = Operation.Division;
-  protected operationSign = ':';
+  private readonly eb = inject(ExpressionBuilder);
+  protected operationKey: OperationKey = OperationKey.Division;
 
-  generateEquation(multiplicand: number, multiplier: number): Equation {
+  generateEquation(dividend: number, divisor: number): Equation {
+    const operation = this.eb.divNum(dividend * divisor, divisor);
     return {
-      operandA: multiplicand * multiplier,
-      operandB: multiplier,
-      product: multiplicand,
-      operation: Operation.Division,
+      operation,
+      product: operation.evaluate(),
+      operationKey: OperationKey.Division,
     };
   }
 }

@@ -4,7 +4,7 @@ import {
   ExerciseSummaryService,
   SummaryPresenter,
 } from './exercise-summary.service';
-import { Operation } from '../../exercise-generator/exercise-generator';
+import { OperationKey } from '../../exercise-generator/exercise-generator';
 import { ExerciseTryObjectMother } from './exercise-try.object-mother';
 import {
   ExerciseScorePolicy,
@@ -34,7 +34,7 @@ describe('ExerciseSummaryService', () => {
   });
 
   it('should present exercise summary', () => {
-    sut.init('x', Operation.Multiplication);
+    sut.init(OperationKey.Multiplication);
     sut.recordTry(ExerciseTryObjectMother.correct());
     sut.recordTry(ExerciseTryObjectMother.incorrect());
     sut.recordTry(ExerciseTryObjectMother.correct());
@@ -43,8 +43,7 @@ describe('ExerciseSummaryService', () => {
         expect(summary).toEqual({
           wrongAnswers: [ExerciseTryObjectMother.incorrect()],
           score: 200,
-          operationSign: 'x',
-          highScoreKey: Operation.Multiplication,
+          highScoreKey: OperationKey.Multiplication,
         } satisfies ExerciseSummary);
       },
     };

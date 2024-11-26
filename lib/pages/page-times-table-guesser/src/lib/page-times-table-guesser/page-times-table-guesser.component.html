@@ -45,7 +45,7 @@
           </span>
           <feature-high-score
             #featureHighScore
-            [key]="exercise.currentExercise()?.operation"
+            [key]="exercise.currentExercise()?.operationKey"
           />
           @if (featureHighScore.highScore() > 0) {
             /
@@ -70,13 +70,13 @@
             @if (exercise.isCorrect() === false) {
               <div [@shakeOnEnter]>
                 {{
-                  exercise.currentExercise()
+                  exercise.currentExercise()?.operation
                     | formatEquation: exercise.currentExercise()?.product + ''
                 }}
               </div>
             } @else {
               {{
-                exercise.currentExercise()
+                exercise.currentExercise()?.operation
                   | formatEquation: keyboard.inputValue()
               }}
             }

@@ -38,6 +38,25 @@
   </section>
   <section class="surface">
     <header>
+      <h3 class="body-small" i18n>I can solve complex operations</h3>
+      <div class="page-lesson-selector__lesson-high-score body-extra-small">
+        <feature-high-score
+          [key]="Operation.ComplexOperation"
+          #featureHighScoreComplexOperation
+        />
+        <ui-badge-high-score
+          [highScore]="featureHighScoreComplexOperation.highScore()"
+        />
+      </div>
+    </header>
+    <footer class="page-lesson-selector__actions body-medium">
+      <button [routerLink]="links.complex_operation_calculation" i18n>
+        Calculation
+      </button>
+    </footer>
+  </section>
+  <section class="surface">
+    <header>
       <h3 class="body-small" i18n>I can add</h3>
       <div class="page-lesson-selector__lesson-high-score body-extra-small">
         <feature-high-score

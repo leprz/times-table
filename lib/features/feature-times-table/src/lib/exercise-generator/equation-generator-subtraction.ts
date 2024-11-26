@@ -1,22 +1,18 @@
 import { EquationGeneratorPort } from './equation-generator.port';
-import { Equation, Operation } from './exercise-generator';
+import { Equation, OperationKey } from './exercise-generator';
+import { inject } from '@angular/core';
+import { ExpressionBuilder } from '../complex-operation/complex-operation';
 
 export class EquationGeneratorSubtraction extends EquationGeneratorPort {
-  protected operation: Operation = Operation.Subtraction;
-  protected operationSign = '-';
+  private readonly eb = inject(ExpressionBuilder);
+  protected operationKey: OperationKey = OperationKey.Subtraction;
 
-  generateEquation(operandA: number, operandB: number): Equation {
+  generateEquation(minuend: number, subtrahend: number): Equation {
+    const operation = this.eb.subNum(minuend + subtrahend, subtrahend);
     return {
-      operandA: operandA + operandB,
-      operandB: operandB,
-      product: operandA,
-      operation: this.operation,
+      operation,
+      product: operation.evaluate(),
+      operationKey: this.operationKey,
     };
-  }
-}
-
-export class Randomizer {
-  static randomizeArray<T>(array: T[]): T[] {
-    return array.slice().sort(() => Math.random() - 0.5);
   }
 }

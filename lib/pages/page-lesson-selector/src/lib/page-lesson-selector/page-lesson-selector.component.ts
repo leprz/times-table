@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { LayoutModeService, links } from '@org/page-common';
 import { FeatureHighScoreComponent } from '@org/feature-high-score';
 import { UiBadgeHighScoreComponent } from '@org/ui-badge';
-import { Operation } from '@org/feature-times-table';
+import { OperationKey } from '@org/feature-times-table';
 
 @Component({
   standalone: true,
@@ -20,7 +20,7 @@ import { Operation } from '@org/feature-times-table';
 })
 export class PageLessonSelectorComponent {
   protected readonly links = links;
-  protected readonly Operation = Operation;
+  protected readonly Operation = OperationKey;
   private readonly layoutModeService = inject(LayoutModeService);
 
   constructor() {

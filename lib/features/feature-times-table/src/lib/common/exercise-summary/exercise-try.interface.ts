@@ -1,9 +1,8 @@
 // TODO use Equation interface to unify formatEquation pipe
 export interface ExerciseTry {
-  operandA: number;
-  operandB: number;
-  answer: number | null;
-  correctAnswer: number;
+  operation: string;
+  answerGiven: number | null;
+  answerCorrect: number;
   isCorrect: boolean;
   answerTime: number;
 }

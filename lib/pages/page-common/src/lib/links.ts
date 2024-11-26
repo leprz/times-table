@@ -5,6 +5,8 @@ export const links = {
   division_calculation: '/division/calculation',
   subtraction_calculation: '/subtraction/calculation',
   addition_calculation: '/addition/calculation',
+  complex_operation: '/complex-operation/test',
+  complex_operation_calculation: '/complex-operation/calculation',
   summary: '/summary',
   rewards: '/rewards',
   rewards__settings: '/rewards#settings',

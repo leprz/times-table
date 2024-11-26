@@ -54,6 +54,13 @@ export const appRoutes: Route[] = [
       ),
   },
   {
+    path: linkDefinition('complex_operation_calculation'),
+    loadChildren: () =>
+      import('@org/page-times-table-guesser').then(
+        (m) => m.pageTimesTableGuesserComplexOperationRoutes,
+      ),
+  },
+  {
     path: linkDefinition('summary'),
     loadChildren: () =>
       import('@org/page-lesson-summary').then((m) => m.pageLessonSummaryRoutes),
@@ -62,6 +69,13 @@ export const appRoutes: Route[] = [
     path: linkDefinition('rewards'),
     loadChildren: () =>
       import('@org/page-rewards').then((m) => m.pageRewardsRoutes),
+  },
+  {
+    path: linkDefinition('complex_operation'),
+    loadChildren: () =>
+      import('@org/page-complex-operation').then(
+        (m) => m.pageComplexOperationRoutes,
+      ),
   },
   {
     path: '**',

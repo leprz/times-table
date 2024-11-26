@@ -3,6 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "sourceMap": true,
+    "strict": true,
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
@@ -33,6 +34,9 @@
       "@org/local-storage": ["lib/common/utils/local-storage/src/index.ts"],
       "@org/message-bus": ["lib/common/utils/message-bus/src/index.ts"],
       "@org/page-common": ["lib/pages/page-common/src/index.ts"],
+      "@org/page-complex-operation": [
+        "lib/pages/page-complex-operation/src/index.ts"
+      ],
       "@org/page-lesson-selector": [
         "lib/pages/page-lesson-selector/src/index.ts"
       ],
@@ -53,6 +57,7 @@
       "@org/ui-form-errors": ["lib/common/ui/ui-form-errors/src/index.ts"],
       "@org/ui-form-input": ["lib/common/ui/ui-form-input/src/index.ts"],
       "@org/ui-keyboard": ["lib/common/ui/ui-keyboard/src/index.ts"],
+      "@org/ui-operation": ["lib/common/ui/ui-operation/src/index.ts"],
       "@org/ui-pin": ["lib/common/ui/ui-pin/src/index.ts"],
       "@org/ui-popover": ["lib/common/ui/ui-popover/src/index.ts"],
       "@org/ui-prize": ["lib/common/ui/ui-prize/src/index.ts"],

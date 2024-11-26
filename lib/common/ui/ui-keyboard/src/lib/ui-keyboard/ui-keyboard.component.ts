@@ -19,11 +19,11 @@ import { CommonModule } from '@angular/common';
 export class UiKeyboardComponent {
   isDisabled = input(false);
   inputValue = signal('');
-  maxAllowedInputValue = input(9999);
+  maxAllowedInputLength = input(4);
   submitted = output<void>();
   numberClick = output<number>();
   submittedNonEmpty = output<void>();
-  notAllowedValueEntered = output<void>();
+  maxAllowedInputLengthExceeded = output<void>();
 
   @HostListener('window:keydown', ['$event'])
   handleKeydown(event: KeyboardEvent): void {
@@ -46,8 +46,8 @@ export class UiKeyboardComponent {
       return;
     }
 
-    if (parseInt(this.inputValue()) > this.maxAllowedInputValue()) {
-      this.notAllowedValueEntered.emit();
+    if (this.inputValue().length >= this.maxAllowedInputLength()) {
+      this.maxAllowedInputLengthExceeded.emit();
       return;
     }
 

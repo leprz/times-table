@@ -1,0 +1,29 @@
+<span class="ui-operation">
+  @for (operator of operation().operators; let last = $last; track $index) {
+    <span>{{ operator }}</span>
+    @if (!last) {
+      <button
+        class="ui-operation__operator-button"
+        (click)="popoverElement.togglePopover()"
+      >
+        {{ operation().operationSign }}
+      </button>
+    }
+  }
+</span>
+<div
+  #popoverElement
+  popover="manual"
+  class="ui-operation__equation"
+  (toggle)="operationInput.focus()"
+  (beforetoggle)="onPopoverBeforeToggle($event, operationInput.value)"
+>
+  <form [formGroup]="formGroup" (ngSubmit)="submit()">
+    <input
+      #operationInput
+      (focus)="operationInput.select()"
+      type="text"
+      formControlName="result"
+    />
+  </form>
+</div>

@@ -1,14 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { ExerciseScorePolicy } from '../exercise-score.policy';
 import { ExerciseTry, ExerciseTryUtil } from './exercise-try.interface';
-import { Operation } from '../../exercise-generator/exercise-generator';
+import { OperationKey } from '../../exercise-generator/exercise-generator';
 import { ExerciseFinishedEvent } from '@org/common-events';
 import { MessageBus } from '@org/message-bus';
 
 export interface ExerciseSummary {
   wrongAnswers: ExerciseTry[];
   score: number;
-  operationSign: string;
   highScoreKey?: string;
 }
 
@@ -18,8 +17,7 @@ export interface SummaryPresenter {
 
 export interface Exercise {
   tries: ExerciseTry[];
-  operationSign: string;
-  operation: Operation;
+  operation: OperationKey;
 }
 
 @Injectable({
@@ -32,10 +30,9 @@ export class ExerciseSummaryService {
 
   constructor(private readonly exerciseScorePolicy: ExerciseScorePolicy) {}
 
-  init(operationSign: string, operation: Operation): void {
+  init(operation: OperationKey): void {
     this.exercise = {
       tries: [],
-      operationSign,
       operation,
     };
   }
@@ -68,7 +65,6 @@ export class ExerciseSummaryService {
     const score = this.calculateScore();
     summary.showExerciseSummary({
       score,
-      operationSign: this.getOperationSign(),
       wrongAnswers: this.getWrongAnswers(),
       highScoreKey: this.exercise?.operation,
     });
@@ -85,10 +81,6 @@ export class ExerciseSummaryService {
 
   reset(): void {
     this.exercise = null;
-  }
-
-  private getOperationSign(): string {
-    return this.exercise?.operationSign ?? '';
   }
 
   private getWrongAnswers(): ExerciseTry[] {

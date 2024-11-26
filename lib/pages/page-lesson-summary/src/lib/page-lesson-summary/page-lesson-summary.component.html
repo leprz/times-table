@@ -14,27 +14,25 @@
     <p class="body-large">{{ previousHighScore() }}</p>
   }
 </div>
-<div class="page-lesson-summary__wrong-answers body-small">
+<div class="page-lesson-summary__wrong-answers-container body-small">
   @if (wrongAnswers().length) {
     <h3 i18n>Wrong answers</h3>
-    <ul class="body-extra-small">
+    <ul class="page-lesson-summary__wrong-answers body-extra-small">
       @for (answer of wrongAnswers(); track $index) {
         <li>
           <span class="page-lesson-summary__wrong-answer-item">
-            <span>{{ answer.operandA }}</span>
-            <span>&nbsp;{{ operationSign() }}&nbsp;</span>
-            <span>{{ answer.operandB }}</span>
+            <span>{{ answer.operation }}</span>
             <span>&nbsp;=</span>
             <span class="page-lesson-summary__wrong-answer-result">
-              @if (answer.answer !== null) {
-                {{ answer.answer }}
+              @if (answer.answerGiven !== null) {
+                {{ answer.answerGiven }}
               } @else {
                 ?
               }
             </span>
           </span>
           <span class="page-lesson-summary__correct-result">{{
-            answer.correctAnswer
+            answer.answerCorrect
           }}</span>
         </li>
       }

@@ -5,6 +5,7 @@ export * from './lib/common/exercise-summary/exercise-summary.service';
 export * from './lib/functional/feature-exercise.component';
 export * from './lib/functional/feature-score.component';
 export * from './lib/functional/feature-timer.component';
+export * from './lib/functional/feature-complex-operation.component';
 
 export * from './lib/exercise-generator/format-equation.pipe';
 export * from './lib/exercise-generator/exercise-generator';

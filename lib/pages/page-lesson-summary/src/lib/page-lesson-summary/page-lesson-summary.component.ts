@@ -43,7 +43,6 @@ export class PageLessonSummaryComponent implements OnDestroy, SummaryPresenter {
   readonly isNewHighScore = computed(() => {
     return (this.currentExerciseScore() ?? 0) > this.previousHighScore();
   });
-  readonly operationSign = signal<string>('?');
   readonly wrongAnswers = signal<ExerciseTry[]>([]);
 
   ngOnDestroy(): void {
@@ -68,6 +67,5 @@ export class PageLessonSummaryComponent implements OnDestroy, SummaryPresenter {
     );
     this.wrongAnswers.set(summary.wrongAnswers);
     this.currentExerciseScore.set(summary.score);
-    this.operationSign.set(summary.operationSign);
   }
 }

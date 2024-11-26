@@ -3,10 +3,9 @@ import { ExerciseTry } from './exercise-try.interface';
 export class ExerciseTryObjectMother {
   static correct(): ExerciseTry {
     return {
-      operandA: 2,
-      operandB: 3,
-      answer: 6,
-      correctAnswer: 6,
+      operation: '2 * 3',
+      answerGiven: 6,
+      answerCorrect: 6,
       isCorrect: true,
       answerTime: 0,
     };
@@ -14,10 +13,9 @@ export class ExerciseTryObjectMother {
 
   static incorrect(): ExerciseTry {
     return {
-      operandA: 2,
-      operandB: 3,
-      answer: 5,
-      correctAnswer: 6,
+      operation: '2 * 3',
+      answerGiven: 5,
+      answerCorrect: 6,
       isCorrect: false,
       answerTime: 0,
     };

@@ -1,12 +1,11 @@
-import { Equation, Operation } from './exercise-generator';
+import { Equation, OperationKey } from './exercise-generator';
 import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
 
 export abstract class EquationGeneratorPort {
-  protected abstract operationSign: string;
-  protected abstract operation: Operation;
+  protected abstract operationKey: OperationKey;
   initialize(summaryService: ExerciseSummaryService): void {
-    summaryService.init(this.operationSign, this.operation);
+    summaryService.init(this.operationKey);
   }
 
-  abstract generateEquation(multiplicand: number, multiplier: number): Equation;
+  abstract generateEquation(operand1: number, operand2: number): Equation;
 }

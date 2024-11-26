@@ -1,5 +1,5 @@
 <feature-high-score
-  [key]="exercise.currentExercise()?.operation"
+  [key]="exercise.currentExercise()?.operationKey"
   #featureHighScore
 />
 <span *uiTeleportTo="'top-bar-action'">
@@ -19,8 +19,8 @@
 />
 <feature-exercise
   #exercise
-  [minMultiplicand]="multiplicand()"
-  [maxMultiplicand]="multiplicand()"
+  [minOperand1]="multiplicand()"
+  [maxOperand1]="multiplicand()"
   [numberOfExercises]="9"
   [outputDelay]="1"
   (answered)="timer.stop()"
@@ -31,7 +31,7 @@
 />
 <div class="page-times-table-quiz body-medium">
   <section class="page-times-table-quiz__question">
-    {{ exercise.currentExercise() | formatEquation: '?' }}
+    {{ exercise.currentExercise()?.operation ?? null | formatEquation: '?' }}
   </section>
   <time class="timer">{{ timer.remainingTime() }}s</time>
   <main class="page-times-table-quiz__answers">
