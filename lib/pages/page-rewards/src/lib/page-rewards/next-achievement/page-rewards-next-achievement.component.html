@@ -40,12 +40,23 @@
     }
   </div>
 } @else {
-  <a
-    class="btn-secondary"
-    [routerLink]="['./']"
-    [fragment]="'settings'"
-    [skipLocationChange]="true"
-    i18n
-    >set prize</a
-  >
+  <div class="page-rewards-next-achievement--is-empty">
+    <span
+      class="page-rewards-next-achievement__collected-coins body-small"
+      aria-label="Collected coins"
+      i18n-aria-label
+      [ngStyle]="{ 'view-transition-name': 'coins' }"
+    >
+      <fast-svg [name]="'banknote'" />
+      <span>{{ featureCoins.coins() }}</span>
+    </span>
+    <a
+      class="btn-secondary"
+      [routerLink]="['./']"
+      [fragment]="'settings'"
+      [skipLocationChange]="true"
+      i18n
+      >set prize</a
+    >
+  </div>
 }

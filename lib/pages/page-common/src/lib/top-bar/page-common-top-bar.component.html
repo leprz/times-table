@@ -11,6 +11,7 @@
           class="btn-icon btn-badge"
           aria-label="Open rewards list"
           i18n-aria-label
+          [ngStyle]="{ 'view-transition-name': 'coins' }"
           [routerLink]="[links.rewards]"
         >
           <feature-coins #featureCoinCollector />

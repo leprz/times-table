@@ -39,7 +39,7 @@
         <target state="translated">Otwórz listę nagród</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">10,11</context>
+          <context context-type="linenumber">12,13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4080237943266300131" datatype="html">
@@ -47,7 +47,7 @@
         <target state="translated">Otwórz ustawienia</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">42,43</context>
+          <context context-type="linenumber">58,59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2628326099707109790" datatype="html">
@@ -55,7 +55,7 @@
         <target state="translated">dodaj nagrodę</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">80,81</context>
+          <context context-type="linenumber">97,98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3844720777262110149" datatype="html">
@@ -173,12 +173,20 @@
           <context context-type="linenumber">49,52</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="4245761398822275610" datatype="html">
+        <source>Collected coins</source>
+        <target state="translated">Zebrane monety</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/page-rewards.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="1258548682816604713" datatype="html">
         <source>Collected rewards</source>
         <target state="translated">Zebrane nagrody</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/page-rewards.component.html</context>
-          <context context-type="linenumber">4,5</context>
+          <context context-type="linenumber">18,19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2143798367518771907" datatype="html">
@@ -186,7 +194,7 @@
         <target state="translated">Brak nagród</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/page-rewards.component.html</context>
-          <context context-type="linenumber">9,10</context>
+          <context context-type="linenumber">23,24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5280218112746407598" datatype="html">
@@ -194,7 +202,7 @@
         <target state="translated">Nowa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-rewards/src/lib/page-rewards/page-rewards.component.html</context>
-          <context context-type="linenumber">30,31</context>
+          <context context-type="linenumber">44,45</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3696441476261813955" datatype="html">
@@ -202,7 +210,7 @@
         <target state="translated">Poprawna odpowiedź to:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-times-table-guesser/src/lib/page-times-table-guesser/page-times-table-guesser.component.html</context>
-          <context context-type="linenumber">53,54</context>
+          <context context-type="linenumber">66,67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6921336596257236722" datatype="html">
@@ -210,7 +218,7 @@
         <target state="translated">Dostępna jest nowa wersja. Czy chcesz zaktualizować?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">33</context>
         </context-group>
       </trans-unit>
     </body>

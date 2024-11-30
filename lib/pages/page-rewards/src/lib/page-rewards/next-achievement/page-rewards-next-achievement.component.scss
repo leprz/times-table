@@ -6,13 +6,16 @@
   background: var(--color-primary);
   display: block;
 }
+
 .page-rewards-next-achievement__prize-name {
   margin-bottom: 0.2rem;
 }
+
 .page-rewards-next-achievement__prize-header {
   text-align: center;
   margin-bottom: 1em;
 }
+
 .page-rewards-next-achievement__prize-icon {
   color: var(--color-tertiary);
   display: inline-flex;
@@ -21,4 +24,16 @@
   aspect-ratio: 1/1;
   border-radius: 100px 200px 100px 200px / 200px 100px 200px 100px;
   background: var(--color-orange);
+}
+
+.page-rewards-next-achievement--is-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.page-rewards-next-achievement__collected-coins {
+  display: flex;
+  align-items: center;
 }

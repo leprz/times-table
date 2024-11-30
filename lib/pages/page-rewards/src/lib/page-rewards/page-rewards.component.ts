@@ -8,7 +8,7 @@ import {
 import { UiRewardItemComponent } from '@org/ui-reward';
 import { UiDialogClearComponent } from '@org/ui-dialog';
 import { UiPrizeComponent } from '@org/ui-prize';
-import { LayoutModeService, OnInitComponent } from '@org/page-common';
+import { LayoutModeService, links, OnInitComponent } from '@org/page-common';
 import { PageRewardsNextAchievementComponent } from './next-achievement/page-rewards-next-achievement.component';
 
 @Component({
@@ -34,4 +34,6 @@ export class PageRewardsComponent {
   constructor() {
     this.layoutModeService.applyMode('normal');
   }
+
+  protected readonly links = links;
 }
