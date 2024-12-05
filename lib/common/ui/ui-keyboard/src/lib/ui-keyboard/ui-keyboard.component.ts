@@ -21,6 +21,7 @@ export class UiKeyboardComponent {
   inputValue = signal('');
   maxAllowedInputValue = input(9999);
   submitted = output<void>();
+  numberClick = output<number>();
   submittedNonEmpty = output<void>();
   notAllowedValueEntered = output<void>();
 
@@ -50,6 +51,7 @@ export class UiKeyboardComponent {
       return;
     }
 
+    this.numberClick.emit(number);
     this.inputValue.set(this.inputValue() + number);
   }
 

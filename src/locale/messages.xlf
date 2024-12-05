@@ -23,6 +23,20 @@
           <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="5258712107621990099" datatype="html">
+        <source>Install this app for a better experience!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-common/src/lib/app-install/page-common-app-install.component.ts</context>
+          <context context-type="linenumber">38,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6082171864197428613" datatype="html">
+        <source>Install</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">lib/pages/page-common/src/lib/app-install/page-common-app-install.component.ts</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="434607506935826974" datatype="html">
         <source>Boost Math Skills Together - Tell a friend!</source>
         <context-group purpose="location">
@@ -34,21 +48,21 @@
         <source>Open rewards list</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">12,13</context>
+          <context context-type="linenumber">13,14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4080237943266300131" datatype="html">
         <source>Open settings dialog</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">59,60</context>
+          <context context-type="linenumber">60,61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2628326099707109790" datatype="html">
         <source>add prize</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/top-bar/page-common-top-bar.component.html</context>
-          <context context-type="linenumber">98,99</context>
+          <context context-type="linenumber">99,100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3844720777262110149" datatype="html">

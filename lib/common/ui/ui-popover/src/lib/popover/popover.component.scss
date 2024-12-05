@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  border-radius: 1rem;
+  background: var(--color-secondary);
+  color: var(--color-tertiary);
+  margin: 0 auto;
+  width: fit-content;
+}
+.popover__overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.popover__body {
+  min-width: 20rem;
+  min-height: 10rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popover__close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  transform: translateX(120%);
+  background-color: var(--color-surface-container-lowest);
+}

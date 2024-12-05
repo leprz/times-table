@@ -23,6 +23,7 @@
       "@org/feature-high-score": [
         "lib/features/feature-high-score/src/index.ts"
       ],
+      "@org/feature-install": ["lib/features/feature-install/src/index.ts"],
       "@org/feature-prize": ["lib/features/feature-prize/src/index.ts"],
       "@org/feature-rewards": ["lib/features/feature-rewards/src/index.ts"],
       "@org/feature-sound": ["lib/features/feature-sound/src/index.ts"],
@@ -53,6 +54,7 @@
       "@org/ui-form-input": ["lib/common/ui/ui-form-input/src/index.ts"],
       "@org/ui-keyboard": ["lib/common/ui/ui-keyboard/src/index.ts"],
       "@org/ui-pin": ["lib/common/ui/ui-pin/src/index.ts"],
+      "@org/ui-popover": ["lib/common/ui/ui-popover/src/index.ts"],
       "@org/ui-prize": ["lib/common/ui/ui-prize/src/index.ts"],
       "@org/ui-progress": ["lib/common/ui/ui-progress/src/index.ts"],
       "@org/ui-quiz-answer-item": [

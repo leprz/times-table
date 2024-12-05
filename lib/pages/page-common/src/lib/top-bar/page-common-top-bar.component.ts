@@ -17,6 +17,7 @@ import { UiTeleportOutletDirective } from '@org/ui-teleport';
 import { ShareAppComponent } from '../share-app/share-app.component';
 import { RouteManagerComponent } from '../route-manager.component';
 import { FeatureSoundToggleComponent } from '@org/feature-sound';
+import { PageCommonAppInstallComponent } from '../app-install/page-common-app-install.component';
 
 @Component({
   selector: 'page-common-top-bar',
@@ -35,6 +36,7 @@ import { FeatureSoundToggleComponent } from '@org/feature-sound';
     ShareAppComponent,
     RouteManagerComponent,
     FeatureSoundToggleComponent,
+    PageCommonAppInstallComponent,
   ],
   templateUrl: './page-common-top-bar.component.html',
   styleUrl: './page-common-top-bar.component.css',
@@ -64,6 +66,4 @@ export class PageCommonTopBarComponent implements WithLayoutMode {
         break;
     }
   }
-
-  protected readonly console = console;
 }

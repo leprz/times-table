@@ -16,4 +16,10 @@ export class Clock {
     date.setMilliseconds(0);
     return date;
   }
+
+  tomorrow() {
+    const date = this.today();
+    date.setDate(date.getDate() + 1);
+    return date;
+  }
 }

@@ -20,7 +20,7 @@ export class FormatEquationPipe implements PipeTransform {
   private static signsMap: { [key in Operation]: string } = {
     [Operation.Addition]: '+',
     [Operation.Subtraction]: '-',
-    [Operation.Multiplication]: 'x',
+    [Operation.Multiplication]: '×',
     [Operation.Division]: '÷',
   };
 }
