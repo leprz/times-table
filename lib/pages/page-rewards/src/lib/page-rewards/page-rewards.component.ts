@@ -12,7 +12,6 @@ import { LayoutModeService, links, OnInitComponent } from '@org/page-common';
 import { PageRewardsNextAchievementComponent } from './next-achievement/page-rewards-next-achievement.component';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     FeatureRewardListComponent,

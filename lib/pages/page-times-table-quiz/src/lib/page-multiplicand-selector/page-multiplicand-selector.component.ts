@@ -5,7 +5,6 @@ import { PageCreateLinkQuizQuestionPipePipe } from './link-quiz-question.pipe';
 import { LayoutModeService, links } from '@org/page-common';
 
 @Component({
-  standalone: true,
   imports: [CommonModule, RouterLink, PageCreateLinkQuizQuestionPipePipe],
   templateUrl: './page-multiplicand-selector.component.html',
   styleUrl: './page-multiplicand-selector.component.scss',

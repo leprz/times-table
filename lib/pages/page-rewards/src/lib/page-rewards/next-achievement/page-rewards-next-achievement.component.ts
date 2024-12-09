@@ -10,7 +10,6 @@ import { FeatureRewardListComponent } from '@org/feature-rewards';
 
 @Component({
   selector: 'page-rewards-next-achievement',
-  standalone: true,
   imports: [
     CommonModule,
     FeatureCoinsComponent,

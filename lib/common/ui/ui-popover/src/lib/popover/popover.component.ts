@@ -8,7 +8,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'ui-popover',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './popover.component.html',
   styleUrl: './popover.component.scss',

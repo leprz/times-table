@@ -16,7 +16,6 @@ import { filterNill } from '@org/utils-data-service';
 
 @Component({
   selector: 'feature-high-score',
-  standalone: true,
   imports: [CommonModule],
   template: `<ng-content></ng-content>`,
   changeDetection: ChangeDetectionStrategy.OnPush,

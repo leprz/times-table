@@ -5,7 +5,7 @@
       <span class="top-bar__action app__action-coins">
         <feature-rewards-list #featureRewardsList />
         <page-common-on-init
-          (onInit)="featureRewardsList.loadNotCollectedYet()"
+          (afterInit)="featureRewardsList.loadNotCollectedYet()"
         />
 
         <a

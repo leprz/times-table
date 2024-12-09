@@ -19,7 +19,7 @@
     @defer (when nextPrize) {
       @if (featureRewardsList.highestReward() === undefined) {
         <page-common-on-init
-          (onInit)="featureRewardsList.loadHighestReward()"
+          (afterInit)="featureRewardsList.loadHighestReward()"
         />
       }
       <feature-rewards-list

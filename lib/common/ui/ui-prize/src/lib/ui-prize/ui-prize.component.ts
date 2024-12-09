@@ -16,7 +16,6 @@ export interface UiPrize {
 
 @Component({
   selector: 'ui-prize',
-  standalone: true,
   imports: [CommonModule, FastSvgComponent],
   templateUrl: './ui-prize.component.html',
   styleUrl: './ui-prize.component.scss',

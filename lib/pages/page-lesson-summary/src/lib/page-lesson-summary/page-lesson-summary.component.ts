@@ -22,7 +22,6 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { featureRewardsDataServiceProviders } from '@org/feature-rewards';
 
 @Component({
-  standalone: true,
   imports: [CommonModule, FormatHighScorePipe, RouterLink],
   providers: [
     ...featureRewardsDataServiceProviders,

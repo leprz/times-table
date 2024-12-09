@@ -18,7 +18,6 @@ export interface UiAnswer {
 
 @Component({
   selector: 'feature-random-quiz-answer-list',
-  standalone: true,
   imports: [CommonModule, QuizAnswerToAnswerUiPipe, UiQuizAnswerItemComponent],
   templateUrl: 'random-quiz-answer-list.component.html',
   styleUrl: 'random-quiz-answer-list.component.scss',

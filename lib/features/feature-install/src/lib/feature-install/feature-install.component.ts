@@ -12,7 +12,6 @@ type BeforeInstallPromptEvent = {
 
 @Component({
   selector: 'feature-install',
-  standalone: true,
   imports: [CommonModule],
   template: '',
 })

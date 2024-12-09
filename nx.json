@@ -49,6 +49,9 @@
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
+    },
+    "e2e-ci--**/*": {
+      "dependsOn": ["^build"]
     }
   },
   "plugins": [
@@ -91,5 +94,6 @@
     }
   },
   "defaultProject": "org",
-  "nxCloudAccessToken": "NzlkNWE3MmUtMTJhOS00MGQxLWJmOTQtMWExOTRmOGU0MzU0fHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "NzlkNWE3MmUtMTJhOS00MGQxLWJmOTQtMWExOTRmOGU0MzU0fHJlYWQtd3JpdGU=",
+  "useLegacyCache": false
 }

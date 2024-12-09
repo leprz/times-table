@@ -1,5 +1,5 @@
 <feature-rewards-list #featureRewardsList />
-<page-common-on-init (onInit)="featureRewardsList.loadAll()" />
+<page-common-on-init (afterInit)="featureRewardsList.loadAll()" />
 <page-rewards-next-achievement />
 <h3 class="body-extra-small" i18n>Collected rewards</h3>
 <div class="page-rewards__list">

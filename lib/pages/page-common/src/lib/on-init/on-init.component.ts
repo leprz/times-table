@@ -6,8 +6,8 @@ import { AfterViewInit, Component, output } from '@angular/core';
   template: `<ng-content></ng-content>`,
 })
 export class OnInitComponent implements AfterViewInit {
-  onInit = output<void>();
+  afterInit = output<void>();
   ngAfterViewInit(): void {
-    this.onInit.emit();
+    this.afterInit.emit();
   }
 }

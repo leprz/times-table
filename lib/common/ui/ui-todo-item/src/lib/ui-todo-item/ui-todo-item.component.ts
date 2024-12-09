@@ -12,7 +12,6 @@ import {
 
 @Component({
   selector: 'ui-todo-item',
-  standalone: true,
   imports: [CommonModule, RouterLink],
   templateUrl: './ui-todo-item.component.html',
   styleUrls: ['./ui-todo-item.component.scss'],

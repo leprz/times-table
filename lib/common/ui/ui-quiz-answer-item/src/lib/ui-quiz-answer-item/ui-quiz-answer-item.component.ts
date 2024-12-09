@@ -14,7 +14,6 @@ export interface QuizAnswerItem {
 
 @Component({
   selector: 'ui-quiz-answer-item',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './ui-quiz-answer-item.component.html',
   styleUrl: './ui-quiz-answer-item.component.css',

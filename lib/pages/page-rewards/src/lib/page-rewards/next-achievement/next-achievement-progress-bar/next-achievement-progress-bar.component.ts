@@ -5,7 +5,6 @@ import { RewardProgress, RewardProgressPresenter } from '@org/feature-rewards';
 
 @Component({
   selector: 'page-rewards-next-achievement-progress-bar',
-  standalone: true,
   imports: [UiProgressBarComponent, FastSvgComponent],
   template: `
     @if (progress() !== null) {

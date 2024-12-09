@@ -7,7 +7,6 @@ import { UiBadgeHighScoreComponent } from '@org/ui-badge';
 import { OperationKey } from '@org/feature-times-table';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     RouterLink,

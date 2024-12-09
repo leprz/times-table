@@ -6,7 +6,6 @@ import { UiOperation, UiOperationComponent } from '@org/ui-operation';
 import { UiKeyboardComponent } from '@org/ui-keyboard';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     FeatureComplexOperationComponent,

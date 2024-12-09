@@ -10,7 +10,6 @@ import {
 import QrCreator from 'qr-creator';
 
 @Component({
-  standalone: true,
   selector: 'page-common-share-app',
   template: `
     <h2 class="body-small" i18n>Boost Math Skills Together - Tell a friend!</h2>

@@ -24,7 +24,8 @@
             "prefix": "ui-form-errors",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-standalone": "off"
       }
     },
     {

@@ -14,7 +14,6 @@ export type TodoEditFormData = Partial<UpdateOnePrizeBodyParams>;
 
 @Component({
   imports: [ReactiveFormsModule],
-  standalone: true,
   selector: 'feature-prize-form',
   template: ` <ng-content></ng-content>`,
   changeDetection: ChangeDetectionStrategy.OnPush,

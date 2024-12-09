@@ -12,7 +12,6 @@ export interface UiRewardItem {
 
 @Component({
   selector: 'ui-reward-item',
-  standalone: true,
   imports: [CommonModule, FastSvgComponent, LocaleDatePipe],
   templateUrl: './ui-reward-item.component.html',
   styleUrl: './ui-reward-item.component.scss',

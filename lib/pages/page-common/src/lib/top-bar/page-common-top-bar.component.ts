@@ -21,7 +21,6 @@ import { PageCommonAppInstallComponent } from '../app-install/page-common-app-in
 
 @Component({
   selector: 'page-common-top-bar',
-  standalone: true,
   imports: [
     CommonModule,
     FastSvgComponent,

@@ -17,7 +17,6 @@ import { FeatureSoundComponent } from '@org/feature-sound';
 import { shakeOnEnter } from '@org/ui-animation';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     UiKeyboardComponent,

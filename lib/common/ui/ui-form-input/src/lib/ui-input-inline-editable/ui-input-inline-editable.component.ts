@@ -21,7 +21,6 @@ import { UiFormErrorsComponent } from '@org/ui-form-errors';
 
 @Component({
   selector: 'ui-form-input-inline-editable',
-  standalone: true,
   imports: [
     CommonModule,
     EditModeDirective,
@@ -44,9 +43,9 @@ export class UiInputInlineEditableComponent {
   initialValue = input.required<string>();
   control = input.required<FormControl>();
 
-  save = output<void>();
-  cancel = output<void>();
-  modeChange = output<void>();
+  saved = output<void>();
+  canceled = output<void>();
+  modeChanged = output<void>();
 
   constructor() {
     effect(() => {
@@ -58,7 +57,7 @@ export class UiInputInlineEditableComponent {
     if (this.control().invalid) {
       this.control().setValue(this.initialValue());
     } else {
-      this.save.emit();
+      this.saved.emit();
     }
   }
 
@@ -67,10 +66,10 @@ export class UiInputInlineEditableComponent {
       this.control().setValue(this.initialValue());
     }
 
-    this.cancel.emit();
+    this.canceled.emit();
   }
 
   onModeChange(): void {
-    this.modeChange.emit();
+    this.modeChanged.emit();
   }
 }

@@ -18,7 +18,6 @@ type sounds = 'correct' | 'incorrect';
 
 @Component({
   selector: 'feature-sound',
-  standalone: true,
   imports: [CommonModule],
   template: '',
 })

@@ -27,21 +27,21 @@
         <source>Install this app for a better experience!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/app-install/page-common-app-install.component.ts</context>
-          <context context-type="linenumber">38,39</context>
+          <context context-type="linenumber">37,38</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6082171864197428613" datatype="html">
         <source>Install</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/app-install/page-common-app-install.component.ts</context>
-          <context context-type="linenumber">39,40</context>
+          <context context-type="linenumber">38,39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="434607506935826974" datatype="html">
         <source>Boost Math Skills Together - Tell a friend!</source>
         <context-group purpose="location">
           <context context-type="sourcefile">lib/pages/page-common/src/lib/share-app/share-app.component.ts</context>
-          <context context-type="linenumber">16,17</context>
+          <context context-type="linenumber">15,16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3670906616713353317" datatype="html">
@@ -218,7 +218,7 @@
         <source>New version available. Load New Version?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.component.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
     </body>

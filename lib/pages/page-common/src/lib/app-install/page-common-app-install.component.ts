@@ -6,7 +6,6 @@ import { FeatureTimerComponent } from '@org/feature-times-table';
 
 @Component({
   selector: 'page-common-app-install',
-  standalone: true,
   imports: [PopoverComponent, FeatureInstallComponent, FeatureTimerComponent],
   template: `
     <feature-install

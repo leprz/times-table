@@ -10,7 +10,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'ui-keyboard',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './ui-keyboard.component.html',
   styleUrl: './ui-keyboard.component.css',

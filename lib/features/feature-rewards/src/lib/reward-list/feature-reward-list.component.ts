@@ -32,7 +32,6 @@ export interface RewardProgress {
 
 @Component({
   selector: 'feature-rewards-list',
-  standalone: true,
   imports: [CommonModule],
   providers: [...featureRewardsDataServiceProviders],
   template: `<ng-content></ng-content>`,

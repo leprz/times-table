@@ -18,7 +18,6 @@ import {
 
 @Component({
   selector: 'ui-operation',
-  standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './ui-operation.component.html',
   styleUrl: './ui-operation.component.css',

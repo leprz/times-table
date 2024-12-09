@@ -24,7 +24,8 @@
             "prefix": "feature-install",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-standalone": "off"
       }
     },
     {

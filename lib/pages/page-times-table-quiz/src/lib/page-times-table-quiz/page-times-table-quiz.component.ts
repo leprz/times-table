@@ -21,7 +21,6 @@ import { UiTeleportToDirective } from '@org/ui-teleport';
 import { FeatureSoundComponent } from '@org/feature-sound';
 
 @Component({
-  standalone: true,
   imports: [
     CommonModule,
     RandomQuizAnswerListComponent,

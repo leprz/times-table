@@ -24,7 +24,8 @@
             "prefix": "feature-high-score",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-standalone": "off"
       }
     },
     {

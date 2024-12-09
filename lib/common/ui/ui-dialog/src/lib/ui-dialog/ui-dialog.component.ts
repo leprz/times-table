@@ -12,7 +12,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'ui-dialog',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './ui-dialog.component.html',
   styleUrls: ['./ui-dialog.component.scss'],

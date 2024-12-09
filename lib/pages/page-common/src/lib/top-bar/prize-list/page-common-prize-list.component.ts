@@ -13,7 +13,6 @@ import { UiTodoItemComponent } from '@org/ui-todo-item';
 import { OnInitComponent } from '../../on-init/on-init.component';
 
 @Component({
-  standalone: true,
   selector: 'page-common-prize-list',
   templateUrl: './page-common-prize-list.component.html',
   imports: [

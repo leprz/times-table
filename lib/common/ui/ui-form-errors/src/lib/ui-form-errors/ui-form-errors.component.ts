@@ -13,7 +13,6 @@ import { filterNill } from '@org/utils-data-service';
 
 @Component({
   selector: 'ui-form-errors',
-  standalone: true,
   imports: [],
   templateUrl: './ui-form-errors.component.html',
   styleUrls: ['./ui-form-errors.component.scss'],

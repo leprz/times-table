@@ -8,7 +8,6 @@ import {
 } from '@org/page-common';
 
 @Component({
-  standalone: true,
   imports: [
     RouterModule,
     PageCommonTopBarComponent,
