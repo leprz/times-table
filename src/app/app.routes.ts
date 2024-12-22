@@ -33,10 +33,24 @@ export const appRoutes: Route[] = [
       ),
   },
   {
+    path: linkDefinition('multiplication_memory'),
+    loadChildren: () =>
+      import('@org/page-times-table-memory').then(
+        (r) => r.pageTimesTableMemoryMultiplicationRoutes,
+      ),
+  },
+  {
     path: linkDefinition('division_calculation'),
     loadChildren: () =>
       import('@org/page-times-table-guesser').then(
         (m) => m.pageTimesTableGuesserDivisionRoutes,
+      ),
+  },
+  {
+    path: linkDefinition('division_memory'),
+    loadChildren: () =>
+      import('@org/page-times-table-memory').then(
+        (r) => r.pageTimesTableMemoryDivisionRoutes,
       ),
   },
   {
@@ -47,10 +61,24 @@ export const appRoutes: Route[] = [
       ),
   },
   {
+    path: linkDefinition('subtraction_memory'),
+    loadChildren: () =>
+      import('@org/page-times-table-memory').then(
+        (r) => r.pageTimesTableMemorySubtractionRoutes,
+      ),
+  },
+  {
     path: linkDefinition('addition_calculation'),
     loadChildren: () =>
       import('@org/page-times-table-guesser').then(
         (m) => m.pageTimesTableGuesserAdditionRoutes,
+      ),
+  },
+  {
+    path: linkDefinition('addition_memory'),
+    loadChildren: () =>
+      import('@org/page-times-table-memory').then(
+        (r) => r.pageTimesTableMemoryAdditionRoutes,
       ),
   },
   {

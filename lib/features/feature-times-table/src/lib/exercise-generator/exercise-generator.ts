@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { EquationGeneratorPort } from './equation-generator.port';
 import { ExerciseSummaryService } from '../common/exercise-summary/exercise-summary.service';
 import { OperatorComposite } from '../complex-operation/complex-operation';
+import { HighScoreInitializer } from '@org/feature-common';
 
 export enum OperationKey {
   Multiplication = 'multiplication',
@@ -22,6 +23,10 @@ export class ExerciseGenerator {
   private readonly equationGenerator = inject(EquationGeneratorPort);
   initialize(summaryService: ExerciseSummaryService): void {
     this.equationGenerator.initialize(summaryService);
+  }
+
+  initializeHighScoreKey(initializer: HighScoreInitializer): void {
+    this.equationGenerator.initializeHighScoreKey(initializer);
   }
 
   generateEquations(

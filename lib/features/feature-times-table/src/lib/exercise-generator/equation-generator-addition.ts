@@ -8,7 +8,7 @@ import { ExpressionBuilder } from '../complex-operation/complex-operation';
 })
 export class EquationGeneratorAddition extends EquationGeneratorPort {
   private readonly eb = inject(ExpressionBuilder);
-  protected operationKey: OperationKey = OperationKey.Addition;
+  protected readonly operationKey: OperationKey = OperationKey.Addition;
 
   generateEquation(addendA: number, addendB: number): Equation {
     const operation = this.eb.sumNum(addendA, addendB);

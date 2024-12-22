@@ -1,0 +1,41 @@
+.page-times-table-memory__board {
+  position: relative;
+}
+
+.page-times-table-memory__button-start {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.page-times-table-memory__button-overlay {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  filter: blur(0.1rem);
+}
+
+.page-times-table-memory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 1rem;
+}
+
+.page-times-table-memory__score-bar--high-score {
+  color: var(--color-orange);
+}
+
+.page-times-table-memory__score {
+  display: flex;
+}
+
+.page-times-table-memory__timer {
+}

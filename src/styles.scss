@@ -29,6 +29,7 @@ canvas {
   --color-orange: #ff9800;
   --color-green: #4caf50;
   --color-red: #f44336;
+  --color-purple: #8b6fc0;
 
   --font-size-medium: clamp(1rem, min(5cqw, 5cqh) + 1rem, 5rem);
 }
@@ -189,6 +190,7 @@ a.btn-icon {
 .timer {
   color: var(--color-green);
   font-weight: 500;
+  user-select: none;
 }
 
 input[type='text'],

@@ -8,7 +8,7 @@ import { inject, Injectable } from '@angular/core';
 })
 export class EquationGeneratorMultiplication extends EquationGeneratorPort {
   private readonly eb = inject(ExpressionBuilder);
-  protected operationKey: OperationKey = OperationKey.Multiplication;
+  protected readonly operationKey: OperationKey = OperationKey.Multiplication;
 
   generateEquation(multiplicand: number, multiplier: number): Equation {
     const operation = this.eb.mulNum(multiplicand, multiplier);

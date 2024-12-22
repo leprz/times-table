@@ -1,0 +1,28 @@
+@use 'src/_grid-mixins.scss';
+
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.memory-board {
+  display: inline grid;
+  max-width: 40rem;
+  font-size: 2rem;
+  grid-template-columns: repeat(4, minmax(7rem, 1fr));
+  gap: 1rem;
+}
+
+@include grid-mixins.media-sm {
+  .memory-board {
+    font-size: 1rem;
+    grid-template-columns: repeat(3, minmax(1rem, 5rem));
+  }
+}
+
+@include grid-mixins.media-mobile-landscape {
+  .memory-board {
+    font-size: 1rem;
+    grid-template-columns: repeat(6, minmax(2rem, 1fr));
+  }
+}

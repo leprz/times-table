@@ -1,0 +1,74 @@
+<feature-score #score />
+<feature-memory-operation-deck
+  #deck
+  (correctTryRecorded)="soundCorrect.playSound()"
+  (wrongTryRecorded)="soundIncorrect.playSound()"
+/>
+
+<page-common-on-init (afterInit)="deck.present(board, boardSize())" />
+
+<feature-timer
+  #timer
+  [timer]="120"
+  [startOnLoad]="false"
+  (timesUp)="board.endGame()"
+/>
+
+<feature-sound
+  name="correct"
+  [preload]="true"
+  (beforeSoundStarted)="score.recalculateCurrentScore()"
+  #soundCorrect
+/>
+
+<feature-sound name="incorrect" [preload]="true" #soundIncorrect />
+
+<div class="page-times-table-memory">
+  <div class="page-times-table-memory__score body-medium">
+    <span
+      class="page-times-table-guesser__sco re-bar page-times-table-memory__score-bar--current-score"
+    >
+      {{ score.currentScore() }}
+    </span>
+
+    @if (deck.highScoreKey(); as highScoreKey) {
+      <feature-high-score #featureHighScore [key]="highScoreKey" />
+
+      @if (featureHighScore.highScore() > 0) {
+        /
+        <span
+          class="page-times-table-memory__score-bar page-times-table-memory__score-bar--high-score"
+        >
+          {{ featureHighScore.highScore() | formatHighScore }}
+        </span>
+      }
+
+      <span *uiTeleportTo="'top-bar-action'">
+        <ui-badge-high-score [highScore]="featureHighScore.highScore()" />
+      </span>
+    }
+  </div>
+
+  <div class="page-times-table-memory__board">
+    @if (!timer.isRunning()) {
+      <button
+        class="page-times-table-memory__button-start btn-secondary body-small"
+        (click)="board.startGame()"
+      >
+        Start
+      </button>
+      <div class="page-times-table-memory__button-overlay"></div>
+    }
+
+    <feature-memory-board-component
+      #board
+      (correctAnswerGiven)="deck.recordCorrectTry($event)"
+      (wrongAnswerGiven)="deck.recordWrongTry($event)"
+      (roundEnded)="deck.present(board, boardSize())"
+      (gameStarted)="timer.start()"
+      (gameEnded)="navigateToSummary()"
+    />
+  </div>
+
+  <time class="timer body-large">{{ timer.remainingTime() }}s</time>
+</div>

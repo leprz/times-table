@@ -11,7 +11,7 @@ import { inject, Injectable } from '@angular/core';
 })
 export class EquationGeneratorComplexOperation extends EquationGeneratorPort {
   private readonly eb = inject(ExpressionBuilder);
-  protected operationKey: OperationKey = OperationKey.ComplexOperation;
+  protected readonly operationKey: OperationKey = OperationKey.ComplexOperation;
 
   generateEquation(): Equation {
     const operands = Array.from(

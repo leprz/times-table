@@ -25,6 +25,7 @@
         "lib/features/feature-high-score/src/index.ts"
       ],
       "@org/feature-install": ["lib/features/feature-install/src/index.ts"],
+      "@org/feature-memory": ["lib/features/feature-memory/src/index.ts"],
       "@org/feature-prize": ["lib/features/feature-prize/src/index.ts"],
       "@org/feature-rewards": ["lib/features/feature-rewards/src/index.ts"],
       "@org/feature-sound": ["lib/features/feature-sound/src/index.ts"],
@@ -47,11 +48,15 @@
       "@org/page-times-table-guesser": [
         "lib/pages/page-times-table-guesser/src/index.ts"
       ],
+      "@org/page-times-table-memory": [
+        "lib/pages/page-times-table-memory/src/index.ts"
+      ],
       "@org/page-times-table-quiz": [
         "lib/pages/page-times-table-quiz/src/index.ts"
       ],
       "@org/ui-animation": ["lib/common/ui/ui-animation/src/index.ts"],
       "@org/ui-badge": ["lib/common/ui/ui-badge/src/index.ts"],
+      "@org/ui-card": ["lib/common/ui/ui-card/src/index.ts"],
       "@org/ui-common": ["lib/common/ui/ui-common/src/index.ts"],
       "@org/ui-dialog": ["lib/common/ui/ui-dialog/src/index.ts"],
       "@org/ui-form-errors": ["lib/common/ui/ui-form-errors/src/index.ts"],
