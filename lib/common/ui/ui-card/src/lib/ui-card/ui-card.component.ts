@@ -45,7 +45,8 @@ import { CommonModule } from '@angular/common';
         cursor: pointer;
         backface-visibility: hidden;
 
-        &[hidden] {
+        &[hidden],
+        &.card--disabled {
           cursor: default;
         }
       }

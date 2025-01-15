@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import {
   CardPresenter,
+  CardPresenterUtils,
   MemoryMatcherComponent,
 } from './memory-matcher.component';
 import { FeatureTimerComponent } from '@org/feature-times-table';
@@ -28,11 +29,11 @@ import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
           <feature-memory-card
             class="memory-board__card"
             #cardComponent
-            [label]="card.name"
+            [label]="card.label"
             [disabled]="isBoardDisabled()"
-            (mousedown)="matcher.select(card, cardComponent, this)"
+            (selected)="matcher.select(card, cardComponent, this)"
             (shakeEnd)="incorrectAnswerTimer.start()"
-            (cardHideAnimationDone)="calculateProgress()"
+            (cardHideAnimationDone)="onCorrectAnswerAdded()"
           />
         </div>
       }
@@ -122,7 +123,7 @@ export class MemoryBoardComponent implements DeckPresenter {
     this.matchedCardsCount.set(0);
   }
 
-  protected calculateProgress(): void {
+  protected onCorrectAnswerAdded(): void {
     this.matchedCardsCount.set(this.matchedCardsCount() + 1);
     if (this.matchedCardsCount() === this.cards().length) {
       this.roundEnded.emit();
@@ -130,12 +131,10 @@ export class MemoryBoardComponent implements DeckPresenter {
   }
 
   private showAllCards(cardPresenters: readonly CardPresenter[]): void {
-    cardPresenters.forEach((cardComponent) => {
-      cardComponent.showFront();
-    });
+    CardPresenterUtils.showAll(cardPresenters);
   }
 
-  async endGame(): Promise<void> {
+  async finishGame(): Promise<void> {
     this.isStarted.set(false);
     this.isBoardDisabled.set(true);
     this.gameEnded.emit();

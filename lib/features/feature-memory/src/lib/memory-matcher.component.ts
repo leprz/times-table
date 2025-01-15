@@ -11,8 +11,6 @@ import { Card, CardUtils } from './memory-card-math-operation-deck.component';
 export interface CardPresenter {
   select(): void;
 
-  isDisabled(): boolean;
-
   unselect(force?: boolean): void;
 
   showBack(force?: boolean): void;
@@ -22,6 +20,12 @@ export interface CardPresenter {
   shake(): void;
 
   hide(): void;
+}
+
+export class CardPresenterUtils {
+  static showAll(cards: readonly CardPresenter[]): void {
+    cards.forEach((card) => card.showFront());
+  }
 }
 
 export interface SelectedCard {

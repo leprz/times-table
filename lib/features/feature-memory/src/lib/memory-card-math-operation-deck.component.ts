@@ -15,7 +15,7 @@ import { HighScoreInitializer } from '@org/feature-common';
 export interface Card {
   id: string;
   key: string;
-  name: string;
+  label: string;
   isAnswer: boolean;
 }
 
@@ -42,8 +42,6 @@ export class CardUtils {
 
 export interface DeckPresenter {
   present(deck: Card[]): void;
-
-  isDisabled(): boolean;
 }
 
 @Component({
@@ -74,7 +72,7 @@ export class MemoryCardMathOperationDeckComponent
     this.highScoreKey.set(key);
   }
 
-  present(deckPresenter: DeckPresenter, size?: number): void {
+  generate(deckPresenter: DeckPresenter, size?: number): void {
     if (size && size % 2) {
       throw new Error('Size must be an even number');
     }
@@ -87,13 +85,13 @@ export class MemoryCardMathOperationDeckComponent
       ...this.equations.map((equation) => ({
         id: this.uuidGen.generate(),
         key: equation.product.toString(),
-        name: equation.operation.toPrettyString(),
+        label: equation.operation.toPrettyString(),
         isAnswer: false,
       })),
       ...this.equations.map((equation) => ({
         id: this.uuidGen.generate(),
         key: equation.product.toString(),
-        name: equation.product.toString(),
+        label: equation.product.toString(),
         isAnswer: true,
       })),
     ]);
@@ -111,7 +109,7 @@ export class MemoryCardMathOperationDeckComponent
     }
 
     this.summaryService.recordTry({
-      operation: operationCard.name,
+      operation: operationCard.label,
       isCorrect: isCorrect,
       answerCorrect: parseInt(operationCard.key),
       answerGiven: parseInt(answerCard.key),

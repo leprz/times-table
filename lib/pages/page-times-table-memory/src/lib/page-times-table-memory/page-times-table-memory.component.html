@@ -5,13 +5,13 @@
   (wrongTryRecorded)="soundIncorrect.playSound()"
 />
 
-<page-common-on-init (afterInit)="deck.present(board, boardSize())" />
+<page-common-on-init (afterInit)="deck.generate(board, boardSize())" />
 
 <feature-timer
   #timer
   [timer]="120"
   [startOnLoad]="false"
-  (timesUp)="board.endGame()"
+  (timesUp)="board.finishGame()"
 />
 
 <feature-sound
@@ -64,7 +64,7 @@
       #board
       (correctAnswerGiven)="deck.recordCorrectTry($event)"
       (wrongAnswerGiven)="deck.recordWrongTry($event)"
-      (roundEnded)="deck.present(board, boardSize())"
+      (roundEnded)="deck.generate(board, boardSize())"
       (gameStarted)="timer.start()"
       (gameEnded)="navigateToSummary()"
     />

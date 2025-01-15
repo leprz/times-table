@@ -1,11 +1,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   input,
   output,
   signal,
 } from '@angular/core';
-import { UiCardComponent } from '@org/ui-card';
 import { CardPresenter } from './memory-matcher.component';
 import {
   animate,
@@ -15,14 +15,16 @@ import {
   trigger,
 } from '@angular/animations';
 import { shakeOnBooleanChange } from '@org/ui-animation';
+import { UiCardComponent } from '@org/ui-card';
 
 @Component({
   selector: 'feature-memory-card',
   standalone: true,
   template: ` <ui-card
     class="feature-memory-card"
+    (mousedown)="onMouseDown()"
     [name]="label()"
-    [disabled]="disabled()"
+    [disabled]="isDisabled()"
     [hidden]="isHidden()"
     [selected]="isSelected()"
     [@shake]="shaken()"
@@ -65,15 +67,19 @@ export class MemoryCardComponent implements CardPresenter {
   readonly cardHideAnimationDone = output();
   readonly cardSelected = output();
   readonly shakeEnd = output();
+  readonly selected = output();
   protected readonly cardPosition = signal<'back' | 'front'>('back');
   protected readonly isHidden = signal(false);
   readonly isSelected = signal(false);
+  protected readonly isDisabled = computed(
+    () => this.disabled() || this.isHidden(),
+  );
   protected readonly shaken = signal(false);
 
   showFront(force: boolean | undefined = false): void {
     if (
       force === false &&
-      (this.disabled() || this.cardPosition() === 'front')
+      (this.isDisabled() || this.cardPosition() === 'front')
     ) {
       return;
     }
@@ -83,7 +89,7 @@ export class MemoryCardComponent implements CardPresenter {
 
   showBack(force: boolean | undefined = false): void {
     if (
-      (force === false && this.disabled()) ||
+      (force === false && this.isDisabled()) ||
       this.cardPosition() === 'back'
     ) {
       return;
@@ -100,7 +106,7 @@ export class MemoryCardComponent implements CardPresenter {
   }
 
   select(): void {
-    if (this.disabled()) {
+    if (this.isDisabled()) {
       return;
     }
     this.isSelected.set(true);
@@ -108,14 +114,10 @@ export class MemoryCardComponent implements CardPresenter {
   }
 
   unselect(force?: boolean): void {
-    if (force === false && this.disabled()) {
+    if (force === false && this.isDisabled()) {
       return;
     }
     this.isSelected.set(false);
-  }
-
-  isDisabled(): boolean {
-    return this.disabled();
   }
 
   protected onFlipEnd() {
@@ -135,5 +137,12 @@ export class MemoryCardComponent implements CardPresenter {
       this.shaken.set(false);
       this.shakeEnd.emit();
     }
+  }
+
+  protected onMouseDown(): void {
+    if (this.isDisabled()) {
+      return;
+    }
+    this.selected.emit();
   }
 }
