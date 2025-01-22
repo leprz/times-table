@@ -63,6 +63,18 @@ export class PageCommonTopBarComponent implements WithLayoutMode {
         this.isBackButtonVisible.set(true);
         this.isShareButtonVisible.set(false);
         break;
+      case 'tiny-learners-normal':
+        this.isCoinsButtonVisible.set(false);
+        this.isSettingsButtonVisible.set(false);
+        this.isBackButtonVisible.set(false);
+        this.isShareButtonVisible.set(true);
+        break;
+      case 'tiny-learners-distraction-free':
+        this.isCoinsButtonVisible.set(false);
+        this.isSettingsButtonVisible.set(false);
+        this.isBackButtonVisible.set(true);
+        this.isShareButtonVisible.set(false);
+        break;
     }
   }
 }

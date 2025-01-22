@@ -15,8 +15,12 @@ import { CommonModule } from '@angular/common';
         card: true,
         'card--disabled': disabled(),
         'card--selected': selected(),
+        'card--selection-outline': selectionOutline(),
       }"
       [hidden]="isHidden()"
+      [style.background-color]="
+        selectionColorHex() ? selectionColorHex() : false
+      "
     >
       <span>
         {{ name() }}
@@ -26,7 +30,7 @@ import { CommonModule } from '@angular/common';
   styles: [
     `
       :host {
-        background-color: var(--color-purple);
+        background-color: var(--card__backround-color, var(--color-purple));
         border-radius: 0.5rem;
       }
 
@@ -35,11 +39,11 @@ import { CommonModule } from '@angular/common';
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(--color-purple);
+        background-color: var(--card__backround-color, var(--color-purple));
         border-radius: 0.5rem;
-        padding: 0.5em;
+        padding: 0.5rem;
         text-align: center;
-        aspect-ratio: 9/10;
+        aspect-ratio: var(--card__aspect-ratio, 9/10);
         position: relative;
         z-index: 1;
         cursor: pointer;
@@ -48,6 +52,9 @@ import { CommonModule } from '@angular/common';
         &[hidden],
         &.card--disabled {
           cursor: default;
+          user-select: none;
+          pointer-events: none;
+          touch-action: none;
         }
       }
 
@@ -55,8 +62,12 @@ import { CommonModule } from '@angular/common';
         user-select: none;
       }
 
+      .card--selection-outline.card--selected {
+        border: 0.5rem solid var(--card__selected-color, var(--color-primary));
+      }
+
       .card--selected {
-        background-color: var(--color-secondary);
+        background-color: var(--card__selected-color, var(--color-secondary));
       }
     `,
   ],
@@ -64,7 +75,9 @@ import { CommonModule } from '@angular/common';
 })
 export class UiCardComponent {
   readonly name = input.required<string>();
+  readonly selectionColorHex = input<string>();
   readonly disabled = input<boolean>(false);
   readonly selected = input<boolean>(false);
+  readonly selectionOutline = input<boolean>(false);
   protected readonly isHidden = signal(false);
 }

@@ -16,6 +16,8 @@ export interface Card {
   id: string;
   key: string;
   label: string;
+  soundName?: string;
+  colorHex?: string;
   isAnswer: boolean;
 }
 
@@ -35,7 +37,7 @@ export class CardUtils {
     return cards.find((card) => card.isAnswer);
   }
 
-  static findOperation(cards: Card[]): Card | undefined {
+  static findQuestion(cards: Card[]): Card | undefined {
     return cards.find((card) => !card.isAnswer);
   }
 }
@@ -51,7 +53,7 @@ export interface DeckPresenter {
   providers: [ExerciseGenerator],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MemoryCardMathOperationDeckComponent
+export class FeatureMemoryCardMathOperationDeckComponent
   implements HighScoreInitializer
 {
   private equations: Equation[] = [];
@@ -98,7 +100,7 @@ export class MemoryCardMathOperationDeckComponent
   }
 
   recordTry(cards: Card[], isCorrect: boolean): void {
-    const operationCard = CardUtils.findOperation(cards);
+    const operationCard = CardUtils.findQuestion(cards);
     const answerCard = CardUtils.findAnswer(cards);
 
     if (!operationCard || !answerCard) {

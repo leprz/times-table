@@ -1,0 +1,67 @@
+@use 'src/_grid-mixins.scss';
+
+:host {
+  --card__aspect-ratio: none;
+  --card__selected-color: var(--color-purple);
+}
+
+.page-learn-numbers {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.page-learn-numbers__cards {
+  display: inline grid;
+  max-width: 40rem;
+  font-size: 2rem;
+  grid-template-columns: repeat(1, minmax(3rem, 10rem));
+  gap: 1rem;
+}
+
+.page-learn-numbers--many-generated {
+  .page-learn-numbers__cards {
+    grid-template-columns: repeat(2, minmax(3rem, 10rem));
+  }
+}
+
+.page-learn-numbers__cards--questions {
+  --card__backround-color: var(--color-green);
+}
+
+.page-learn-numbers__cards--answers {
+  --card__backround-color: var(--color-orange);
+}
+
+.page-learn-numbers__header {
+  font-size: 7rem;
+  display: flex;
+  justify-content: center;
+}
+
+@include grid-mixins.media-md {
+  .page-learn-numbers__cards {
+    font-size: 1.5rem;
+    grid-template-columns: repeat(1, minmax(3rem, 8rem));
+  }
+
+  .page-learn-numbers--many-generated {
+    .page-learn-numbers__cards {
+      grid-template-columns: repeat(2, minmax(3rem, 8rem));
+    }
+  }
+}
+
+@include grid-mixins.media-sm {
+  .page-learn-numbers__header {
+    order: 1;
+  }
+
+  .page-learn-numbers--many-generated {
+    .page-learn-numbers__header {
+      display: none;
+    }
+  }
+}

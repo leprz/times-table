@@ -1,0 +1,12 @@
+.page-learn-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+.page-learn-summary__action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

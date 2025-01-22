@@ -33,6 +33,15 @@ export class Sound {
     return audio.src.slice(-src.length) === src;
   }
 
+  private static isPlaying(audio: HTMLAudioElement): boolean {
+    return (
+      audio.currentTime > 0 &&
+      !audio.paused &&
+      !audio.ended &&
+      audio.readyState > 2
+    );
+  }
+
   preload(): void {
     if (!Sound._muted) {
       this.audio = Sound.soundCache.getOrCreate(this.src);
@@ -48,22 +57,21 @@ export class Sound {
       this.preload();
     }
 
-    if (
-      !Sound.playbackAudio ||
-      !Sound.isTheSameSound(Sound.playbackAudio, this.src)
-    ) {
-      this.pause();
+    if (Sound.playbackAudio) {
+      if (Sound.isTheSameSound(Sound.playbackAudio, this.src)) {
+        if (Sound.isPlaying(Sound.playbackAudio)) {
+          return;
+        } else {
+          this.rewindSound();
+        }
+      } else {
+        Sound.playbackAudio = this.audio;
+      }
+    } else {
       Sound.playbackAudio = this.audio;
-      Sound.playbackAudio.addEventListener('ended', this.rewindSound);
-      return Sound.playbackAudio.play();
     }
-    if (
-      Sound.playbackAudio &&
-      Sound.isTheSameSound(Sound.playbackAudio, this.src) &&
-      Sound.playbackAudio.currentTime === 0
-    ) {
-      return Sound.playbackAudio.play();
-    }
+
+    Sound.playbackAudio?.play();
   }
 
   pause(): void {

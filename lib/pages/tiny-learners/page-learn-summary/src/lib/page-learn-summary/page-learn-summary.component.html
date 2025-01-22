@@ -1,0 +1,31 @@
+<page-common-on-init (afterInit)="soundWoohoo.playSound()" />
+<page-common-route-manager #routeManager />
+<feature-sound
+  name="woohoo"
+  [preload]="true"
+  (beforeSoundStarted)="smile.replay()"
+  #soundWoohoo
+/>
+<div class="page-learn-summary">
+  <h2 class="body-medium">Gratulacje</h2>
+  <ui-animation-file
+    class="page-learn-summary__smiley-face body-large"
+    [animationName]="'smile'"
+    (click)="smile.play()"
+    #smile
+  />
+  <h3 class="body-small">Zagraj jeszcze raz</h3>
+  <div class="page-learn-summary__action-buttons">
+    <button
+      (click)="spin.replay()"
+      class="btn-tertiary page-learn-summary__button--repeat"
+    >
+      <ui-animation-file
+        class="body-small"
+        [animationName]="'spin'"
+        #spin
+        (animationDone)="routeManager.navigateBack()"
+      />
+    </button>
+  </div>
+</div>

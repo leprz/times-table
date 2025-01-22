@@ -1,8 +1,8 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  MemoryBoardComponent,
-  MemoryCardMathOperationDeckComponent,
+  FeatureMemoryBoardComponent,
+  FeatureMemoryCardMathOperationDeckComponent,
 } from '@org/feature-memory';
 import { LayoutModeService, links, OnInitComponent } from '@org/page-common';
 import {
@@ -20,9 +20,9 @@ import { FeatureSoundComponent } from '@org/feature-sound';
 @Component({
   imports: [
     CommonModule,
-    MemoryBoardComponent,
+    FeatureMemoryBoardComponent,
     OnInitComponent,
-    MemoryCardMathOperationDeckComponent,
+    FeatureMemoryCardMathOperationDeckComponent,
     FeatureTimerComponent,
     FeatureScoreComponent,
     FeatureHighScoreComponent,

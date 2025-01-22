@@ -38,6 +38,20 @@ export class RouteManagerComponent {
     ),
   );
 
+  navigateBack(): void {
+    const referrer = document.referrer; // Get the previous URL
+    if (referrer === '') {
+      this.router.navigate(['/']);
+    }
+    const currentDomain = window.location.origin; // Get the current domain
+
+    if (referrer.startsWith(currentDomain)) {
+      this.location.back();
+    } else {
+      console.warn('Navigation outside the domain is blocked.');
+    }
+  }
+
   constructor() {
     toObservable(this.activeUrl)
       .pipe(

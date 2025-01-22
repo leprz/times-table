@@ -1,0 +1,12 @@
+<div class="tiny-learners-app">
+  <header>
+    <page-common-top-bar #topBar />
+    <page-common-layout-mode
+      #layoutMode
+      (layoutModeChanged)="layoutMode.applyModeTo(topBar)"
+    />
+  </header>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>

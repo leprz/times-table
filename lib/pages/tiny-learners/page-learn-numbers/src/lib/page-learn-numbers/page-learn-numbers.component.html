@@ -1,0 +1,119 @@
+<page-common-on-init (afterInit)="exerciseExplanation.playSound()" />
+<feature-sound
+  [dynamicName]="'exercise-connect-the-same-numbers-pl-explanation'"
+  [preload]="true"
+  #exerciseExplanation
+/>
+
+<feature-memory-numbers-deck
+  #deck
+  (correctTryRecorded)="soundCorrect.playSound()"
+  (wrongTryRecorded)="soundIncorrect.playSound()"
+  (deckGenerated)="flipAllCards()"
+  (allElementsMatched)="finishTimer.start()"
+/>
+
+<feature-timer
+  #finishTimer
+  [timer]="1"
+  [startOnLoad]="false"
+  (timesUp)="navigateToSummary()"
+/>
+
+<page-common-route-params-component #routeParams />
+
+<page-common-on-init
+  (afterInit)="
+    deck.generate(
+      this,
+      parseInt(routeParams.queryParams['min'] ?? 1),
+      parseInt(routeParams.queryParams['max'] ?? 3)
+    )
+  "
+/>
+
+<feature-sound name="correct" [preload]="true" #soundCorrect />
+
+<feature-sound name="incorrect" [preload]="true" #soundIncorrect />
+
+<feature-timer
+  #incorrectAnswerTimer
+  [startOnLoad]="false"
+  [timer]="1"
+  (timesUp)="incorrectAnswerTimer.reset()"
+  (timerReset)="matcher.unselectAllCards(this)"
+/>
+
+<feature-memory-matcher
+  #matcher
+  (allElementsSelected)="matcher.submitResult()"
+  (answerCorrect)="matcher.markSelectedCardsAreMatched(this)"
+  (answerIncorrect)="matcher.markSelectedCardsAreMismatched()"
+  (selectedCardsMatched)="
+    deck.recordCorrectTry([$event.firstCard, $event.secondCard])
+  "
+  (selectedCardsMismatched)="
+    deck.recordWrongTry([$event.firstCard, $event.secondCard])
+  "
+/>
+
+<div
+  [class]="{
+    'page-learn-numbers': true,
+    'page-learn-numbers--many-generated': deck.generatedNumbersCount() > 5,
+  }"
+>
+  <div class="page-learn-numbers__cards page-learn-numbers__cards--questions">
+    @for (card of cards(); track card.id) {
+      @if (!card.isAnswer) {
+        <div>
+          <feature-sound
+            #cardSound
+            [preload]="true"
+            [dynamicName]="card.soundName"
+          />
+          <feature-memory-card
+            class="memory-board__card"
+            #cardComponent
+            [label]="card.label"
+            [disabled]="disabled()"
+            (selected)="matcher.select(card, cardComponent, this)"
+            (cardSelected)="cardSound.playSound()"
+            (shakeEnd)="incorrectAnswerTimer.start()"
+          />
+        </div>
+      }
+    }
+  </div>
+
+  <div class="page-learn-numbers__header">
+    <ui-animation-file
+      [animationName]="'monster'"
+      [loop]="true"
+      [autoplay]="true"
+    />
+  </div>
+
+  <div class="page-learn-numbers__cards page-learn-numbers__cards--answers">
+    @for (card of cards(); track card.id) {
+      @if (card.isAnswer) {
+        <div>
+          <feature-sound
+            #cardSound
+            [preload]="true"
+            [dynamicName]="card.soundName"
+          />
+          <feature-memory-card
+            class="memory-board__card"
+            #cardComponent
+            [label]="card.label"
+            [disabled]="disabled()"
+            (selected)="matcher.select(card, cardComponent, this)"
+            (cardSelected)="cardSound.playSound()"
+            (shakeEnd)="incorrectAnswerTimer.start()"
+          />
+        </div>
+      }
+    }
+  </div>
+</div>

@@ -6,19 +6,20 @@ import {
   viewChildren,
 } from '@angular/core';
 import {
+  CardBoard,
   CardPresenter,
   CardPresenterUtils,
   MemoryMatcherComponent,
 } from './memory-matcher.component';
 import { FeatureTimerComponent } from '@org/feature-times-table';
-import { MemoryCardComponent } from './memnory-card.component';
 import {
   Card,
   CardUtils,
   DeckPresenter,
-} from './memory-card-math-operation-deck.component';
+} from './feature-memory-card-math-operation-deck.component';
 import { first, forkJoin } from 'rxjs';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
+import { MemoryCardComponent } from './memory-card.component';
 
 @Component({
   selector: 'feature-memory-board-component',
@@ -60,11 +61,16 @@ import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
       "
     />
   `,
-  styleUrl: 'memory-board.component.scss',
-  imports: [MemoryMatcherComponent, FeatureTimerComponent, MemoryCardComponent],
+  styleUrl: 'feature-memory-board.component.scss',
+  imports: [
+    MemoryMatcherComponent,
+    FeatureTimerComponent,
+    MemoryCardComponent,
+    MemoryCardComponent,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MemoryBoardComponent implements DeckPresenter {
+export class FeatureMemoryBoardComponent implements DeckPresenter, CardBoard {
   readonly roundEnded = output();
   readonly gameEnded = output();
   readonly gameStarted = output();
@@ -73,7 +79,7 @@ export class MemoryBoardComponent implements DeckPresenter {
   protected readonly cards = signal<Card[]>([]);
   protected readonly isBoardDisabled = signal(true);
   protected readonly matchedCardsCount = signal(0);
-  private readonly isStarted = signal(false);
+  readonly isStarted = signal(false);
   private readonly cardPresenters = viewChildren(MemoryCardComponent);
   private readonly cardPresenters$ = toObservable(this.cardPresenters);
 

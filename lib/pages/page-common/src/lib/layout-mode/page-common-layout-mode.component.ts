@@ -8,7 +8,11 @@ export interface WithLayoutMode {
   onLayoutModeChange(mode: LayoutMode): void;
 }
 
-export type LayoutMode = 'normal' | 'distraction-free';
+export type LayoutMode =
+  | 'normal'
+  | 'distraction-free'
+  | 'tiny-learners-normal'
+  | 'tiny-learners-distraction-free';
 
 @Injectable({
   providedIn: 'root',

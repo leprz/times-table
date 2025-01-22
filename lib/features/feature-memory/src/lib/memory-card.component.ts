@@ -24,6 +24,8 @@ import { UiCardComponent } from '@org/ui-card';
     class="feature-memory-card"
     (mousedown)="onMouseDown()"
     [name]="label()"
+    [selectionColorHex]="selectionColorHex()"
+    [selectionOutline]="selectionOutline()"
     [disabled]="isDisabled()"
     [hidden]="isHidden()"
     [selected]="isSelected()"
@@ -61,6 +63,8 @@ import { UiCardComponent } from '@org/ui-card';
 })
 export class MemoryCardComponent implements CardPresenter {
   readonly label = input.required<string>();
+  readonly selectionColorHex = input<string>();
+  readonly selectionOutline = input<boolean>(false);
   readonly disabled = input<boolean>(false);
   readonly frontShown = output();
   readonly frontShownAnimationDone = output();

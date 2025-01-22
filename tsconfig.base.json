@@ -26,6 +26,12 @@
       ],
       "@org/feature-install": ["lib/features/feature-install/src/index.ts"],
       "@org/feature-memory": ["lib/features/feature-memory/src/index.ts"],
+      "@org/feature-memory-colors": [
+        "lib/features/memory/feature-memory-colors/src/index.ts"
+      ],
+      "@org/feature-memory-numbers": [
+        "lib/features/memory/feature-memory-numbers/src/index.ts"
+      ],
       "@org/feature-prize": ["lib/features/feature-prize/src/index.ts"],
       "@org/feature-rewards": ["lib/features/feature-rewards/src/index.ts"],
       "@org/feature-sound": ["lib/features/feature-sound/src/index.ts"],
@@ -37,6 +43,15 @@
       "@org/page-common": ["lib/pages/page-common/src/index.ts"],
       "@org/page-complex-operation": [
         "lib/pages/page-complex-operation/src/index.ts"
+      ],
+      "@org/page-learn-colors": [
+        "lib/pages/tiny-learners/page-learn-colors/src/index.ts"
+      ],
+      "@org/page-learn-numbers": [
+        "lib/pages/tiny-learners/page-learn-numbers/src/index.ts"
+      ],
+      "@org/page-learn-summary": [
+        "lib/pages/tiny-learners/page-learn-summary/src/index.ts"
       ],
       "@org/page-lesson-selector": [
         "lib/pages/page-lesson-selector/src/index.ts"
@@ -53,6 +68,9 @@
       ],
       "@org/page-times-table-quiz": [
         "lib/pages/page-times-table-quiz/src/index.ts"
+      ],
+      "@org/page-tl-common": [
+        "lib/pages/tiny-learners/page-tl-common/src/index.ts"
       ],
       "@org/ui-animation": ["lib/common/ui/ui-animation/src/index.ts"],
       "@org/ui-badge": ["lib/common/ui/ui-badge/src/index.ts"],

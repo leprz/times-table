@@ -5,8 +5,16 @@ import {
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MemoryBoardComponent } from './memory-board.component';
-import { Card, CardUtils } from './memory-card-math-operation-deck.component';
+import {
+  Card,
+  CardUtils,
+} from './feature-memory-card-math-operation-deck.component';
+
+export interface CardBoard {
+  isDisabled(): boolean;
+  disable(): void;
+  enable(): void;
+}
 
 export interface CardPresenter {
   select(): void;
@@ -23,8 +31,8 @@ export interface CardPresenter {
 }
 
 export class CardPresenterUtils {
-  static showAll(cards: readonly CardPresenter[]): void {
-    cards.forEach((card) => card.showFront());
+  static showAll(cards: readonly CardPresenter[], force = false): void {
+    cards.forEach((card) => card.showFront(force));
   }
 }
 
@@ -41,6 +49,16 @@ class SelectedCardsUtils {
     return selectedCards
       .map((selectedCard) => selectedCard.card)
       .includes(card);
+  }
+
+  static isSameCardTypeSelected(
+    selectedCards: Array<SelectedCard>,
+    card: Card,
+  ): boolean {
+    return (
+      selectedCards.length > 0 &&
+      selectedCards[0].card.isAnswer === card.isAnswer
+    );
   }
 
   static removeFromSelectedCards(
@@ -84,7 +102,7 @@ export class MemoryMatcherComponent {
   select(
     currentlySelectedElement: Card,
     cardPresenter: CardPresenter,
-    board: MemoryBoardComponent,
+    board: CardBoard,
   ): void {
     if (board.isDisabled()) {
       return;
@@ -101,6 +119,13 @@ export class MemoryMatcherComponent {
         cardPresenter,
       });
       return;
+    } else if (
+      SelectedCardsUtils.isSameCardTypeSelected(
+        this.selectedCards(),
+        currentlySelectedElement,
+      )
+    ) {
+      this.removeFromSelectedCards(this.selectedCards()[0]);
     }
 
     this.addToSelectedCards({
@@ -133,7 +158,7 @@ export class MemoryMatcherComponent {
     }
   }
 
-  markSelectedCardsAreMatched(board: MemoryBoardComponent): void {
+  markSelectedCardsAreMatched(board: CardBoard): void {
     const [firstElement, secondElement] = this.selectedCards();
     if (!firstElement || !secondElement) {
       return;
@@ -168,7 +193,7 @@ export class MemoryMatcherComponent {
     });
   }
 
-  unselectAllCards(board: MemoryBoardComponent): void {
+  unselectAllCards(board: CardBoard): void {
     const [firstElement, secondElement] = this.selectedCards();
     if (!firstElement || !secondElement) {
       return;

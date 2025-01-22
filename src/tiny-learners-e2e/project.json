@@ -1,0 +1,9 @@
+{
+  "name": "tiny-learners-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "src/tiny-learners-e2e/src",
+  "implicitDependencies": ["tiny-learners"],
+  "// targets": "to see all targets run: nx show project tiny-learners-e2e --web",
+  "targets": {}
+}
