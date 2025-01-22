@@ -81,7 +81,8 @@ export class Sound {
   }
 
   destroy(): void {
-    this.audio.pause();
+    this.pause();
+    this.rewindSound();
     this.audio.removeEventListener('ended', this.rewindSound);
     if (Sound.playbackAudio) {
       Sound.playbackAudio = null;
