@@ -44,6 +44,9 @@
       "@org/page-complex-operation": [
         "lib/pages/page-complex-operation/src/index.ts"
       ],
+      "@org/page-learn-by-coloring": [
+        "lib/pages/tiny-learners/page-learn-by-coloring/src/index.ts"
+      ],
       "@org/page-learn-colors": [
         "lib/pages/tiny-learners/page-learn-colors/src/index.ts"
       ],

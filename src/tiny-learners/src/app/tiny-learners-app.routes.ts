@@ -17,6 +17,13 @@ export const tinyLearnersAppRoutes: Route[] = [
       ),
   },
   {
+    path: tlLinkDefinition('learn_numbers_painting'),
+    loadComponent: () =>
+      import('@org/page-learn-by-coloring').then(
+        (m) => m.PageLearnByColoringComponent,
+      ),
+  },
+  {
     path: tlLinkDefinition('learn_colors'),
     loadComponent: () =>
       import('@org/page-learn-colors').then((m) => m.PageLearnColorsComponent),

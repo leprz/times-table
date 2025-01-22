@@ -51,6 +51,9 @@ import { RouterLink } from '@angular/router';
       >1-10</a
     >
     <a class="btn-primary" [routerLink]="tlLinks.learn_colors">Kolory</a>
+    <a class="btn-primary" [routerLink]="tlLinks.learn_numbers_painting"
+      >Rysowanie</a
+    >
   `,
 })
 export class TinyLearnersLessonSelectorComponent {
