@@ -5,6 +5,32 @@
   #exerciseExplanation
 />
 
+<feature-timer
+  [timer]="3"
+  [startOnLoad]="true"
+  (timesUp)="smiley.replay()"
+  #timer
+/>
+
+{{ timer.elapsedTime() }}
+<button (click)="timer.restart()">Start</button>
+
+<ui-animation-file
+  [style.font-size]="'10rem'"
+  [animationName]="'smile'"
+  [autoplay]="false"
+  #smiley
+  (click)="smiley.replay()"
+  (animationDone)="monster.replay()"
+/>
+
+<ui-animation-file
+  [style.font-size]="'10rem'"
+  [animationName]="'monster'"
+  [autoplay]="false"
+  #monster
+/>
+
 <feature-memory-numbers-deck
   #deck
   (correctTryRecorded)="soundCorrect.playSound()"

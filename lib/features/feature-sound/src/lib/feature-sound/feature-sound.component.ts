@@ -1,6 +1,7 @@
 import {
   Component,
   computed,
+  effect,
   inject,
   input,
   OnDestroy,
@@ -31,12 +32,16 @@ export class FeatureSoundComponent implements OnInit, OnDestroy {
     return `assets/sounds/${this.dynamicName() || this.name()}.mp3`;
   });
 
-  readonly afterSoundStarted = output<void>(); // file already loaded and playing
+  readonly soundFinished = output<void>(); // file already loaded and playing
   readonly beforeSoundStarted = output<void>(); // file not loaded yet when it's not preloaded
 
   private readonly sound = computed(() => new Sound(this.filePath()));
 
   constructor() {
+    effect(() => {
+      this.preloadIfEnabled();
+    });
+
     this.messageBus
       .on(SoundUnMutedEvent, 'preload sound')
       .pipe(filterNill(), takeUntilDestroyed())
@@ -61,7 +66,9 @@ export class FeatureSoundComponent implements OnInit, OnDestroy {
 
   async playSound() {
     this.beforeSoundStarted.emit();
+    this.sound().onSoundEnded(() => {
+      this.soundFinished.emit();
+    });
     await this.sound().play();
-    this.afterSoundStarted.emit();
   }
 }

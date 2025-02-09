@@ -1,21 +1,12 @@
-<p>Pick a color and drag your brush on the letter to paint it.</p>
-<div id="controls">
-  <label for="colorPicker">Select Color: </label>
-  <input
-    type="color"
-    id="colorPicker"
-    value="#ff0000"
-    (input)="onColorChange($event)"
-  />
-  <button id="reset" (click)="resetCanvas()">Reset</button>
-</div>
-<canvas
-  #canvas
-  id="canvas"
-  width="400"
-  height="400"
-  (mousedown)="startPainting($event)"
-  (mousemove)="paint($event)"
-  (mouseup)="stopPainting()"
-  (mouseleave)="stopPainting()"
-></canvas>
+<page-common-on-init (afterInit)="textPainting.print(this.number() + '')" />
+<feature-sound
+  [preload]="true"
+  [dynamicName]="numberSoundDynamicName()"
+  #numberSound
+  (beforeSoundStarted)="textPainting.print(this.number().toString())"
+/>
+<!--<ui-animation-file [autoplay]="false" [animationName]="'smile'" #smiley class="page-learn-by-coloring__smiley"/>-->
+<ui-text-painting
+  (drawingFinished)="onDrawingFinished(numberSound)"
+  #textPainting
+/>

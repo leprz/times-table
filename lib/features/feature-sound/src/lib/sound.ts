@@ -101,4 +101,16 @@ export class Sound {
       Sound.playbackAudio.currentTime = 0;
     }
   }
+
+  onSoundEnded(callback: () => void) {
+    if (Sound.muted) {
+      callback();
+      return;
+    }
+    const handler = () => {
+      callback();
+      this.audio.removeEventListener('ended', handler);
+    };
+    this.audio.addEventListener('ended', handler);
+  }
 }

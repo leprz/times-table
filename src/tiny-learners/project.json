@@ -27,8 +27,11 @@
             "input": "src/tiny-learners/public"
           }
         ],
-        "styles": ["src/styles.scss"],
-        "scripts": []
+        "styles": ["src/styles.scss", "src/tiny-learners/src/styles.scss"],
+        "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": ["src/assets"]
+        }
       },
       "configurations": {
         "production": {

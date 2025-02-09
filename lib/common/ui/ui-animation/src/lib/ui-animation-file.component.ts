@@ -1,7 +1,7 @@
 import { Component, computed, input, output, signal } from '@angular/core';
 import { AnimationOptions, LottieComponent } from 'ngx-lottie';
 import { AnimationItem } from 'ngx-lottie/lib/symbols';
-
+type Animations = 'monster' | 'spin' | 'smile' | 'frankenstein';
 @Component({
   selector: 'ui-animation-file',
   imports: [LottieComponent],
@@ -25,7 +25,7 @@ export class UiAnimationFileComponent {
   public readonly autoplay = input(false);
   public readonly loop = input(false);
   public readonly width = input('2em');
-  public readonly animationName = input.required<string>();
+  public readonly animationName = input.required<Animations>();
   public readonly animationDone = output();
   protected readonly options = computed<AnimationOptions>(() => ({
     path: `assets/animations/${this.animationName()}.json`,

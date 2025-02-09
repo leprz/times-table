@@ -1,82 +1,57 @@
 import {
-  AfterViewInit,
+  ChangeDetectionStrategy,
   Component,
   computed,
-  ElementRef,
+  effect,
+  inject,
   signal,
-  viewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { UiTextPaintingComponent } from '@org/ui-text-painting';
+import { FeatureSoundComponent } from '@org/feature-sound';
+import { LayoutModeService, OnInitComponent } from '@org/page-common';
+import { tlLinks } from '@org/page-tl-common';
+import { Router } from '@angular/router';
+import { UiAnimationFileComponent } from '@org/ui-animation';
 
 @Component({
   selector: 'lib-page-learn-by-coloring',
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    UiTextPaintingComponent,
+    FeatureSoundComponent,
+    OnInitComponent,
+    UiAnimationFileComponent,
+  ],
   templateUrl: './page-learn-by-coloring.component.html',
   styleUrl: './page-learn-by-coloring.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PageLearnByColoringComponent implements AfterViewInit {
-  private readonly canvasElement =
-    viewChild<ElementRef<HTMLCanvasElement>>('canvas');
-  private readonly canvas = computed(() => this.canvasElement()?.nativeElement);
-  private readonly ctx = computed(() => this.canvas()?.getContext('2d'));
+export class PageLearnByColoringComponent {
+  readonly MAX_NUMBER = 3;
+  readonly number = signal(1);
+  readonly numberSoundDynamicName = computed(
+    () => `number-pl-${this.number()}`,
+  );
+  private readonly router = inject(Router);
+  private readonly layoutModeService = inject(LayoutModeService);
 
-  private readonly isPainting = signal(false);
-  private readonly brushColor = signal('#f00');
+  constructor() {
+    this.layoutModeService.applyMode('tiny-learners-distraction-free');
+  }
+  navigateToSummary(): Promise<boolean> {
+    return this.router.navigate([tlLinks.learn_summary]);
+  }
+  async onDrawingFinished(sound: FeatureSoundComponent) {
+    this.number.set(this.number() + 1);
+    await sound.playSound();
+  }
 
-  onColorChange(event: Event) {
-    const target = event.target as HTMLInputElement;
-    if (target) {
-      this.brushColor.set(target.value);
+  async onSoundFinished(textPainting: UiTextPaintingComponent) {
+    textPainting.print(this.number().toString());
+    if (this.number() > this.MAX_NUMBER) {
+      await this.navigateToSummary();
+      return;
     }
   }
-
-  ngAfterViewInit(): void {
-    this.draw();
-  }
-
-  draw() {
-    const ctx = this.ctx();
-    const canvas = this.canvas();
-    if (!ctx || !canvas) return;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = '300px LXGW WenKai TC';
-    ctx.fillStyle = '#ccc';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('12', canvas.width / 2, canvas.height / 2);
-  }
-
-  startPainting(event: MouseEvent) {
-    this.isPainting.set(true);
-    this.paint(event);
-  }
-
-  stopPainting() {
-    this.isPainting.set(false);
-    this.ctx()?.beginPath(); // Prevents brush trails
-  }
-
-  paint(event: MouseEvent) {
-    if (!this.isPainting()) return;
-
-    const ctx = this.ctx();
-    const canvas = this.canvas();
-    if (!ctx || !canvas) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-
-    ctx.fillStyle = this.brushColor();
-    ctx.beginPath();
-    ctx.arc(x, y, 10, 0, Math.PI * 2);
-    ctx.fill();
-  }
-
-  resetCanvas() {
-    this.draw();
-  }
-
-  protected readonly alert = alert;
 }
